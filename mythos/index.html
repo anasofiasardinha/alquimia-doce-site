@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mythos · Corpus da Marca · Alquimia Doce</title>
+<meta name="description" content="O corpus da Alquimia Doce. Relatos com nome próprio sobre chocolate, oferta, fruta, tempo e o que significa fazer algo assim, neste mundo que faz tudo depressa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alquimiadoce.pt/mythos/">
+<meta property="og:title" content="Mythos · Alquimia Doce">
+<meta property="og:description" content="Relatos com nome próprio. Para ler devagar, e com atenção.">
+<meta property="og:image" content="https://alquimiadoce.pt/imagens/ouro-textura.jpg">
+<meta property="og:locale" content="pt_PT">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root {
+  --baunilha:       #F2E7CE;
+  --baunilha-escuro:#E8D9B5;
+  --vinho:          #6E1A2B;
+  --vinho-escuro:   #4A0F1C;
+  --ouro:           #B8893B;
+  --ouro-claro:     #D4A85A;
+  --tinta:          #2C1F0F;
+  --tinta-suave:    #5A4030;
+  --papel:          #EDE0C4;
+  --papel-sombra:   #C8B48A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--baunilha);
+  color: var(--tinta);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top:0; left:0; right:0; z-index:100;
+  background: var(--baunilha);
+  border-bottom: 1px solid rgba(184,137,59,.2);
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-voltar {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.2em;
+  color:var(--vinho); text-decoration:none; text-transform:uppercase;
+  opacity:.75; transition:opacity .2s;
+}
+.nav-voltar:hover { opacity:1; }
+.nav-voltar::before { content:'← '; }
+.nav-logo {
+  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.25em;
+  color:var(--vinho); text-decoration:none; text-transform:uppercase;
+}
+
+/* ─── PÁGINA ─── */
+.mythos-indice {
+  max-width:620px; margin:0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ─── CABEÇALHO ─── */
+.indice-header { text-align:center; margin-bottom:56px; }
+.indice-eyebrow {
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.4em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:16px;
+}
+.indice-titulo {
+  font-family:'Cinzel',serif; font-size:clamp(1.8rem,5.5vw,2.6rem);
+  color:var(--vinho); letter-spacing:.12em; font-weight:400; margin-bottom:8px;
+}
+.indice-grego {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.82rem; color:var(--ouro); letter-spacing:.18em;
+}
+
+/* ─── PILHA DE FICHAS ─── */
+.fichas-lista {
+  display:flex; flex-direction:column; gap:40px;
+}
+
+/* ─── FICHA INDIVIDUAL (link) ─── */
+.ficha-item {
+  display:block; text-decoration:none; color:inherit;
+  position:relative; padding-bottom:20px;
+}
+.ficha-item::after {
+  content:''; position:absolute; bottom:8px; left:6px; right:-6px;
+  height:20px; background:#D9C9A0; z-index:0;
+  transition: transform .2s ease;
+}
+.ficha-item::before {
+  content:''; position:absolute; bottom:4px; left:3px; right:-3px;
+  height:20px; background:#C8B48A; z-index:-1;
+}
+.ficha-item:hover::after { transform: translateY(2px); }
+
+.ficha-card {
+  position:relative; z-index:2;
+  background:var(--papel); border:1px solid var(--papel-sombra);
+  padding:28px 30px 32px;
+  background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,137,59,0.07) 27px,rgba(184,137,59,0.07) 28px);
+  box-shadow:3px 3px 0 var(--papel-sombra),6px 6px 0 #C0A870;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.ficha-item:hover .ficha-card {
+  transform: translateY(-2px);
+  box-shadow:4px 5px 0 var(--papel-sombra),8px 8px 0 #C0A870;
+}
+
+.ficha-topo {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--papel-sombra);
+}
+.ficha-ref { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
+.ficha-data { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
+.ficha-titulo {
+  font-family:'Cinzel',serif; font-size:1.1rem; color:var(--vinho);
+  letter-spacing:.12em; font-weight:500; margin-bottom:4px; text-transform:uppercase;
+}
+.ficha-origem { font-family:'Special Elite',monospace; font-size:.65rem; color:var(--ouro); font-style:italic; margin-bottom:14px; }
+.ficha-excerto {
+  font-family:'Special Elite',monospace; font-size:.8rem; color:var(--tinta);
+  line-height:1.85; opacity:.8;
+}
+.ficha-ler {
+  margin-top:16px; padding-top:10px; border-top:1px solid var(--papel-sombra);
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.2em;
+  color:var(--ouro); text-transform:uppercase;
+  display:flex; justify-content:flex-end; align-items:center; gap:6px;
+}
+.ficha-ler::after { content:'→'; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html#mythos" class="nav-voltar">Início</a>
+  <a href="../index.html" class="nav-logo">Alquimia Doce</a>
+</nav>
+
+<main class="mythos-indice">
+  <div class="indice-header">
+    <p class="indice-eyebrow">Corpus da marca</p>
+    <h1 class="indice-titulo">Mythos</h1>
+    <p class="indice-grego">μῦθος · narrativa · relato · discurso</p>
+  </div>
+
+  <div class="fichas-lista">
+
+    <a href="001-mythos.html" class="ficha-item">
+      <div class="ficha-card">
+        <div class="ficha-topo">
+          <span class="ficha-ref">AD · MYTHOS · 001</span>
+          <span class="ficha-data">Anno 2025</span>
+        </div>
+        <h2 class="ficha-titulo">Mythos</h2>
+        <p class="ficha-origem">do grego μῦθος - narrativa, relato, discurso</p>
+        <p class="ficha-excerto">Antes de existir a ciência para explicar o mundo, existia o mythos. Não era ficção - era a forma mais honesta de transmitir o que realmente importava.</p>
+        <div class="ficha-ler">Ler</div>
+      </div>
+    </a>
+
+    <a href="002-a-linguagem-do-gesto.html" class="ficha-item">
+      <div class="ficha-card">
+        <div class="ficha-topo">
+          <span class="ficha-ref">AD · MYTHOS · 002</span>
+          <span class="ficha-data">Anno 2025</span>
+        </div>
+        <h2 class="ficha-titulo">A Linguagem do Gesto</h2>
+        <p class="ficha-origem">quando a prenda diz algo sobre quem a dá</p>
+        <p class="ficha-excerto">Há quem ofereça. Há quem escolha o que oferece. A Alquimia Doce não vende doces - vende gestos emocionais, feitos à mão em Lisboa.</p>
+        <div class="ficha-ler">Ler</div>
+      </div>
+    </a>
+
+    <!-- Entradas futuras entram aqui, seguindo o mesmo padrão -->
+
+  </div>
+</main>
+
+</body>
+</html>
