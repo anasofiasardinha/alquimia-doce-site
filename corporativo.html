@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presentes Empresariais · Alquimia Doce · Chocolates Artesanais Lisboa</title>
+<meta content="Chocolates artesanais para empresas. Presentes corporativos, welcome kits, reconhecimento de colaboradores e ofertas de fim de ano. Feitos à mão em Lisboa. Envio para Portugal e Reino Unido." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://alquimiadoce.pt/corporativo.html" property="og:url"/>
+<meta content="Presentes Empresariais · Alquimia Doce" property="og:title"/>
+<meta content="Chocolates artesanais para empresas. Quando a oferta tem de dizer algo sobre quem a dá." property="og:description"/>
+<meta content="https://alquimiadoce.pt/imagens/ouro-textura.jpg" property="og:image"/>
+<meta content="pt_PT" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=IM+Fell+English:ital@0;1&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --baunilha:       #F2E7CE;
+  --baunilha-escuro:#E8D9B5;
+  --vinho:          #6E1A2B;
+  --vinho-escuro:   #4A0F1C;
+  --ouro:           #B8893B;
+  --ouro-claro:     #D4A85A;
+  --tinta:          #2C1F0F;
+  --tinta-suave:    #5A4030;
+  --papel:          #EDE0C4;
+  --papel-sombra:   #C8B48A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--baunilha);
+  color: var(--tinta);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  position: sticky; top:0; z-index:100;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 12px 20px;
+  background: rgba(242,231,206,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(184,137,59,0.18);
+}
+.topbar-logo {
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  color: var(--vinho);
+  text-decoration: none;
+  letter-spacing: .12em;
+  font-weight: 500;
+}
+.topbar-voltar {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .18em;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(90,64,48,0.25);
+  padding-bottom: 1px;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.topbar-voltar:hover { color: var(--vinho); }
+
+/* ─── HERO ─── */
+.hero-corp-wrap {
+  position: relative;
+  background:
+    linear-gradient(to bottom,
+      rgba(20,6,3,0.72) 0%,
+      rgba(16,5,2,0.58) 45%,
+      rgba(20,6,3,0.76) 100%),
+    url('imagens/ouro-textura.jpg') center/cover no-repeat;
+}
+.hero-corp {
+  padding: 90px 24px 80px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .38em;
+  color: #D4A85A;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.7);
+}
+.hero-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  color: #F2E7CE;
+  font-weight: 400;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 24px rgba(0,0,0,.5);
+}
+.hero-subtitulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 3.5vw, 1.2rem);
+  color: rgba(242,231,206,.75);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.5);
+}
+.hero-divisor {
+  width: 40px;
+  height: 1px;
+  background: #B8893B;
+  margin: 0 auto;
+  opacity: .6;
+}
+/* ─── H2 PRESENTES CORPORATIVOS ─── */
+.hero-ancora {
+  text-align: center;
+  padding: 36px 24px 36px;
+}
+.hero-ancora h2 {
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  color: var(--ouro);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+/* ─── LIGAÇÃO INTERNA ─── */
+.link-universo {
+  display: block;
+  text-align: center;
+  padding: 32px 24px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  border-top: 1px solid rgba(184,137,59,.15);
+  transition: color .2s;
+}
+.link-universo:hover { color: var(--vinho); }
+.link-universo span {
+  font-family: 'Cinzel', serif;
+  font-style: normal;
+  font-size: .52rem;
+  letter-spacing: .2em;
+  color: var(--ouro);
+  display: block;
+  margin-top: 6px;
+}
+/* ─── FAQ ─── */
+.faq-sec {
+  padding: 64px 24px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.faq-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .4em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(184,137,59,.18);
+  padding: 22px 0;
+}
+.faq-item:first-of-type { border-top: 1px solid rgba(184,137,59,.18); }
+.faq-pergunta {
+  font-family: 'Cinzel', serif;
+  font-size: .72rem;
+  color: var(--vinho);
+  letter-spacing: .08em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.faq-resposta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .98rem;
+  color: var(--tinta-suave);
+  line-height: 1.65;
+}
+
+/* ─── CONTEXTOS ─── */
+.contextos-sec {
+  padding: 56px 24px;
+  background: var(--vinho);
+}
+.contextos-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.contextos-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .4em;
+  color: rgba(212,168,90,.65);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 36px;
+}
+.contextos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.contexto-item {
+  padding: 20px 18px;
+  border: 1px solid rgba(184,137,59,.25);
+  background: rgba(242,231,206,.04);
+}
+.contexto-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  color: var(--ouro-claro);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.contexto-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .92rem;
+  color: rgba(242,231,206,.72);
+  line-height: 1.55;
+}
+
+/* ─── PROPOSTA DE VALOR ─── */
+.valor-sec {
+  padding: 64px 24px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.valor-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .4em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.valor-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.valor-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.valor-numero {
+  font-family: 'Special Elite', monospace;
+  font-size: .62rem;
+  color: var(--ouro);
+  padding-top: 4px;
+  letter-spacing: .06em;
+}
+.valor-conteudo {}
+.valor-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  color: var(--vinho);
+  letter-spacing: .1em;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.valor-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  line-height: 1.65;
+}
+
+/* ─── ESTADOS CORPORATIVOS ─── */
+.estados-corp-sec {
+  padding: 64px 24px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,137,59,0.06) 0%, transparent 60%), var(--baunilha-escuro);
+}
+.estados-corp-inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.estados-corp-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .4em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.estados-corp-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  text-align: center;
+  margin-bottom: 44px;
+  line-height: 1.6;
+}
+.estado-corp-card {
+  border: 1px solid rgba(184,137,59,.22);
+  background: var(--papel);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.estado-corp-card:last-child { margin-bottom: 0; }
+.estado-corp-foto {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  filter: sepia(15%) contrast(1.05);
+  display: block;
+}
+.estado-corp-corpo {
+  padding: 24px 22px 26px;
+}
+.estado-corp-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.estado-corp-nome {
+  font-family: 'Cinzel', serif;
+  font-size: .98rem;
+  color: var(--vinho);
+  letter-spacing: .14em;
+  font-weight: 500;
+}
+.estado-corp-preco {
+  font-family: 'Special Elite', monospace;
+  font-size: .72rem;
+  color: var(--tinta-suave);
+}
+.estado-corp-contexto {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .22em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.estado-corp-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .98rem;
+  color: var(--tinta-suave);
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+.estado-corp-nota {
+  font-family: 'Special Elite', monospace;
+  font-size: .68rem;
+  color: var(--ouro);
+  font-style: italic;
+}
+
+/* ─── COMO FUNCIONA ─── */
+.processo-sec {
+  padding: 64px 24px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.processo-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: .52rem;
+  letter-spacing: .4em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.processo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.processo-passo {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 14px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(184,137,59,.15);
+  align-items: start;
+}
+.processo-passo:last-child { border-bottom: none; }
+.processo-num {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  color: var(--ouro);
+  letter-spacing: .1em;
+  padding-top: 3px;
+}
+.processo-conteudo {}
+.processo-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .78rem;
+  color: var(--vinho);
+  letter-spacing: .1em;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.processo-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .98rem;
+  color: var(--tinta-suave);
+  line-height: 1.6;
+}
+
+/* ─── CONDIÇÕES ─── */
+.condicoes-sec {
+  padding: 0 24px 56px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.condicoes-bloco {
+  border: 1px solid rgba(184,137,59,.22);
+  padding: 22px 20px;
+  background: rgba(184,137,59,.03);
+}
+.condicoes-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .28em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.condicoes-linha {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.condicoes-linha:last-child { margin-bottom: 0; }
+.condicoes-etiqueta {
+  font-family: 'Special Elite', monospace;
+  font-size: .6rem;
+  color: var(--ouro);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.condicoes-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--tinta-suave);
+  line-height: 1.5;
+}
+
+/* ─── CTA ─── */
+.cta-sec {
+  padding: 64px 24px 72px;
+  background: var(--vinho);
+  text-align: center;
+}
+.cta-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.1rem, 5vw, 1.8rem);
+  color: var(--baunilha);
+  font-weight: 400;
+  letter-spacing: .08em;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.cta-subtitulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(242,231,206,.72);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.btn-cta-wp {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--vinho-escuro);
+  background: var(--ouro-claro);
+  padding: 15px 32px;
+  text-decoration: none;
+  width: 100%;
+  max-width: 320px;
+  transition: background .2s;
+}
+.btn-cta-wp:hover { background: var(--ouro); }
+.btn-cta-email {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(242,231,206,.8);
+  border: 1px solid rgba(184,137,59,.4);
+  padding: 14px 32px;
+  text-decoration: none;
+  width: 100%;
+  max-width: 320px;
+  transition: border-color .2s, color .2s;
+}
+.btn-cta-email:hover { border-color: var(--ouro); color: var(--baunilha); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--vinho-escuro);
+  padding: 40px 24px 24px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cinzel', serif;
+  font-size: .88rem;
+  color: var(--ouro-claro);
+  letter-spacing: .2em;
+  margin-bottom: 6px;
+}
+.footer-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .88rem;
+  color: rgba(242,231,206,.45);
+  margin-bottom: 16px;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  font-family: 'Cinzel', serif;
+  font-size: .5rem;
+  letter-spacing: .18em;
+  color: rgba(212,168,90,.55);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--ouro-claro); }
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem;
+  color: rgba(242,231,206,.2);
+}
+</style>
+</head>
+<body>
+<!-- TOPBAR -->
+<header class="topbar">
+<a class="topbar-logo" href="alquimia-v7.html">Alquimia Doce</a>
+<a class="topbar-voltar" href="alquimia-v7.html">← Voltar ao site</a>
+</header>
+<!-- HERO -->
+<div class="hero-corp-wrap"><section class="hero-corp">
+<p class="hero-eyebrow">Encomendas para empresa</p>
+<h1 class="hero-titulo">Quando a oferta tem de dizer algo sobre quem a dá</h1>
+<p class="hero-subtitulo">Chocolates artesanais feitos à mão em Lisboa. Para empresas que querem oferecer algo com alma, com presença e com cuidado — não apenas uma caixa de chocolates.</p>
+<div class="hero-divisor"></div>
+</section></div><div class="hero-ancora"><h2>Presentes Corporativos Artesanais</h2></div>
+<!-- CONTEXTOS -->
+<section class="contextos-sec">
+<div class="contextos-inner">
+<p class="contextos-eyebrow">Para que ocasiões</p>
+<div class="contextos-grid">
+<div class="contexto-item">
+<p class="contexto-titulo">Presentes de fim de ano</p>
+<p class="contexto-desc">Para clientes, parceiros e colaboradores. Uma alternativa ao vinho de sempre.</p>
+</div>
+<div class="contexto-item">
+<p class="contexto-titulo">Welcome kits</p>
+<p class="contexto-desc">A primeira impressão que um novo colaborador leva para casa.</p>
+</div>
+<div class="contexto-item">
+<p class="contexto-titulo">Reconhecimento</p>
+<p class="contexto-desc">Aniversários, conquistas, momentos que merecem mais do que palavras.</p>
+</div>
+<div class="contexto-item">
+<p class="contexto-titulo">Eventos e conferências</p>
+<p class="contexto-desc">Brindes com identidade. Algo que as pessoas levam e recordam.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- PROPOSTA DE VALOR -->
+<section class="valor-sec">
+<p class="valor-eyebrow">O que diferencia</p>
+<div class="valor-lista">
+<div class="valor-item">
+<span class="valor-numero">01</span>
+<div class="valor-conteudo">
+<p class="valor-titulo">Feito à mão, em lotes pequenos</p>
+<p class="valor-texto">Cada bombom é produzido artesanalmente em Lisboa. Não há linha de produção. Há uma alquimista, receitas desenvolvidas ao longo de anos, e controlo total sobre cada detalhe — da escolha da fruta ao sinete de cera que fecha cada embrulho.</p>
+</div>
+</div>
+<div class="valor-item">
+<span class="valor-numero">02</span>
+<div class="valor-conteudo">
+<p class="valor-titulo">Apresentação que comunica</p>
+<p class="valor-texto">A embalagem foi pensada para que a oferta fale antes de ser aberta. Sacos de linho, lacres de cera, monograma em relevo. Quem recebe percebe imediatamente que foi escolhido algo fora do comum.</p>
+</div>
+</div>
+<div class="valor-item">
+<span class="valor-numero">03</span>
+<div class="valor-conteudo">
+<p class="valor-titulo">Personalização sem complicação</p>
+<p class="valor-texto">Carta personalizada com mensagem da empresa, escolha de linha ou combinação de linhas, entrega coordenada. O processo é directo — fala comigo, definimos juntos o que faz sentido para o teu contexto específico.</p>
+</div>
+</div>
+<div class="valor-item">
+<span class="valor-numero">04</span>
+<div class="valor-conteudo">
+<p class="valor-titulo">Envio para Portugal e Reino Unido</p>
+<p class="valor-texto">Entregas para Portugal continental, ilhas e Reino Unido. Para equipas distribuídas ou clientes além-fronteiras, o processo mantém-se o mesmo: uma conversa, uma encomenda, tudo tratado.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- OS TRÊS ESTADOS COM ENQUADRAMENTO CORPORATIVO -->
+<section class="estados-corp-sec">
+<div class="estados-corp-inner">
+<p class="estados-corp-eyebrow">As três linhas</p>
+<p class="estados-corp-intro">Cada linha tem o seu carácter.<br/>A escolha depende do contexto e de quem recebe.</p>
+<!-- ESSÊNCIA -->
+<article class="estado-corp-card">
+<img alt="Alquimia Doce Essência — fruta desidratada artesanal para oferta empresarial" class="estado-corp-foto" src="imagens/essencia-tabuleiro.jpg"/>
+<div class="estado-corp-corpo">
+<div class="estado-corp-topo">
+<h2 class="estado-corp-nome">Essência</h2>
+<span class="estado-corp-preco">10 € · por unidade</span>
+</div>
+<p class="estado-corp-contexto">Grupos grandes · brindes · welcome kits</p>
+<p class="estado-corp-desc">Fruta desidratada artesanalmente — figo, alperce, ameixa, cereja. Sem chocolate, sem adição de açúcar. A linha mais acessível da Alquimia Doce, com a mesma atenção ao detalhe. Ideal para grupos maiores ou para quem procura algo saudável e distinto.</p>
+<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+</div>
+</article>
+<!-- TRANSMUTAÇÃO -->
+<article class="estado-corp-card">
+<img alt="Alquimia Doce Transmutação — chocolate negro 70% artesanal para presentes empresariais" class="estado-corp-foto" src="imagens/transmutacao-tabuleiro.jpg"/>
+<div class="estado-corp-corpo">
+<div class="estado-corp-topo">
+<h2 class="estado-corp-nome">Transmutação</h2>
+<span class="estado-corp-preco">20 € · por unidade</span>
+</div>
+<p class="estado-corp-contexto">Clientes · parceiros · reconhecimento de equipa</p>
+<p class="estado-corp-desc">Fruta desidratada com cobertura de chocolate negro 70% cacau. Algumas peças escondem, sob o chocolate, uma pérola de massa de amêndoa caseira — inspirada na tradição algarvia. A linha intermédia: surpreende sem intimidar.</p>
+<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+</div>
+</article>
+<!-- OURO -->
+<article class="estado-corp-card">
+<img alt="Alquimia Doce Ouro — bombons artesanais de chocolate negro para oferta corporativa premium Lisboa" class="estado-corp-foto" src="imagens/ouro-textura.jpg"/>
+<div class="estado-corp-corpo">
+<div class="estado-corp-topo">
+<h2 class="estado-corp-nome">Ouro</h2>
+<span class="estado-corp-preco">30 € · por unidade</span>
+</div>
+<p class="estado-corp-contexto">VIP · direcção · marcos importantes</p>
+<p class="estado-corp-desc">Bombons artesanais de chocolate negro 70% com recheio de fruta desidratada e massa de amêndoa. Especiarias, flor de sal e um véu de ouro comestível. Cinco bombons, cinco nomes, cinco selos de cera. A linha de topo — para quando a oferta tem de ser inesquecível.</p>
+<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+</div>
+</article>
+</div>
+</section>
+<a class="link-universo" href="alquimia-v7.html">
+  Cada linha tem o seu universo próprio. Conhece a Alquimia Doce.
+  <span>Visitar o site →</span>
+</a>
+<!-- COMO FUNCIONA -->
+<section class="processo-sec">
+<p class="processo-eyebrow">Como funciona</p>
+<div class="processo-lista">
+<div class="processo-passo">
+<span class="processo-num">01</span>
+<div class="processo-conteudo">
+<p class="processo-titulo">Contacta</p>
+<p class="processo-texto">Por WhatsApp ou email. Diz-me o contexto, a quantidade aproximada e a data de que precisas. Respondo em 24 horas.</p>
+</div>
+</div>
+<div class="processo-passo">
+<span class="processo-num">02</span>
+<div class="processo-conteudo">
+<p class="processo-titulo">Definimos juntos</p>
+<p class="processo-texto">Linha, quantidade, personalização (carta com mensagem da empresa), destino de entrega. Emito orçamento sem compromisso.</p>
+</div>
+</div>
+<div class="processo-passo">
+<span class="processo-num">03</span>
+<div class="processo-conteudo">
+<p class="processo-titulo">Produção e entrega</p>
+<p class="processo-texto">A encomenda é produzida à mão assim que confirmada. Entrega coordenada para o endereço ou endereços que indicares, com fatura para a empresa.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CONDIÇÕES -->
+<div class="condicoes-sec">
+<div class="condicoes-bloco">
+<p class="condicoes-titulo">Condições de encomenda</p>
+<div class="condicoes-linha">
+<span class="condicoes-etiqueta">Mínimo</span>
+<span class="condicoes-valor">20 unidades ou 300 €</span>
+</div>
+<div class="condicoes-linha">
+<span class="condicoes-etiqueta">Envios</span>
+<span class="condicoes-valor">Portugal continental, Açores, Madeira e Reino Unido</span>
+</div>
+
+<div class="condicoes-linha">
+<span class="condicoes-etiqueta">Prazo</span>
+<span class="condicoes-valor">A confirmar com a Alquimista, dependendo da quantidade e da data</span>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<section class="faq-sec">
+<p class="faq-eyebrow">Perguntas frequentes</p>
+<div itemscope="" itemtype="https://schema.org/FAQPage">
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">Onde encomendar chocolates artesanais para oferta de empresa em Lisboa?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">A Alquimia Doce produz chocolates artesanais em Lisboa para encomendas corporativas. O contacto é feito directamente por WhatsApp ou email - sem intermediários, sem plataformas. A Alquimista acompanha a encomenda do início à entrega.</p>
+</div>
+</div>
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">Qual o preço de chocolates artesanais para presentes corporativos em Portugal?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">A Alquimia Doce tem três linhas: Essência a 10 €, Transmutação a 20 € e Ouro a 30 € por unidade. O pedido mínimo é de 20 unidades ou 300 €, podendo combinar linhas diferentes.</p>
+</div>
+</div>
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">Como encomendar chocolates personalizados para welcome kits de empresas?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">Por WhatsApp ou email. Indica o contexto, a quantidade aproximada e a data pretendida. É possível incluir carta com mensagem personalizada da empresa em cada embrulho, sem custo adicional.</p>
+</div>
+</div>
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">É possível enviar chocolates artesanais para colaboradores no Reino Unido?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">Sim. A Alquimia Doce faz entregas para Portugal continental, Açores, Madeira e Reino Unido. Para equipas distribuídas ou clientes além-fronteiras, o processo é o mesmo: uma conversa, uma encomenda.</p>
+</div>
+</div>
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">Que alternativas existem ao cesto de natal para oferta empresarial?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">Os chocolates artesanais da Alquimia Doce são uma alternativa ao cesto de natal tradicional. Cada presente inclui embrulho em linho, lacre de cera e, a pedido, carta personalizada - uma oferta com carácter que se distingue pelo detalhe.</p>
+</div>
+</div>
+<div class="faq-item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<p class="faq-pergunta" itemprop="name">Com quanto tempo de antecedência devo encomendar chocolates para o Natal?</p>
+<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+<p class="faq-resposta" itemprop="text">Recomenda-se contacto até ao início de dezembro. Para encomendas acima de 50 unidades, antes de novembro. A produção é artesanal e feita em lotes - a data de entrega é sempre confirmada com a Alquimista.</p>
+</div>
+</div>
+</div>
+</section><section class="cta-sec">
+<h2 class="cta-titulo">Vamos falar sobre a tua encomenda</h2>
+<p class="cta-subtitulo">Do outro lado está a Alquimista. Diz-me o contexto e tratamos do resto.</p>
+<div class="cta-botoes">
+<a class="btn-cta-wp" href="https://wa.me/351939320103?text=Ol%C3%A1%2C%20estou%20interessado%20em%20uma%20encomenda%20corporativa%20da%20Alquimia%20Doce.">Falar por WhatsApp</a>
+<a class="btn-cta-email" href="mailto:alquimista@alquimiadoce.pt?subject=Encomenda%20Corporativa%20%C2%B7%20Alquimia%20Doce">Enviar email</a>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+<p class="footer-logo">Alquimia Doce</p>
+<p class="footer-sub">A alquimia existe. Prova-se.</p>
+<div class="footer-links">
+<a href="alquimia-v7.html">Início</a>
+<a href="alquimia-v7.html#estados">Produtos</a>
+<a href="alquimia-v7.html#mythos">Mythos</a>
+<a href="alquimia-v7.html#envios">Envios</a>
+<a href="alquimia-v7.html#contacto">Contacto</a>
+</div>
+<p class="footer-copy">© Alquimia Doce · Ana Sardinha · Criadora</p>
+</footer>
+</body>
+</html>
