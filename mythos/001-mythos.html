@@ -45,7 +45,7 @@ nav {
   position: sticky; top:0; left:0; right:0; z-index:100;
   background: var(--baunilha);
   border-bottom: 1px solid rgba(184,137,59,.2);
-  padding: 14px 24px;
+  padding: 10px 20px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-voltar {
@@ -54,7 +54,7 @@ nav {
   opacity:.75; transition:opacity .2s;
 }
 .nav-voltar:hover { opacity:1; }
-.nav-voltar::before { content:'← '; }
+.nav-voltar::before { content:''; }
 .nav-logo {
   font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.25em;
   color:var(--vinho); text-decoration:none; text-transform:uppercase;
@@ -133,8 +133,8 @@ nav {
 </head>
 <body>
 <nav>
-<a class="nav-voltar" href="../index.html#mythos">Mythos</a>
-<a class="nav-logo" href="../index.html">Alquimia Doce</a>
+<a class="nav-voltar" href="../index.html">← Voltar ao site</a>
+<a aria-label="Alquimia Doce" class="nav-logo" href="../index.html"><img alt="Alquimia Doce" src="../imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a>
 </nav>
 <main class="mythos-pagina">
 <div class="ficha-wrap">
