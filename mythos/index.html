@@ -46,7 +46,7 @@ nav {
   opacity:.75; transition:opacity .2s;
 }
 .nav-voltar:hover { opacity:1; }
-.nav-voltar::before { content:'← '; }
+.nav-voltar::before { content:''; }
 .nav-logo {
   font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.25em;
   color:var(--vinho); text-decoration:none; text-transform:uppercase;
@@ -166,15 +166,12 @@ nav {
 </style>
 </head>
 <body>
-<nav>
-<a class="nav-voltar" href="../index.html#mythos">Início</a>
-<a class="nav-logo" href="../index.html">Alquimia Doce</a>
-</nav>
+<nav><a aria-label="Alquimia Doce" class="nav-logo" href="../index.html"><img alt="Alquimia Doce" src="../imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a><a class="nav-voltar" href="../index.html">← Voltar ao site</a></nav>
 <main class="mythos-indice">
 <div class="indice-header">
-<p class="indice-eyebrow">Corpus da marca</p>
+<p class="indice-eyebrow">AD · MYTHOS</p>
 <h1 class="indice-titulo">Mythos</h1>
-<p class="indice-grego">μῦθος · narrativa · relato · discurso</p>
+<p class="indice-subtitulo">do grego μῦθος — narrativa, relato, discurso</p>
 </div>
 <div class="fichas-lista">
 <!-- AD · MYTHOS · 001 -->
@@ -262,7 +259,7 @@ function toggleFicha(id) {
 }
 
   // Abrir ficha por hash no URL
-  (function() {
+  window.addEventListener('DOMContentLoaded', function() {
     var hash = window.location.hash;
     if (hash) {
       var id = hash.replace('#', '');
@@ -270,12 +267,13 @@ function toggleFicha(id) {
       if (el) {
         var conteudo = el.querySelector('.ficha-conteudo');
         var seta = el.querySelector('.ficha-seta');
-        if (conteudo) conteudo.style.display = 'block';
+        if (conteudo) { conteudo.style.maxHeight = 'none'; conteudo.style.display = 'block'; }
         if (seta) seta.style.display = 'none';
-        setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+        el.classList.add('aberta');
+        setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
       }
     }
-  })();
+  });
 
 </script>
 </body>
