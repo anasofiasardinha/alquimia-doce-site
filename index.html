@@ -4,191 +4,1767 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mythos · Corpus da Marca · Alquimia Doce</title>
-<meta content="O corpus da Alquimia Doce. Relatos com nome próprio sobre chocolate, oferta, fruta, tempo e o que significa fazer algo assim, neste mundo que faz tudo depressa." name="description"/>
+<title>Alquimia Doce · A alquimia existe. Prova-se.</title>
+<meta content="Bombons artesanais de chocolate negro 70%, fruta desidratada e massa de amêndoa. Feitos à mão em Lisboa. Cada bombom com o seu sinete, a sua história." name="description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://alquimiadoce.pt/mythos/" property="og:url"/>
-<meta content="Mythos · Alquimia Doce" property="og:title"/>
-<meta content="Relatos com nome próprio. Para ler devagar, e com atenção." property="og:description"/>
+<meta content="https://alquimiadoce.pt/" property="og:url"/>
+<meta content="Alquimia Doce · A alquimia existe. Prova-se." property="og:title"/>
+<meta content="Bombons artesanais de chocolate negro 70%, fruta desidratada e massa de amêndoa. Feitos à mão em Lisboa." property="og:description"/>
 <meta content="https://alquimiadoce.pt/imagens/ouro-textura.jpg" property="og:image"/>
 <meta content="pt_PT" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=IM+Fell+English:ital@0;1&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --baunilha: #F2E7CE;
-  --vinho: #6E1A2B;
-  --ouro: #B8893B;
-  --ouro-claro: #D4A85A;
-  --tinta: #2C1F0F;
-  --tinta-suave: #5A4030;
-  --papel: #EDE0C4;
-  --papel-sombra: #C8B48A;
+  --baunilha:       #F2E7CE;
+  --baunilha-escuro:#E8D9B5;
+  --vinho:          #6E1A2B;
+  --vinho-escuro:   #4A0F1C;
+  --ouro:           #B8893B;
+  --ouro-claro:     #D4A85A;
+  --tinta:          #2C1F0F;
+  --tinta-suave:    #5A4030;
+  --papel:          #EDE0C4;
+  --papel-sombra:   #C8B48A;
 }
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
-  background:var(--baunilha); color:var(--tinta);
-  font-family:'Cormorant Garamond',Georgia,serif;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100vh;
+  background: var(--baunilha);
+  color: var(--tinta);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* ─── NAV ─── */
-nav {
-  position:sticky; top:0; left:0; right:0; z-index:100;
-  background:var(--baunilha); border-bottom:1px solid rgba(184,137,59,.2);
-  padding:14px 24px; display:flex; align-items:center; justify-content:space-between;
+/* ─── FIO DE PROGRESSO ─── */
+.progresso-trilho {
+  position: fixed; top:0; left:0; right:0; height:2px; z-index:200;
+  background: rgba(184,137,59,0.1);
+  pointer-events: none;
 }
-.nav-voltar {
-  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.2em;
-  color:var(--vinho); text-decoration:none; text-transform:uppercase;
-  opacity:.75; transition:opacity .2s;
-}
-.nav-voltar:hover { opacity:1; }
-.nav-voltar::before { content:''; }
-.nav-logo {
-  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.25em;
-  color:var(--vinho); text-decoration:none; text-transform:uppercase;
+.progresso-fio {
+  height:100%; width:0%;
+  background: linear-gradient(to right, var(--ouro), var(--ouro-claro));
+  box-shadow: 0 0 8px rgba(184,137,59,0.5);
+  transition: width .08s linear;
 }
 
-/* ─── PÁGINA ─── */
-.mythos-indice { max-width:620px; margin:0 auto; padding:60px 24px 80px; }
-
-/* ─── CABEÇALHO ─── */
-.indice-header { text-align:center; margin-bottom:56px; }
-.indice-eyebrow {
-  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.4em;
-  color:var(--ouro); text-transform:uppercase; margin-bottom:16px;
+/* ─── TOPBAR ─── */
+.topbar {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 10px 16px;
+  background: rgba(242,231,206,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(184,137,59,0.15);
+  gap: 10px;
 }
-.indice-titulo {
+
+/* Logo monograma */
+.topbar-logo {
+  display: flex; align-items:center; justify-content:center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--vinho);
+  text-decoration: none;
+  flex-shrink: 0;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.topbar-menu {
+  display: flex; gap:16px; align-items:center;
+  opacity:0; pointer-events:none;
+  transition: opacity .4s;
+  flex:1; justify-content:flex-end;
+}
+.topbar-menu.visivel { opacity:1; pointer-events:all; }
+.topbar-menu a {
+  font-family: 'Cinzel', serif;
+  font-size: .54rem;
+  letter-spacing: .14em;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s;
+}
+.topbar-menu a:hover { color: var(--vinho); }
+
+.topbar-cta {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  color: var(--baunilha);
+  background: var(--vinho);
+  padding: 8px 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .2s;
+  position: relative;
+}
+.topbar-cta-contador {
+  position: absolute;
+  top: -7px; right: -7px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--ouro-claro);
+  color: var(--vinho-escuro);
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--baunilha);
+}
+.topbar-cta-contador.visivel { display: flex; }
+.topbar-cta:hover { background: var(--vinho-escuro); }
+
+/* ─── BOTÃO VOLTAR AO TOPO ─── */
+.topo-btn {
+  position: fixed;
+  bottom: 80px; right: 18px;
+  width: 40px; height: 40px;
+  background: var(--baunilha-escuro);
+  border: 1px solid var(--ouro);
+  display: flex; align-items:center; justify-content:center;
+  cursor: pointer;
+  opacity: 0; pointer-events:none;
+  transition: opacity .3s ease;
+  z-index: 90;
+  text-decoration: none;
+}
+.topo-btn.visivel { opacity:1; pointer-events:all; }
+.topo-btn svg {
+  width: 18px; height: 22px;
+  stroke: var(--vinho);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ─── BARRA LISTA (fundo) ─── */
+.lista-barra {
+  position: fixed;
+  bottom: 0; left:0; right:0;
+  background: var(--vinho-escuro);
+  border-top: 1px solid var(--ouro);
+  padding: 10px 18px;
+  display: flex; align-items:center; justify-content:flex-end;
+  gap: 12px;
+  z-index: 95;
+  transform: translateY(100%);
+  transition: transform .35s ease;
+}
+.lista-barra.visivel { transform: translateY(0); }
+.lista-barra-btn { flex: 1; }
+.lista-barra-encomendar { flex: 1; }
+.lista-barra-info {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .15em;
+  color: var(--ouro-claro);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lista-barra-bola {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--ouro-claro);
+  color: var(--vinho-escuro);
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lista-barra-btn {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  color: var(--ouro-claro);
+  background: transparent;
+  border: 1px solid var(--ouro);
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lista-barra-encomendar {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  color: var(--vinho);
+  background: var(--ouro-claro);
+  border: 1px solid var(--ouro);
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+
+/* ─── DRAWER LISTA ─── */
+.drawer-overlay {
+  position: fixed; inset:0;
+  background: rgba(44,31,15,0.5);
+  z-index: 110;
+  opacity:0; pointer-events:none;
+  transition: opacity .3s;
+}
+.drawer-overlay.visivel { opacity:1; pointer-events:all; }
+
+.drawer {
+  position: fixed;
+  top:0; right:0; bottom:0;
+  width: min(380px, 92vw);
+  background: var(--baunilha);
+  z-index: 120;
+  transform: translateX(100%);
+  transition: transform .35s ease;
+  display: flex; flex-direction:column;
+  border-left: 1px solid rgba(184,137,59,0.3);
+}
+.drawer.visivel { transform: translateX(0); }
+
+.drawer-topo {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(184,137,59,0.2);
+  display: flex; align-items:center; justify-content:space-between;
+}
+.drawer-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  color: var(--vinho);
+  text-transform: uppercase;
+}
+.drawer-fechar {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  background: none; border:none;
+  line-height:1;
+}
+
+.drawer-lista {
+  flex:1; overflow-y:auto;
+  padding: 16px 20px;
+}
+.drawer-item {
+  display: flex; justify-content:space-between; align-items:center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(184,137,59,0.15);
+  gap: 12px;
+}
+.drawer-item-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--tinta);
+  flex:1;
+}
+.drawer-item-remover {
+  font-size: .7rem;
+  color: var(--ouro);
+  cursor: pointer;
+  background: none; border:none;
+  font-family: 'Cinzel', serif;
+  letter-spacing: .05em;
+}
+.drawer-vazio {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  opacity: .5;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.drawer-rodape {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(184,137,59,0.2);
+}
+.drawer-pedir {
+  display: block; width:100%;
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .22em;
+  color: var(--baunilha);
+  background: var(--vinho);
+  border: none;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.drawer-pedir:hover { background: var(--vinho-escuro); }
+.drawer-nota {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .8rem;
+  color: var(--tinta-suave);
+  text-align: center;
+  margin-top: 10px;
+  opacity: .6;
+}
+
+/* ─── BOTÕES DUPLOS POR PRODUTO ─── */
+.btns-produto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 22px;
+}
+.btn-lista {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  color: var(--vinho);
+  border: 1px solid var(--vinho);
+  padding: 13px 10px;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  text-transform: uppercase;
+  transition: background .2s, color .2s;
+  width:100%;
+}
+.btn-lista:hover { background: var(--vinho); color: var(--baunilha); }
+.btn-pedir {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  color: var(--baunilha);
+  background: var(--vinho);
+  border: 1px solid var(--vinho-escuro);
+  padding: 13px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  transition: background .2s;
+  width:100%;
+}
+.btn-pedir:hover { background: var(--vinho-escuro); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align: center;
+  padding: 110px 28px 70px;
+  position: relative; overflow:hidden;
+  background:
+    linear-gradient(rgba(20,8,6,0.58), rgba(20,8,6,0.68)),
+    url('imagens/ouro-textura.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.circulo-magico {
+  position:absolute; top:50%; left:50%;
+  width: min(560px,90vw); height: min(560px,90vw);
+  transform: translate(-50%,-52%);
+  pointer-events:none; opacity:.18;
+}
+.circulo-magico svg {
+  width:100%; height:100%;
+  animation: roda-lenta 90s linear infinite;
+}
+@keyframes roda-lenta { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+.hero-origem {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem; letter-spacing:.45em;
+  color: var(--ouro); margin-bottom:32px; text-transform:uppercase;
+}
+.hero-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.6rem,9vw,5.5rem);
+  font-weight:400; color:var(--baunilha);
+  letter-spacing:.05em; line-height:1.08; margin-bottom:12px;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size: clamp(1rem,3.2vw,1.25rem);
+  letter-spacing:.28em; color:#f2e7ce; margin-bottom:38px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.8), 0 0 20px rgba(0,0,0,.4);
+}
+.hero-divisor {
+  width:48px; height:1px;
+  background: linear-gradient(90deg,transparent,var(--ouro),transparent);
+  margin: 0 auto 38px;
+}
+.hero-manifesto {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1.05rem,3.5vw,1.4rem);
+  color:rgba(242,231,206,0.92); max-width:440px; line-height:1.75; margin-bottom:14px;
+  text-align:center;
+}
+.hero-manifesto-2 {
+  font-family: 'IM Fell English', serif; font-style:italic;
+  font-size: clamp(.95rem,3vw,1.2rem);
+  color:var(--ouro); margin-bottom:50px;
+}
+.hero-btns {
+  display:flex; flex-direction:column;
+  gap:12px; align-items:center; width:100%; max-width:320px;
+}
+.btn-p {
+  font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.22em;
+  color:var(--vinho-escuro); background:var(--ouro);
+  border:1px solid var(--ouro-claro);
+  padding:15px 32px; text-decoration:none;
+  display:block; width:100%; text-align:center;
+  transition:background .22s;
+}
+.btn-p:hover { background:var(--ouro-claro); }
+.btn-s {
+  font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.22em;
+  color:var(--vinho); border:1px solid var(--vinho);
+  padding:14px 32px; text-decoration:none;
+  display:block; width:100%; text-align:center;
+  transition:background .22s, color .22s;
+}
+.btn-s:hover { background:var(--vinho); color:var(--baunilha); }
+.btn-s-hero {
+  font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.22em;
+  color:var(--ouro-claro); border:1px solid var(--ouro-claro);
+  padding:14px 32px; text-decoration:none;
+  display:block; width:100%; text-align:center;
+  transition:background .22s, color .22s;
+}
+.btn-s-hero:hover { background:var(--ouro-claro); color:var(--vinho-escuro); }
+
+/* ─── SECÇÕES ─── */
+.sec { padding:80px 24px; max-width:680px; margin:0 auto; }
+.eyebrow {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.45em;
+  color:var(--ouro); text-transform:uppercase; text-align:center; margin-bottom:14px;
+}
+.sec-titulo {
+  font-family:'Cinzel',serif; font-size:clamp(1.5rem,4.5vw,2.2rem);
+  color:var(--vinho); text-align:center; letter-spacing:.07em; font-weight:400; margin-bottom:32px;
+}
+.divisor {
+  width:64px; height:1px;
+  background: linear-gradient(90deg,transparent,var(--ouro),transparent);
+  margin:0 auto 44px;
+}
+
+/* ─── ESTADOS INTRO ─── */
+.estados-intro {
+  font-family:'IM Fell English',serif; font-size:1.1rem;
+  color:var(--tinta-suave); text-align:center; line-height:1.9; margin-bottom:36px;
+}
+.estados-intro p { margin-bottom:10px; }
+
+.indice-cabecalho {
+  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.2em;
+  color:var(--vinho); text-transform:uppercase;
+  margin-bottom:16px; padding-bottom:10px;
+  border-bottom:1px solid rgba(184,137,59,0.3);
+}
+.indice-estados { max-width:380px; margin:0 auto 52px; }
+.indice-entrada {
+  display:flex; align-items:center; gap:16px;
+  padding:16px 0; border-bottom:1px solid rgba(184,137,59,0.2);
+  text-decoration:none; color:var(--tinta);
+  transition:padding-left .25s ease, color .25s ease;
+}
+.indice-entrada:hover { padding-left:8px; color:var(--vinho); }
+.indice-rom {
+  font-family:'Cinzel',serif; font-size:.85rem; color:var(--ouro);
+  width:32px; text-align:left; flex-shrink:0;
+}
+.indice-corpo { flex:1; text-align:left; }
+.indice-lat {
+  font-family:'Cinzel',serif; font-size:.52rem; letter-spacing:.3em;
+  color:var(--ouro); opacity:.7; text-transform:uppercase;
+  display:block; margin-bottom:2px;
+}
+.indice-nome { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--tinta); }
+.indice-preco { font-family:'Cinzel',serif; font-size:.85rem; color:var(--vinho); }
+
+/* ─── ESTADO CARDS ─── */
+.estado { border:1px solid rgba(184,137,59,0.22); margin-bottom:2px; background:var(--baunilha-escuro); }
+.estado-fotos { display:grid; grid-template-columns:1fr 1fr; gap:2px; height:180px; cursor:pointer; }
+.foto-slot {
+  background:linear-gradient(135deg,rgba(184,137,59,0.12),rgba(110,26,43,0.08));
+  border:1px dashed rgba(184,137,59,0.25);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; transition:opacity .2s;
+  min-height:0; min-width:0;
+}
+.foto-slot:hover { opacity:.85; }
+.foto-slot span {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.72rem; color:var(--ouro); letter-spacing:.1em; text-align:center; padding:8px;
+}
+.estado-corpo { padding:28px 24px 32px; }
+.estado-estado {
+  font-family:'Cinzel',serif; font-size:.52rem; letter-spacing:.5em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:4px;
+}
+.estado-latim {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.88rem; color:var(--ouro); letter-spacing:.12em; margin-bottom:6px;
+}
+.estado-nome {
+  font-family:'Cinzel',serif; font-size:1.35rem; color:var(--vinho);
+  letter-spacing:.07em; font-weight:400; margin-bottom:18px;
+  word-break:break-word; overflow-wrap:break-word;
+}
+.estado-quote {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:1rem; color:var(--tinta-suave); line-height:1.75;
+  margin-bottom:18px; border-left:2px solid var(--ouro); padding-left:14px;
+}
+.estado-desc {
+  font-family:'Cormorant Garamond',serif; font-size:1rem;
+  color:var(--tinta-suave); line-height:1.7; margin-bottom:22px;
+}
+.fruta-lista { margin-bottom:24px; }
+.fruta-item {
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:10px 0; border-bottom:1px solid rgba(184,137,59,0.15);
+}
+.fruta-item:first-child { border-top:1px solid rgba(184,137,59,0.15); }
+.fruta-nome { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--tinta); }
+.fruta-origem {
+  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.14em;
+  color:#8B6520; opacity:1; text-transform:uppercase;
+}
+.estado-preco {
+  font-family:'Cinzel',serif; font-size:1.6rem; color:var(--tinta);
+  letter-spacing:.04em; text-align:center; margin-bottom:6px;
+}
+.estado-lote {
+  font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.2em;
+  color:var(--ouro); text-align:center; margin-bottom:16px; text-transform:uppercase;
+}
+
+/* ─── RODA DOS CINCO ─── */
+.orloj-zona { margin:32px 0 28px; text-align:center; }
+.orloj-titulo {
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.42em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:6px; opacity:.8;
+}
+.orloj-sub {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.88rem; color:var(--tinta-suave); opacity:.65; margin-bottom:22px;
+}
+.orloj-svg-wrap {
+  width: min(300px, 80vw);
+  height: min(300px, 80vw);
+  margin: 0 auto;
+  position: relative;
+}
+.orloj-svg-wrap svg {
+  width: 100%; height: 100%;
+}
+.selo-orbe {
+  position:absolute; width:58px; height:58px;
+  transform:translate(-50%,-50%); border-radius:50%;
+  border:1.5px solid var(--ouro); background:var(--baunilha-escuro);
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  cursor:pointer; z-index:3; overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.selo-orbe.activo {
+  transform:translate(-50%,-50%) scale(1.12);
+  box-shadow:0 0 18px rgba(184,137,59,0.5);
+  border-color:var(--ouro-claro); background:var(--baunilha);
+}
+@media (hover: hover) and (pointer: fine) {
+  .selo-orbe:hover {
+    transform:translate(-50%,-50%) scale(1.12);
+    box-shadow:0 0 18px rgba(184,137,59,0.5);
+    border-color:var(--ouro-claro); background:var(--baunilha);
+  }
+}
+.selo-orbe span {
+  font-family:'Cinzel',serif; font-size:.42rem; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--vinho); padding:0 4px; line-height:1.3;
+}
+.orloj-leitura {
+  margin:22px auto 0; min-height:80px; text-align:center; max-width:300px;
+}
+.leitura-nome {
+  font-family:'Cinzel',serif; font-size:1rem; color:var(--vinho);
+  letter-spacing:.08em; margin-bottom:4px;
+}
+.leitura-sabor {
+  font-family:'Cormorant Garamond',serif; font-size:.9rem; letter-spacing:.12em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:10px; text-align:center;
+}
+.leitura-lore {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:.95rem; color:var(--tinta-suave); line-height:1.65;
+}
+
+.sinetes-nota {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:.92rem; color:var(--ouro); text-align:center; margin-bottom:18px;
+}
+.ouro-variantes { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px; }
+.ouro-variante {
+  border:1px solid rgba(184,137,59,0.3); padding:16px 12px;
+  text-align:center; background:rgba(184,137,59,0.04);
+  display:flex; flex-direction:column;
+}
+.ouro-var-nome {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.15em;
+  color:var(--vinho); margin-bottom:5px; text-transform:uppercase;
+}
+.ouro-var-preco { font-family:'Cinzel',serif; font-size:1.1rem; color:var(--tinta); }
+.ouro-var-desc {
+  font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.2em;
+  color:var(--ouro); text-transform:uppercase; text-align:center; margin-top:3px;
+}
+
+/* ─── SACOS / EMBRULHO ─── */
+.extra-eyebrow {
+  font-family:'Cinzel',serif; font-size:.5rem; letter-spacing:.4em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:8px;
+}
+.extra-badge {
+  font-family:'Cinzel',serif; font-size:.48rem; letter-spacing:.25em;
+  color:var(--vinho-escuro); background:var(--ouro-claro);
+  padding:3px 8px; display:inline-block; text-transform:uppercase;
+  margin-top:12px;
+}
+
+/* ─── ONDE PROVAR ─── */
+.onde-sec { background:var(--vinho-escuro); padding:72px 24px; }
+.onde-inner { max-width:680px; margin:0 auto; }
+.onde-sec .eyebrow { color:rgba(212,168,90,.7); }
+.onde-sec .sec-titulo { color:var(--baunilha); }
+.onde-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+.onde-card { border:1px solid rgba(184,137,59,0.3); padding:26px 22px; }
+.onde-nome { font-family:'Cinzel',serif; font-size:.9rem; color:var(--ouro-claro); letter-spacing:.1em; margin-bottom:4px; }
+.onde-tipo { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.85rem; color:rgba(242,231,206,0.55); margin-bottom:12px; }
+.onde-texto { font-family:'Cormorant Garamond',serif; font-size:1rem; color:rgba(242,231,206,0.82); line-height:1.65; margin-bottom:12px; }
+.onde-badge {
+  font-family:'Cinzel',serif; font-size:.48rem; letter-spacing:.28em;
+  color:var(--vinho-escuro); background:var(--ouro); padding:3px 10px;
+  display:inline-block; text-transform:uppercase;
+}
+.onde-expositores { margin-top:44px; }
+.corporate-bloco {
+  text-align:center;
+  margin:36px auto 44px;
+  max-width:420px;
+  padding:20px 24px;
+  border-top:1px solid rgba(184,137,59,0.2);
+  border-bottom:1px solid rgba(184,137,59,0.2);
+}
+.corporate-label {
+  font-family:'Cinzel',serif;
+  font-size:.48rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--ouro);
+  display:block;
+  margin-bottom:10px;
+}
+.corporate-sinal {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--tinta-suave);
+  line-height:1.5;
+  margin:0;
+}
+.corporate-sinal a {
+  color:var(--vinho);
+  text-decoration:none;
+  border-bottom:1px solid rgba(110,26,43,0.3);
+  padding-bottom:1px;
+}
+.corporate-sinal a:hover { color:var(--vinho-escuro); }
+.onde-expositores-titulo {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.35em;
+  text-transform:uppercase; color:rgba(212,168,90,.7); text-align:center; margin-bottom:16px;
+}
+.onde-expositores-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.onde-expositor-foto {
+  aspect-ratio:1; border:1px dashed rgba(212,168,90,.35); background:rgba(212,168,90,.06);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.onde-expositor-foto span {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.58rem;
+  color:var(--ouro-claro); text-align:center; padding:6px; line-height:1.4;
+}
+
+/* ─── ENVIO ─── */
+.envio-sec {
+  background:var(--baunilha-escuro);
+  border-top:1px solid rgba(184,137,59,0.12);
+  border-bottom:1px solid rgba(184,137,59,0.12);
+  padding:60px 24px;
+}
+.envio-inner { max-width:680px; margin:0 auto; }
+.envio-grid { display:grid; grid-template-columns:1fr; gap:16px; }
+.envio-item { background:var(--baunilha); border:1px solid rgba(184,137,59,0.18); padding:24px 20px; }
+.envio-icone { font-size:1.3rem; margin-bottom:10px; display:block; }
+.envio-titulo {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.22em;
+  color:var(--vinho); margin-bottom:8px; text-transform:uppercase;
+}
+.envio-texto { font-family:'Cormorant Garamond',serif; font-size:.95rem; color:var(--tinta-suave); line-height:1.6; margin-bottom:16px; }
+
+
+/* ─── FOTO NA FICHA MYTHOS ─── */
+.ficha-foto {
+  width:100%; height:160px; object-fit:cover; object-position:center center;
+  margin-bottom:18px; display:block;
+  filter:sepia(35%) contrast(1.08) brightness(0.95);
+}
+
+/* ─── REVIEWS ─── */
+.reviews-sec { padding:80px 24px; max-width:680px; margin:0 auto; }
+.reviews-grid { display:grid; grid-template-columns:1fr; gap:18px; }
+.review { border-left:2px solid var(--ouro); padding:18px 20px; background:rgba(184,137,59,0.04); }
+.review-stars { color:var(--ouro); font-size:.8rem; margin-bottom:10px; }
+.review-texto {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:1rem; color:var(--tinta-suave); line-height:1.72; margin-bottom:12px;
+}
+.review-autor { font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.2em; color:var(--ouro); text-transform:uppercase; }
+
+/* ─── MYTHOS ─── */
+.mythos-sec {
+  padding:80px 24px;
+  background: radial-gradient(ellipse at 50% 0%,rgba(184,137,59,0.05) 0%,transparent 60%), var(--baunilha);
+}
+.mythos-inner { max-width:580px; margin:0 auto; }
+.mythos-header { text-align:center; margin-bottom:52px; }
+.mythos-titulo {
   font-family:'Cinzel',serif; font-size:clamp(1.8rem,5.5vw,2.6rem);
   color:var(--vinho); letter-spacing:.12em; font-weight:400; margin-bottom:8px;
 }
-.indice-grego {
-  font-family:'Cormorant Garamond',serif; font-style:italic;
-  font-size:.82rem; color:var(--ouro); letter-spacing:.18em;
-}
-
-/* ─── ACORDEÃO ─── */
-.fichas-lista { display:flex; flex-direction:column; gap:40px; }
-
-.ficha-acordeao { position:relative; padding-bottom:20px; }
-.ficha-acordeao::after {
+.mythos-grego { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.82rem; color:var(--ouro); letter-spacing:.18em; }
+.ficha-wrap { position:relative; padding-bottom:20px; }
+.ficha-wrap::after {
   content:''; position:absolute; bottom:8px; left:6px; right:-6px;
   height:20px; background:#D9C9A0; z-index:0;
 }
-.ficha-acordeao::before {
+.ficha-wrap::before {
   content:''; position:absolute; bottom:4px; left:3px; right:-3px;
   height:20px; background:#C8B48A; z-index:-1;
 }
-
-.ficha-card {
+.ficha {
   position:relative; z-index:2;
   background:var(--papel); border:1px solid var(--papel-sombra);
-  background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,137,59,0.07) 27px,rgba(184,137,59,0.07) 28px);
+  padding:36px 30px 40px;
+  background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,137,59,0.07) 27px,rgba(184,137,59,0.07) 28px);
   box-shadow:3px 3px 0 var(--papel-sombra),6px 6px 0 #C0A870;
-  overflow:hidden;
-}
-
-/* Cabeçalho clicável da ficha */
-.ficha-header {
-  padding:24px 28px 20px; cursor:pointer;
-  border-bottom:1px solid var(--papel-sombra);
-  display:flex; flex-direction:column; gap:4px;
 }
 .ficha-topo {
-  display:flex; justify-content:space-between; align-items:center;
-  margin-bottom:10px;
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--papel-sombra);
 }
 .ficha-ref { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
 .ficha-data { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
 .ficha-titulo {
-  font-family:'Cinzel',serif; font-size:1.1rem; color:var(--vinho);
-  letter-spacing:.12em; font-weight:500; text-transform:uppercase; margin-bottom:4px;
+  font-family:'Cinzel',serif; font-size:1.3rem; color:var(--vinho);
+  letter-spacing:.14em; font-weight:500; margin-bottom:4px; text-transform:uppercase;
 }
-.ficha-origem { font-family:'Special Elite',monospace; font-size:.65rem; color:var(--ouro); font-style:italic; margin-bottom:10px; }
-.ficha-excerto {
-  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.88rem;
-  color:rgba(110,26,43,.7); line-height:1.5;
-}
-.ficha-seta {
-  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.15em;
-  color:var(--ouro); text-transform:uppercase; margin-top:10px;
-  display:flex; align-items:center; justify-content:flex-end; gap:6px;
-  transition:opacity .2s;
-}
-.ficha-acordeao.aberta .ficha-seta { opacity:0; }
-
-/* Conteúdo expandível */
-.ficha-conteudo {
-  max-height:0; overflow:hidden;
-  transition:max-height .45s ease;
-}
-.ficha-acordeao.aberta .ficha-conteudo {
-  max-height:2000px;
-}
-.ficha-inner { padding:0 28px 32px; }
-
-.ficha-foto-topo {
-  width:100%; height:160px; object-fit:cover; object-position:center center;
-  display:block;
-  filter:sepia(35%) contrast(1.08) brightness(0.95);
-  cursor:pointer;
-}
-.ficha-corpo {
-  font-family:'Special Elite',monospace; font-size:.82rem;
-  color:var(--tinta); line-height:1.95;
-}
-.ficha-corpo p { margin-bottom:14px; }
+.ficha-origem { font-family:'Special Elite',monospace; font-size:.68rem; color:var(--ouro); font-style:italic; margin-bottom:22px; }
+.ficha-corpo { font-family:'Special Elite',monospace; font-size:.84rem; color:var(--tinta); line-height:1.95; }
+.ficha-corpo p { margin-bottom:16px; }
 .ficha-corpo p:last-child { margin-bottom:0; }
-.ficha-corpo ul { list-style:none; margin:10px 0 14px; padding:0; }
-.ficha-corpo ul li {
-  padding:7px 0 7px 14px; border-bottom:1px solid rgba(184,137,59,.18);
-  position:relative;
-}
-.ficha-corpo ul li::before { content:'—'; position:absolute; left:0; color:var(--ouro); opacity:.7; }
-.ficha-corpo ul li:last-child { border-bottom:none; }
-.ficha-trilogia { margin-top:18px; padding-top:14px; border-top:1px solid var(--papel-sombra); }
-.ficha-trilogia p { font-family:'Special Elite',monospace; font-size:.82rem; color:var(--tinta); line-height:1.6; margin-bottom:6px !important; }
-
 .ficha-rodape {
-  margin-top:20px; padding-top:10px; border-top:1px solid var(--papel-sombra);
+  margin-top:26px; padding-top:12px; border-top:1px solid var(--papel-sombra);
   display:flex; justify-content:space-between; align-items:center;
 }
 .ficha-assinatura { font-family:'Special Elite',monospace; font-size:.6rem; color:var(--tinta-suave); opacity:.55; }
-.ficha-ler-link {
-  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.15em;
-  color:var(--ouro); text-decoration:none; text-transform:uppercase; opacity:.7;
+.ficha-lacre {
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Cinzel',serif; font-size:1rem; color:var(--vinho); font-weight:600;
+}
+.mythos-mais { text-align:center; margin-top:44px; }
+
+/* ─── LISTA DE POSTS MYTHOS ─── */
+.mythos-lista {
+  max-width:480px; margin:36px auto 0;
+  display:flex; flex-direction:column; gap:0;
+}
+.mythos-lista-item {
+  display:flex; flex-direction:row; align-items:center; gap:14px;
+  padding:14px 0; text-decoration:none;
+  border-bottom:1px solid rgba(184,137,59,.2);
   transition:opacity .2s;
 }
-.ficha-ler-link:hover { opacity:1; }
-</style>
+.mythos-lista-item:first-child { border-top:1px solid rgba(184,137,59,.2); }
+.mythos-lista-item:hover { opacity:.7; }
+.mythos-lista-foto {
+  flex-shrink:0;
+  width:62px; height:62px;
+  border-radius:2px;
+  object-fit:cover;
+  object-position:center;
+  box-shadow:0 1px 4px rgba(0,0,0,.18);
+}
+.mythos-lista-texto {
+  display:flex; flex-direction:column; gap:3px;
+}
+.mythos-lista-ref {
+  font-family:'Special Elite',monospace; font-size:.58rem;
+  color:var(--ouro); letter-spacing:.08em;
+}
+.mythos-lista-titulo {
+  font-family:'Cinzel',serif; font-size:.88rem; letter-spacing:.08em;
+  color:var(--vinho); font-weight:500;
+}
+.mythos-lista-excerto {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.85rem;
+  color:rgba(110,26,43,.65); line-height:1.5;
+}
+
+/* ─── CONTACTO ─── */
+.contacto-sec { background:var(--vinho); padding:80px 24px; text-align:center; }
+.contacto-eyebrow {
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.4em;
+  color:rgba(212,168,90,.65); text-transform:uppercase; margin-bottom:20px;
+}
+.contacto-titulo {
+  font-family:'Cinzel',serif; font-size:clamp(1.1rem,5vw,2.4rem);
+  color:var(--baunilha); letter-spacing:.07em; font-weight:400; margin-bottom:16px;
+  white-space:nowrap;
+}
+.a-traco { position:relative; display:inline-block; line-height:1; }
+.a-traco::before {
+  content:''; position:absolute;
+  left:0.08em; right:0.08em; top:0.40em;
+  height:1.5px; background:currentColor;
+}
+.a-traco::after {
+  content:''; position:absolute;
+  left:0.01em; right:0.01em; top:0.52em;
+  height:1.5px; background:currentColor;
+}
+.contacto-texto {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:1rem; color:rgba(242,231,206,0.72);
+  max-width:400px; margin:0 auto 36px; line-height:1.75;
+}
+.btn-alquimista {
+  font-family:'Cinzel',serif; font-size:.7rem; letter-spacing:.28em;
+  color:var(--vinho); background:var(--ouro-claro); border:1px solid var(--ouro);
+  padding:16px 36px; text-decoration:none; display:inline-block;
+  text-transform:uppercase; transition:background .22s;
+}
+.btn-alquimista:hover { background:var(--ouro); }
+
+/* ─── ENVIOS ─── */
+.envios-sec { padding:80px 24px; text-align:center; max-width:640px; margin:0 auto; }
+.envios-eyebrow {
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.4em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:20px;
+}
+.envios-titulo {
+  font-family:'Cinzel',serif; font-size:clamp(1.1rem,5vw,2rem);
+  color:var(--vinho); letter-spacing:.05em; font-weight:400; margin-bottom:16px;
+}
+.envios-texto {
+  font-family:'IM Fell English',serif; font-style:italic;
+  font-size:1rem; color:rgba(110,26,43,0.75);
+  max-width:440px; margin:0 auto 40px; line-height:1.75;
+}
+.envios-sub {
+  font-family:'Cinzel',serif; font-size:.85rem; letter-spacing:.15em;
+  color:var(--vinho); text-transform:uppercase; margin:36px 0 14px;
+}
+.envios-tabela { width:100%; border-collapse:collapse; margin-bottom:8px; }
+.envios-tabela th {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.06em;
+  color:var(--ouro); text-transform:uppercase; padding:8px 4px;
+  border-bottom:1px solid rgba(184,137,59,.4); text-align:center;
+}
+.envios-tabela td {
+  font-family:'Cormorant Garamond',serif; font-size:.88rem;
+  color:var(--vinho); padding:8px 4px;
+  border-bottom:1px solid rgba(184,137,59,.18); text-align:center;
+}
+.envios-nota {
+  font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.85rem;
+  color:var(--vinho); max-width:440px; margin:18px auto; line-height:1.6;
+}
+.envios-link { color:var(--vinho); text-decoration:none; }
+.envios-cta-titulo {
+  font-family:'Cinzel',serif; font-size:1.05rem; letter-spacing:.03em;
+  color:var(--vinho); font-weight:700; margin:36px 0 8px;
+}
+.envios-cta-acao {
+  font-family:'Cormorant Garamond',serif; font-size:1.1rem;
+  color:var(--vinho); margin-bottom:32px;
+}
+
+/* ─── FOOTER ─── */
+footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
+.footer-logo { font-family:'Cinzel',serif; font-size:.9rem; letter-spacing:.2em; color:var(--ouro); margin-bottom:6px; }
+.footer-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.82rem; color:rgba(242,231,206,0.45); margin-bottom:14px; }
+.footer-email { margin-bottom:22px; }
+.footer-email a {
+  font-family:'Cormorant Garamond',serif; font-size:.82rem; letter-spacing:.03em;
+  color:rgba(212,168,90,.75); text-decoration:none; border-bottom:1px solid rgba(212,168,90,.3);
+}
+.footer-email a:hover { color:var(--ouro-claro); border-bottom-color:var(--ouro-claro); }
+.footer-links { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+.footer-links a {
+  font-family:'Cinzel',serif; font-size:.52rem; letter-spacing:.18em;
+  color:rgba(242,231,206,0.38); text-decoration:none; text-transform:uppercase;
+}
+.footer-links a:hover { color:var(--ouro); }
+.footer-copy { font-family:'Cormorant Garamond',serif; font-size:.72rem; color:rgba(242,231,206,0.28); }
+
+
+/* ─── SELECTOR DE ENVIO ─── */
+.envio-selector {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--baunilha-escuro);
+  border: 1px solid rgba(184,137,59,0.3);
+}
+.envio-selector.aberto { display: flex; }
+.envio-selector-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.envio-opcao {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--tinta);
+  background: var(--baunilha);
+  border: 1px solid rgba(184,137,59,0.25);
+  padding: 10px 14px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color .2s, background .2s;
+}
+.envio-opcao:hover {
+  border-color: var(--vinho);
+  background: var(--baunilha-escuro);
+}
+.envio-opcao span {
+  font-family: 'Cinzel', serif;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  color: var(--ouro);
+  text-transform: uppercase;
+}
+
+/* ─── NUMERAL ROMANO NO CARD ─── */
+.estado-numeral {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--ouro);
+  opacity: .6;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/* ─── ENVIO INFORMATIVO ─── */
+.envio-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.envio-info-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  background: var(--baunilha);
+  border: 1px solid rgba(184,137,59,0.18);
+}
+.envio-info-icone { font-size: 1.2rem; flex-shrink: 0; }
+.envio-info-corpo {}
+.envio-info-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .22em;
+  color: var(--vinho);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.envio-info-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--tinta-suave);
+  line-height: 1.6;
+}
+@media (min-width: 480px) {
+  .envio-info-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+/* ─── CONTROLO DE QUANTIDADE INLINE (por produto) ─── */
+.qtd-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.qtd-inline-menos, .qtd-inline-mais {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--vinho);
+  background: none;
+  color: var(--vinho);
+  font-size: .9rem;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.qtd-inline-numero {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  color: var(--vinho);
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ─── LINHAS DE SABOR COM QUANTIDADE ─── */
+.sabor-linha-selo {
+  width:46px; height:46px;
+  border-radius:50%;
+  object-fit:contain;
+  flex-shrink:0;
+  background:var(--baunilha);
+  border:1px solid rgba(184,137,59,0.35);
+  padding:5px;
+  box-sizing:border-box;
+  mix-blend-mode:multiply;
+}
+.sabor-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(184,137,59,0.15);
+  cursor: default;
+}
+.sabor-linha:last-of-type { border-bottom: none; }
+.sabor-linha-texto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.sabor-linha-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--tinta);
+}
+.sabor-linha-desc {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--ouro);
+  text-transform: uppercase;
+}
+.sabor-linha-qtd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.sabor-qtd-menos, .sabor-qtd-mais {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--vinho);
+  background: none;
+  color: var(--vinho);
+  font-size: .85rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.sabor-qtd-numero {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  color: var(--vinho);
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (min-width:480px) {
+  .envio-grid { grid-template-columns:1fr 1fr 1fr; gap:2px; }
+  .onde-grid { grid-template-columns:1fr 1fr; }
+  .reviews-grid { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:380px) {
+  .btns-produto { grid-template-columns:1fr; }
+  .ouro-variantes { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce) {
+  * { transition:none!important; animation:none!important; }
+  .circulo-magico svg { animation:none; }
+}
+
+.corp-destaque {
+  background: linear-gradient(135deg, rgba(139,35,35,0.06) 0%, rgba(184,137,59,0.08) 100%);
+  border-top: 1px solid rgba(184,137,59,0.2);
+  border-bottom: 1px solid rgba(184,137,59,0.2);
+  padding-top: 48px;
+  padding-bottom: 48px;
+}</style>
 </head>
 <body>
-<nav><a aria-label="Alquimia Doce" class="nav-logo" href="../index.html"><img alt="Alquimia Doce" src="../imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a><a class="nav-voltar" href="../index.html">← Voltar ao site</a></nav>
-<main class="mythos-indice">
-<div class="indice-header">
-<p class="indice-eyebrow">AD · MYTHOS</p>
-<h1 class="indice-titulo">Mythos</h1>
-<p class="indice-subtitulo">do grego μῦθος — narrativa, relato, discurso</p>
+<!-- FIO DE PROGRESSO -->
+<div class="progresso-trilho"><div class="progresso-fio" id="fio"></div></div>
+<!-- TOPBAR -->
+<nav class="topbar">
+<a aria-label="Alquimia Doce" class="topbar-logo" href="#"><img alt="" src="imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a>
+<div class="topbar-menu" id="topbar-menu">
+<a href="#onde-provar">Onde provar</a>
 </div>
-<div class="fichas-lista">
-<!-- AD · MYTHOS · 001 -->
-<div class="ficha-acordeao" id="mythos-001">
-<div class="ficha-card" onclick="toggleFicha('mythos-001')" style="cursor:pointer;"><img alt="Lacre alquímico" class="ficha-foto-topo" src="../imagens/lacre-essencia.jpg"/>
-<div class="ficha-header">
+<a class="topbar-cta" href="#essencia" id="topbar-encomendar">Encomendar<span class="topbar-cta-contador" id="topbar-contador">0</span></a>
+</nav>
+<!-- BOTÃO TOPO -->
+<a aria-label="Voltar ao topo" class="topo-btn" href="#" id="topo-btn">
+<svg viewbox="0 0 18 22" xmlns="http://www.w3.org/2000/svg">
+<!-- seta para cima com traço horizontal - símbolo alquímico do ar/sublimação -->
+<line x1="9" x2="9" y1="20" y2="3"></line>
+<polyline points="3,9 9,3 15,9"></polyline>
+<line x1="3" x2="15" y1="14" y2="14"></line>
+</svg>
+</a>
+<!-- BARRA LISTA -->
+<div class="lista-barra" id="lista-barra">
+<button class="lista-barra-btn" id="lista-barra-btn">Ver lista</button>
+<a class="lista-barra-encomendar btn-pedir-dinamico" href="https://wa.me/351939320103" id="lista-barra-encomendar">Encomendar</a>
+<span class="lista-barra-bola" id="lista-barra-bola">0</span>
+</div>
+<!-- DRAWER LISTA -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer" id="drawer">
+<div class="drawer-topo">
+<span class="drawer-titulo">A minha lista</span>
+<button class="drawer-fechar" id="drawer-fechar">×</button>
+</div>
+<div class="drawer-lista" id="drawer-lista">
+<p class="drawer-vazio">A lista está vazia.<br/>Adiciona um estado para começar.</p>
+</div>
+<div class="drawer-rodape">
+<div id="drawer-total-linha" style="display:none;justify-content:space-between;align-items:baseline;padding:10px 0 12px;border-top:1px solid rgba(184,137,59,0.2);margin-bottom:4px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.12em;color:var(--tinta-suave);text-transform:uppercase;">Total</span>
+<span id="drawer-total-valor" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--tinta);font-weight:500;"></span>
+</div>
+<a class="drawer-pedir" href="#" id="drawer-pedir">Encomendar</a>
+<p class="drawer-nota">A Alquimista recebe a tua lista e responde em breve.</p>
+</div>
+</div>
+<!-- HERO -->
+<header class="hero">
+<div aria-hidden="true" class="circulo-magico">
+<svg fill="none" stroke="currentColor" style="color:var(--ouro)" viewbox="0 0 400 400">
+<circle cx="200" cy="200" r="190" stroke-width="0.6"></circle>
+<circle cx="200" cy="200" r="158" stroke-dasharray="3 7" stroke-width="0.4"></circle>
+<circle cx="200" cy="200" r="118" stroke-width="0.5"></circle>
+<polygon points="200,38 358,298 42,298" stroke-width="0.5"></polygon>
+<polygon points="200,362 358,102 42,102" stroke-width="0.5"></polygon>
+<circle cx="200" cy="200" r="58" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" r="28" stroke-dasharray="2 4" stroke-width="0.4"></circle>
+</svg>
+</div>
+<p class="hero-origem">Portugal · Feito à mão</p>
+<h1 class="hero-titulo"><img alt="Alquimia Doce" src="imagens/logo-wordmark.svg" style="width:min(320px,82vw);height:auto;display:block;margin:0 auto;filter:brightness(0) invert(1);"/></h1>
+<p class="hero-sub">A alquimia existe. Prova-se.</p>
+<div class="hero-divisor"></div>
+<p class="hero-manifesto">Fruta verdadeira, chocolate negro 70%,<br/>massa de amêndoa artesanal.</p>
+<p class="hero-manifesto-2">E um toque de magia.</p>
+<div class="hero-btns">
+<a class="btn-p" href="#estados">Escolhe o teu Estado.</a>
+<a class="btn-s-hero" href="#mythos">Entrar no Mythos</a>
+</div>
+</header>
+<!-- PROVA SOCIAL -->
+<div style="background:var(--baunilha-escuro);border-bottom:1px solid rgba(184,137,59,0.12);padding:18px 24px;text-align:center;">
+<p style="font-family:'IM Fell English',serif;font-style:italic;font-size:.95rem;color:var(--tinta-suave);line-height:1.5;margin-bottom:6px;">"O arrependimento vem depois, quando não houver mais para se deliciarem."</p>
+<p style="font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:.18em;color:var(--ouro);text-transform:uppercase;">Mike Reis · Guia Local Google</p>
+</div>
+<!-- ESTADOS -->
+<section class="sec" id="estados">
+<p class="eyebrow">Matéria</p>
+<h2 class="sec-titulo">Os Estados</h2>
+<div class="divisor"></div>
+<div class="estados-intro">
+    Não há três estados iguais. Cada um feito para um momento específico. Escolher o errado é um desperdício de ambos.
+  </div>
+<nav aria-label="Índice dos estados" class="indice-estados">
+<p class="indice-cabecalho">Os três estados da matéria</p>
+<a class="indice-entrada" href="#essencia">
+<span class="indice-rom">I</span>
+<span class="indice-corpo">
+<span class="indice-lat">Nigredo · a origem</span>
+<span class="indice-nome">Essência</span>
+</span>
+<span class="indice-preco">10€</span>
+</a>
+<a class="indice-entrada" href="#transmutacao">
+<span class="indice-rom">II</span>
+<span class="indice-corpo">
+<span class="indice-lat">Albedo · a transformação</span>
+<span class="indice-nome">Transmutação</span>
+</span>
+<span class="indice-preco">20€</span>
+</a>
+<a class="indice-entrada" href="#ouro">
+<span class="indice-rom">III</span>
+<span class="indice-corpo">
+<span class="indice-lat">Rubedo · Aurum · a grande obra</span>
+<span class="indice-nome">Ouro</span>
+</span>
+<span class="indice-preco">30€</span>
+</a>
+</nav>
+<div class="corporate-bloco corp-destaque">
+<span class="corporate-label">Encomendas para empresas</span>
+<p class="corporate-sinal"><a href="corporativo.html">Quando a oferta tem de dizer algo sobre quem a dá.</a></p>
+</div>
+<!-- ESSÊNCIA -->
+<div class="estado" id="essencia">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Fruta desidratada artesanal Essência" src="imagens/essencia-tabuleiro.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Saco de fruta desidratada Essência" src="imagens/essencia-saco.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+<img alt="Lacre Essência" src="imagens/lacre-essencia.jpg" style="width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25);"/>
+<div>
+<p class="estado-numeral">I</p>
+<p class="estado-estado">Estado da Matéria</p>
+<p class="estado-latim">Nigredo</p>
+<h3 class="estado-nome" style="margin-bottom:0;">Essência</h3>
+</div>
+</div>
+<div class="estado-quote">"Escolhemos fruta no ponto e deixámo-la falar por si. Desidratada pacientemente, em pequenos lotes."</div>
+<div class="fruta-lista">
+<div class="fruta-item"><span class="fruta-nome">Maçã Fuji</span><span class="fruta-origem">Alcobaça</span></div>
+<div class="fruta-item"><span class="fruta-nome">Laranja</span><span class="fruta-origem">Algarve</span></div>
+<div class="fruta-item"><span class="fruta-nome">Manga</span><span class="fruta-origem">Brasil</span></div>
+<div class="fruta-item"><span class="fruta-nome">Abacaxi</span><span class="fruta-origem">Costa Rica</span></div>
+<div class="fruta-item"><span class="fruta-nome">Banana</span><span class="fruta-origem">América Latina</span></div>
+<div class="fruta-item"><span class="fruta-nome">Kiwi</span><span class="fruta-origem">Itália</span></div>
+</div>
+<p class="estado-preco">10€</p>
+<p class="estado-lote">Lote Artesanal Limitado</p>
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-essencia">-</button>
+<span class="qtd-inline-numero" id="qtd-essencia">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-essencia">+</button>
+</div>
+<div class="btns-produto">
+<button class="btn-lista btn-abre-envio" data-nome="Essência" data-preco="10€" data-qtdsrc="qtd-essencia">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+<div class="envio-selector">
+<p class="envio-selector-titulo">Como quer receber?</p>
+<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+</div>
+</div>
+</div>
+<!-- TRANSMUTAÇÃO -->
+<div class="estado" id="transmutacao" style="margin-top:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Fruta desidratada com chocolate negro Transmutação" src="imagens/transmutacao-tabuleiro.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Saco Transmutação" src="imagens/transmutacao-saco.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+<img alt="Lacre Transmutação" src="imagens/lacre-transmutacao.jpg" style="width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25);"/>
+<div>
+<p class="estado-numeral">II</p>
+<p class="estado-estado">Estado da Matéria</p>
+<p class="estado-latim">Albedo</p>
+<h3 class="estado-nome" style="margin-bottom:0;font-size:1.05rem;white-space:nowrap;">Transmutação</h3>
+</div>
+</div>
+<div class="estado-quote">"Juntámos 3 mundos, e a transformação começou. Tira um. Só um. E descobre."</div>
+<p class="estado-desc">Desidratadas lentamente, algumas frutas ganharam uma capa de chocolate negro 70% cacau. Outras escondem, sob o chocolate, uma pérola de massa de amêndoa caseira, inspirada na tradição algarvia. Assim nasceram sabores inesperados.</p>
+<p class="estado-preco">20€</p>
+<p class="estado-lote">Lote Artesanal Limitado</p>
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-transmutacao">-</button>
+<span class="qtd-inline-numero" id="qtd-transmutacao">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-transmutacao">+</button>
+</div>
+<div class="btns-produto">
+<button class="btn-lista btn-abre-envio" data-nome="Transmutação" data-preco="20€" data-qtdsrc="qtd-transmutacao">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+<div class="envio-selector">
+<p class="envio-selector-titulo">Como quer receber?</p>
+<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+</div>
+</div>
+</div>
+<!-- OURO -->
+<div class="estado" id="ouro" style="margin-top:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Bombons artesanais de chocolate negro Ouro" src="imagens/ouro-textura.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Detalhe dos bombons Ouro com selos" src="imagens/ouro-detalhes.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+<img alt="Lacre Ouro" src="imagens/lacre-ouro.jpg" style="width:88px;height:88px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25);"/>
+<div>
+<p class="estado-numeral">III</p>
+<p class="estado-estado">Estado da Matéria</p>
+<p class="estado-latim">Rubedo · Aurum</p>
+<h3 class="estado-nome" style="margin-bottom:0;">Ouro</h3>
+</div>
+</div>
+<div class="estado-quote">
+        "Por fora, firme e escuro.<br/>
+        Por dentro, macio e inesperado."
+      </div>
+<p class="estado-desc">Bombons artesanais de chocolate negro 70%, com recheio de fruta desidratada &amp; massa de amêndoa artesanal. Especiarias, flor de sal, e um véu de ouro comestível dão o toque final.</p>
+<div class="orloj-zona">
+<p class="orloj-titulo">A Roda dos Cinco</p>
+<p class="orloj-sub">Cada bombom com o seu sinete, a sua história.</p>
+<div class="orloj-svg-wrap" id="orloj">
+<!-- Relógio alquímico: merge de astrolábio medieval + roda zodiacal + Orloj -->
+<svg aria-hidden="true" viewbox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<style>
+                .orloj-l { fill:none; stroke:#B8893B; }
+                .orloj-lt { fill:none; stroke:#B8893B; opacity:0.35; }
+                .orloj-tx { font-family:'Cinzel',serif; fill:#B8893B; text-anchor:middle; }
+              </style>
+<!-- Caminho circular para o texto -->
+<path d="M 150,150 m -130,0 a 130,130 0 1,1 260,0 a 130,130 0 1,1 -260,0" fill="none" id="texto-circulo"></path>
+<!-- Caminho para símbolos zodiacais -->
+<path d="M 150,150 m -100,0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none" id="anel-simbolos"></path>
+</defs>
+<!-- Anel exterior com marcações de 24h (astrolábio) -->
+<circle class="orloj-l" cx="150" cy="150" r="144" stroke-width="1.2"></circle>
+<!-- Texto latim a rodar no anel exterior -->
+<text fill="#B8893B" font-family="Cinzel, serif" font-size="6.5" letter-spacing="3" opacity="0.7">
+<textpath href="#texto-circulo" startoffset="0%">
+                ALCHEMIA · DULCIS · LUSITANIA · CVM · INTENTIONE · ALCHEMIA · DULCIS · LUSITANIA · CVM · INTENTIONE ·
+              </textpath>
+</text>
+<circle class="orloj-lt" cx="150" cy="150" r="136" stroke-width="0.6"></circle>
+<!-- Marcações horárias - 24 divisões -->
+<g class="orloj-l" stroke-width="0.8">
+<line x1="150" x2="150" y1="6" y2="18"></line>
+<line x1="150" x2="150" y1="282" y2="294"></line>
+<line x1="6" x2="18" y1="150" y2="150"></line>
+<line x1="282" x2="294" y1="150" y2="150"></line>
+</g>
+<!-- marcações menores -->
+<g class="orloj-lt" stroke-width="0.5">
+<line transform="rotate(15 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(30 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(45 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(60 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(75 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(90 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(105 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(120 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(135 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(150 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(165 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(195 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(210 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(225 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(240 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(255 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(270 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(285 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(300 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(315 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(330 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+<line transform="rotate(345 150 150)" x1="150" x2="150" y1="6" y2="12"></line>
+</g>
+<!-- Anel zodiacal / roda alquímica -->
+<circle class="orloj-l" cx="150" cy="150" r="118" stroke-width="0.8"></circle>
+<circle class="orloj-lt" cx="150" cy="150" r="108" stroke-width="0.5"></circle>
+<!-- 12 divisões zodiacais -->
+<g class="orloj-lt" stroke-width="0.6">
+<line transform="rotate(30 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(60 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(90 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(120 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(150 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(180 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(210 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(240 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(270 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(300 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+<line transform="rotate(330 150 150)" x1="150" x2="150" y1="32" y2="42"></line>
+</g>
+<!-- Símbolos alquímicos dos ingredientes nos pontos cardeais -->
+<!-- Sal (círculo com linha horizontal) - Norte - flor de sal -->
+<g class="orloj-l" opacity="0.85" stroke-width="0.9">
+<circle cx="150" cy="56" fill="none" r="7"></circle>
+<line x1="143" x2="157" y1="56" y2="56"></line>
+<text fill="#B8893B" font-family="Cinzel,serif" font-size="5.5" opacity="0.6" stroke="none" text-anchor="middle" x="150" y="48">SAL</text>
+</g>
+<!-- Cacau / Mercúrio (círculo + cruz + meia-lua) - Sul -->
+<g class="orloj-l" opacity="0.85" stroke-width="0.9">
+<circle cx="150" cy="237" fill="none" r="6"></circle>
+<line x1="150" x2="150" y1="243" y2="252"></line>
+<line x1="145" x2="155" y1="248" y2="248"></line>
+<path d="M 144,237 a6,6 0 0,0 12,0" fill="none"></path>
+<text fill="#B8893B" font-family="Cinzel,serif" font-size="5.5" opacity="0.6" stroke="none" text-anchor="middle" x="150" y="258">CACAU</text>
+</g>
+<!-- Canela / Enxofre (triângulo + cruz) - Este -->
+<g class="orloj-l" opacity="0.85" stroke-width="0.9">
+<polygon fill="none" points="244,150 238,143 238,157"></polygon>
+<line x1="238" x2="233" y1="150" y2="150"></line>
+<line x1="236" x2="236" y1="147" y2="153"></line>
+<text fill="#B8893B" font-family="Cinzel,serif" font-size="5" opacity="0.6" stroke="none" text-anchor="middle" x="252" y="153">CAN.</text>
+</g>
+<!-- Cardamomo / Antimônio alquímico (V invertido + círculo) - Oeste -->
+<g class="orloj-l" opacity="0.85" stroke-width="0.9">
+<circle cx="57" cy="150" fill="none" r="5"></circle>
+<line x1="57" x2="52" y1="145" y2="138"></line>
+<line x1="57" x2="62" y1="145" y2="138"></line>
+<text fill="#B8893B" font-family="Cinzel,serif" font-size="4.5" opacity="0.6" stroke="none" text-anchor="middle" x="48" y="153">CARD.</text>
+</g>
+<!-- Anel interior - plano eclíptico -->
+<circle class="orloj-l" cx="150" cy="150" r="88" stroke-width="0.8"></circle>
+<!-- Cruz alquímica de enxofre - o centro -->
+<!-- Hexagrama de Salomão (Stella Maris alquímica) -->
+<g class="orloj-lt" stroke-width="0.7">
+<polygon fill="none" points="150,70 177,118 123,118"></polygon>
+<polygon fill="none" points="150,230 177,182 123,182"></polygon>
+</g>
+<!-- Círculo do sol excêntrico (como no Orloj) -->
+<circle class="orloj-lt" cx="150" cy="118" r="22" stroke-dasharray="2 4" stroke-width="0.6"></circle>
+<!-- Cruz dos meridianos -->
+<line class="orloj-lt" stroke-width="0.4" x1="150" x2="150" y1="62" y2="238"></line>
+<line class="orloj-lt" stroke-width="0.4" x1="62" x2="238" y1="150" y2="150"></line>
+<!-- Centro: monograma real -->
+<circle cx="150" cy="150" fill="none" r="24" stroke="#B8893B" stroke-width="1.2"></circle>
+<image height="44" width="44" x="128" xlink:href="imagens/logo-monograma.svg" y="128"/>
+</svg>
+</div>
+<div class="orloj-leitura" id="orloj-leitura">
+<p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--tinta-suave);opacity:.5;">Toca num selo</p>
+</div>
+</div>
+<p style="font-family:'Cinzel',serif;font-size:.95rem;letter-spacing:.1em;color:var(--vinho);text-align:center;margin-bottom:18px;">2 Preparações</p>
+<div class="ouro-variantes" style="margin-bottom:8px;grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto;">
+<div class="ouro-variante">
+<p class="ouro-var-nome">Saco · 5 Bombons</p>
+<p class="ouro-var-preco">30€</p>
+<p class="ouro-var-desc">Lote artesanal limitado</p>
+<div class="qtd-inline" style="margin-top:10px;margin-bottom:6px;gap:8px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-saco5" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-saco5" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-saco5" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista btn-abre-envio" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" data-qtdsrc="qtd-saco5" data-target="saco5-envio-selector" id="btn-abre-saco5" style="margin-top:auto;width:100%;font-size:.5rem;padding:9px 6px;">+ Adicionar</button>
+</div>
+</div>
+<!-- Selector de envio dedicado ao Saco de 5 -->
+<div class="envio-selector" id="saco5-envio-selector">
+<p class="envio-selector-titulo">Como quer receber?</p>
+<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+</div>
+<div class="ouro-variantes" style="margin-bottom:8px;grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto;">
+<div class="ouro-variante">
+<p class="ouro-var-nome">Bombom Individual</p>
+<p class="ouro-var-preco">10€</p>
+<p class="ouro-var-desc">Embalagem cúpula</p>
+<button class="btn-lista" id="btn-abre-sabor-individual" style="margin-top:auto;width:100%;font-size:.5rem;padding:9px 6px;">+ Escolher Sabor</button>
+</div>
+</div>
+<!-- Painel único: sabor + quantidade + envio -->
+<div class="envio-selector" id="sabor-selector">
+<p class="envio-selector-titulo">Escolha o sabor e a quantidade</p>
+<div class="sabor-linha" data-sabor="Alinhamento Celeste">
+<img alt="Alinhamento Celeste" class="sabor-linha-selo" src="imagens/selo-alinhamento-celeste.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Alinhamento Celeste</span>
+<span class="sabor-linha-desc">Maçã &amp; Canela</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Alinhamento Celeste">-</button>
+<span class="sabor-qtd-numero" data-sabor="Alinhamento Celeste">1</span>
+<button class="sabor-qtd-mais" data-sabor="Alinhamento Celeste">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Essência Primeva">
+<img alt="Essência Primeva" class="sabor-linha-selo" src="imagens/selo-essencia-primeva.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Essência Primeva</span>
+<span class="sabor-linha-desc">Massa de Amêndoa<br/>&amp; Flor de Sal</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Essência Primeva">-</button>
+<span class="sabor-qtd-numero" data-sabor="Essência Primeva">0</span>
+<button class="sabor-qtd-mais" data-sabor="Essência Primeva">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Eco Secreto">
+<img alt="Eco Secreto" class="sabor-linha-selo" src="imagens/selo-eco-secreto.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Eco Secreto</span>
+<span class="sabor-linha-desc">Manga &amp; Cardamomo Verde</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Eco Secreto">-</button>
+<span class="sabor-qtd-numero" data-sabor="Eco Secreto">0</span>
+<button class="sabor-qtd-mais" data-sabor="Eco Secreto">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Sopro Tardio">
+<img alt="Sopro Tardio" class="sabor-linha-selo" src="imagens/selo-sopro-tardio.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Sopro Tardio</span>
+<span class="sabor-linha-desc">Pêra &amp; Gengibre</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Sopro Tardio">-</button>
+<span class="sabor-qtd-numero" data-sabor="Sopro Tardio">0</span>
+<button class="sabor-qtd-mais" data-sabor="Sopro Tardio">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Coração Alquímico">
+<img alt="Coração Alquímico" class="sabor-linha-selo" src="imagens/selo-coracao-alquimico.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Coração Alquímico</span>
+<span class="sabor-linha-desc">Tâmara &amp; Cacau</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Coração Alquímico">-</button>
+<span class="sabor-qtd-numero" data-sabor="Coração Alquímico">1</span>
+<button class="sabor-qtd-mais" data-sabor="Coração Alquímico">+</button>
+</div>
+</div>
+<p class="envio-selector-titulo" style="margin-top:14px;">Como quer receber?</p>
+<button class="envio-opcao sabor-envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao sabor-envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+<button class="btn-lista" id="sabor-confirmar" style="width:100%;margin-top:10px;">Adicionar à lista</button>
+</div>
+<div style="margin-top:8px;">
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SACOS DE TRANSPORTE -->
+<section style="padding:0 24px 60px;max-width:680px;margin:0 auto;">
+<p class="eyebrow" style="margin-bottom:14px;">Embalagem</p>
+<h2 class="sec-titulo" style="margin-bottom:32px;">Sacos de Transporte</h2>
+<div class="estado" style="margin-bottom:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><span>[ saco kraft pequeno ]</span></div>
+<div class="foto-slot"><span>[ saco kraft médio ]</span></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Papel</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Saco Kraft</h3>
+<div class="fruta-lista">
+<div class="fruta-item">
+<span class="fruta-nome">Pequeno</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">Grátis</span>
+</div>
+<div class="fruta-item">
+<span class="fruta-nome">Médio</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">3€</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px;align-items:center;">
+<div>
+<p style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;color:var(--vinho);margin-bottom:5px;">Pequeno</p>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--vinho);opacity:.9;line-height:1.3;">Incluído com cada estado. Não precisa de pedir.</p>
+<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
+</div>
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-kraft-m" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
+</div>
+</div>
+<div class="envio-selector">
+<p class="envio-selector-titulo">Como quer receber?</p>
+<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+</div>
+<div style="margin-top:8px;">
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div>
+</div>
+<div class="estado" style="margin-top:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Sacos de linho com lacre Alquimia Doce" src="imagens/sacos-linho-geral.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Detalhe do lacre no saco de linho" src="imagens/sacos-linho-detalhe.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Linho artesanal</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Saco de Linho com Lacre</h3>
+<div class="fruta-lista">
+<div class="fruta-item">
+<span class="fruta-nome">Pequeno</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">3€</span>
+</div>
+<div class="fruta-item">
+<span class="fruta-nome">Médio</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">6€</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px;">
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-linho-p" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
+</div>
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-linho-g" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
+</div>
+</div>
+<div class="envio-selector">
+<p class="envio-selector-titulo">Como quer receber?</p>
+<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
+</div>
+<div style="margin-top:8px;">
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div>
+</div>
+</section>
+<!-- EMBRULHO DE PRENDA -->
+<section style="padding:0 24px 80px;max-width:680px;margin:0 auto;">
+<div class="estado">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Embrulho de prenda Alquimia Doce com lacres e corda" src="imagens/embrulho-prenda.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Detalhe do nó e dos lacres do embrulho" src="imagens/embrulho-detalhe.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Exclusivo Online</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Embrulho de Prenda</h3>
+<p class="estado-desc">Papel creme, corda e dois lacres de cera. Quem recebe sabe, antes de abrir, que o que está dentro foi escolhido com cuidado. Um cartão para as palavras que o resto não consegue dizer. Cada embrulho feito à mão, só depois de encomendado.</p>
+<div class="qtd-inline" style="margin-top:16px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-embrulho">-</button>
+<span class="qtd-inline-numero" id="qtd-embrulho">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-embrulho">+</button>
+</div>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Com a encomenda" data-nome="Embrulho de Prenda" data-preco="8€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ONDE PROVAR -->
+<section class="onde-sec" id="onde-provar">
+<div class="onde-inner">
+<p class="eyebrow">Presença física</p>
+<h2 class="sec-titulo" style="color:var(--baunilha);">Onde provar</h2>
+<div class="divisor" style="background:linear-gradient(90deg,transparent,var(--ouro-claro),transparent);margin-bottom:44px;"></div>
+<div class="onde-grid">
+<div class="onde-card">
+<p class="onde-nome">Companhia dos Lobos</p>
+<p class="onde-tipo">Wine shop · Amadora</p>
+<p class="onde-texto">Expositor permanente. Vinho e chocolate: uma afinidade que não precisa de explicação. Levantamento sem portes aqui.</p>
+<span class="onde-badge">Sem portes</span>
+</div>
+<div class="onde-card">
+<p class="onde-nome">Online</p>
+<p class="onde-tipo">Todo o país · Reino Unido</p>
+<p class="onde-texto">Envio CTT para Portugal continental, ilhas e Reino Unido. Embrulho de prenda disponível apenas na loja online.</p>
+<span class="onde-badge">Envio CTT</span>
+</div>
+</div>
+<div class="onde-expositores">
+<p class="onde-expositores-titulo">Alguns sabores merecem uma prova.</p>
+<div class="onde-expositores-grid">
+<div class="onde-expositor-foto"><img alt="Expositor Essência" src="imagens/essencia-expositor.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="onde-expositor-foto"><span>[ expositor Transmutação ]</span></div>
+<div class="onde-expositor-foto"><span>[ expositor Ouro ]</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- REVIEWS -->
+<section class="reviews-sec">
+<p class="eyebrow">Quem provou</p>
+<h2 class="sec-titulo">As palavras são deles</h2>
+<div class="divisor"></div>
+<div class="reviews-grid">
+<div class="review">
+<div class="review-stars">★★★★★</div>
+<p class="review-texto">"Os bombons são muito bons, peças delicadas de joalharia com toque dourado requintado. As frutas desidratadas e/ou com chocolate 'petiscam-se' a qualquer hora. Excelente produto!"</p>
+<p class="review-autor">Otília Miralto · Google</p>
+</div>
+<div class="review">
+<div class="review-stars">★★★★★</div>
+<p class="review-texto">"Doces muito bons, a sua confecção é ótima muito saborosos com uma mistura de sabores que combinam lindamente e sendo os mesmos feitos artesanalmente têm 1 toque especial. Recomendo vivamente que experimentem que não se irão arrepender, o arrependimento vem depois quando não houver mais para se deliciarem."</p>
+<p class="review-autor">Mike Reis · Guia Local Google</p>
+</div>
+<div class="review">
+<div class="review-stars">★★★★★</div>
+<p class="review-texto">"Bombons muito bons e bonitos. Cada um é uma pequena obra de arte!"</p>
+<p class="review-autor">Amalia Oliveira · Guia Local Google</p>
+</div>
+</div>
+</section>
+<!-- MYTHOS -->
+<section class="mythos-sec" id="mythos">
+<div class="mythos-inner">
+<div class="mythos-header">
+<p class="eyebrow">Corpus da marca</p>
+<h2 class="mythos-titulo">Mythos</h2>
+<p class="mythos-grego">μῦθος · narrativa · relato · discurso</p>
+</div>
+<div class="fichas-stack">
+<div class="ficha-wrap">
+<div class="ficha">
 <div class="ficha-topo">
 <span class="ficha-ref">AD · MYTHOS · 001</span>
 <span class="ficha-data">Anno 2025</span>
 </div>
-<h2 class="ficha-titulo">Mythos</h2>
+<h3 class="ficha-titulo">Mythos</h3>
 <p class="ficha-origem">do grego μῦθος - narrativa, relato, discurso</p>
-<p class="ficha-excerto">Antes de existir a ciência para explicar o mundo, existia o mythos.</p>
-<div class="ficha-seta">Ler →</div>
-</div>
-<div class="ficha-conteudo">
-<div class="ficha-inner">
+<img alt="Lacre alquímico" class="ficha-foto" src="imagens/lacre-essencia.jpg"/>
 <div class="ficha-corpo">
 <p>Antes de existir a ciência para explicar o mundo, existia o mythos. Não era ficção - era a forma mais honesta de transmitir o que realmente importava.</p>
 <p>A Alquimia Doce tem o seu.</p>
@@ -197,84 +1773,539 @@ nav {
 </div>
 <div class="ficha-rodape">
 <span class="ficha-assinatura">Alquimia Doce · Portugal</span>
-<a class="ficha-ler-link" href="001-mythos.html">↗ página própria</a>
+<div class="ficha-lacre"><img alt="" src="imagens/logo-monograma.svg" style="height:28px;width:auto;display:block;"/></div>
 </div>
 </div>
 </div>
 </div>
+<div class="mythos-lista">
+<a class="mythos-lista-item" href="mythos/index.html#mythos-002">
+<img alt="A Linguagem do Gesto" class="mythos-lista-foto" src="imagens/embrulho-prenda.jpg"/>
+<div class="mythos-lista-texto">
+<span class="mythos-lista-ref">AD · MYTHOS · 002</span>
+<span class="mythos-lista-titulo">A Linguagem do Gesto</span>
+<span class="mythos-lista-excerto">Há quem ofereça. Há quem escolha o que oferece.</span>
 </div>
-<!-- AD · MYTHOS · 002 -->
-<div class="ficha-acordeao" id="mythos-002">
-<div class="ficha-card" onclick="toggleFicha('mythos-002')" style="cursor:pointer;"><img alt="Embrulho com lacre" class="ficha-foto-topo" src="../imagens/embrulho-prenda.jpg" style="object-position:center 40%;"/>
-<div class="ficha-header">
-<div class="ficha-topo">
-<span class="ficha-ref">AD · MYTHOS · 002</span>
-<span class="ficha-data">Anno 2025</span>
+</a>
 </div>
-<h2 class="ficha-titulo">A Linguagem do Gesto</h2>
-<p class="ficha-origem">quando a prenda diz algo sobre quem a dá</p>
-<p class="ficha-excerto">Há quem ofereça. Há quem escolha o que oferece.</p>
-<div class="ficha-seta">Ler →</div>
-</div>
-<div class="ficha-conteudo">
-<div class="ficha-inner">
-<div class="ficha-corpo">
-<p>A Alquimia Doce não vende doces.<br/>
-              Vende gestos emocionais.<br/>
-              Essência, Transmutação e Ouro são apenas o veículo.</p>
-<p>Há quem ofereça. Há quem escolha o que oferece.</p>
-<p>Aqui, uma prenda faz quem dá e quem recebe sentir-se especial.<br/>
-              Oferece-se algo que diz: "Escolhi isto para ti, com cuidado."</p>
-<p>Fazemos isso criando um mundo próprio, feito à mão em Lisboa - feito de pequenos rituais emocionais: lacre, símbolos medievais, narrativa alquímica e um toque teatral que transforma cada oferta num momento de intenção.</p>
-<p>A estrutura é simples:</p>
-<ul>
-<li>Essência - fruta no auge, concentrada em sabor e autenticidade. Nada mais, nada menos.</li>
-<li>Transmutação - fruta, chocolate negro e amêndoa - três coisas que não deviam combinar tão bem.</li>
-<li>Ouro - bombons artesanais apresentados como micro-espetáculos, onde cada peça revela o seu interior como uma joia em bruto.</li>
-</ul>
-<div class="ficha-trilogia">
-<p>A intenção é o produto.</p>
-<p>Os doces são o meio.</p>
-<p>A experiência é o que fica.</p>
+<div class="mythos-mais">
+<a class="btn-s" href="mythos/index.html#mythos-002" style="display:inline-block;width:auto;padding:12px 28px;font-size:.62rem;letter-spacing:.22em;">
+        Explorar
+      </a>
 </div>
 </div>
-<div class="ficha-rodape">
-<span class="ficha-assinatura">Alquimia Doce · Lisboa · Portugal</span>
-<a class="ficha-ler-link" href="002-a-linguagem-do-gesto.html">↗ página própria</a>
+</section>
+<!-- ENVIOS -->
+<section class="envios-sec" id="envios">
+<p class="envios-eyebrow">Envios</p>
+<h2 class="envios-titulo">A alquimia viaja. Mas com o cuidado que merece.</h2>
+<p class="envios-sub">Portugal Continental e Ilhas</p>
+<table class="envios-tabela">
+<tr><th>Peso</th><th>Preço</th><th>Continente</th><th>Ilhas</th></tr>
+<tr><td>até 100 g</td><td>2,10 €</td><td>~1 dia útil</td><td>2 dias úteis</td></tr>
+<tr><td>100-500 g</td><td>3,90 €</td><td>~1 dia útil</td><td>2 dias úteis</td></tr>
+<tr><td>500 g-2 kg</td><td>7,80 €</td><td>~1 dia útil</td><td>2 dias úteis</td></tr>
+</table>
+<p class="envios-sub">Reino Unido</p>
+<table class="envios-tabela">
+<tr><th>Peso</th><th>Preço</th><th>Prazo</th></tr>
+<tr><td>até 250 g</td><td>7,55 €</td><td>3 dias úteis</td></tr>
+<tr><td>até 500 g</td><td>9,80 €</td><td>3 dias úteis</td></tr>
+<tr><td>até 1 kg</td><td>13,20 €</td><td>3 dias úteis</td></tr>
+<tr><td>até 2 kg</td><td>21,20 €</td><td>3 dias úteis</td></tr>
+</table>
+<p class="envios-nota">Envios para o Reino Unido, Açores e Madeira partem sempre à segunda-feira, para que a alquimia nunca fique parada num fim-de-semana.</p>
+<p class="envios-cta-titulo">Encomendas corporativas ou com prazo</p>
+<p class="envios-cta-acao"><a class="envios-link" href="#contacto">Fala com a Alquimista</a> antes de encomendares.</p>
+<p class="envios-nota">Vir de longe tem um preço. Eventuais taxas aduaneiras à chegada ao Reino Unido são responsabilidade de quem recebe.</p>
+</section>
+<!-- CONTACTO -->
+<section class="contacto-sec" id="contacto">
+<p class="contacto-eyebrow">Encomendas · Parcerias · Dúvidas</p>
+<h2 class="contacto-titulo">Fala com a <span class="a-traco">A</span>lquimist<span class="a-traco">A</span></h2>
+<p class="contacto-texto">Do outro lado está a Alquimista. Para encomendar, esclarecer dúvidas ou falar sobre oferta corporativa.</p>
+<a class="btn-alquimista btn-pedir-dinamico" href="https://wa.me/351939320103">A conversa começa aqui</a>
+</section>
+<!-- FOOTER -->
+<footer>
+<p class="footer-logo">Alquimia Doce</p>
+<p class="footer-sub">A alquimia existe. Prova-se.</p>
+<p class="footer-email"><a href="mailto:alquimista@alquimiadoce.pt">alquimista@alquimiadoce.pt</a></p>
+<div class="footer-links">
+<a href="#estados">Estados</a>
+<a href="#onde-provar">Onde provar</a>
+<a href="#mythos">Mythos</a>
+<a href="#envios">Envios</a>
+<a href="#contacto">Contacto</a>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
+<p class="footer-copy">© Alquimia Doce · Ana Sardinha · Criadora</p>
+</footer>
+<div aria-hidden="true" style="height:56px;"></div>
 <script>
-function toggleFicha(id) {
-  const el = document.getElementById(id);
-  const estaAberta = el.classList.contains('aberta');
-  // fecha todas
-  document.querySelectorAll('.ficha-acordeao').forEach(f => f.classList.remove('aberta'));
-  // abre esta se estava fechada
-  if (!estaAberta) el.classList.add('aberta');
+// ─── BOMBOM INDIVIDUAL: elementos (painel único) ───
+const btnAbreSabor       = document.getElementById('btn-abre-sabor-individual');
+const saborSelectorEl    = document.getElementById('sabor-selector');
+
+// ─── SCROLL: menu, fio, topo ───
+const menuEl   = document.getElementById('topbar-menu');
+const fioEl    = document.getElementById('fio');
+const topoEl   = document.getElementById('topo-btn');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const h = window.innerHeight;
+  const total = document.body.scrollHeight - h;
+  fioEl.style.width = (total > 0 ? (y/total)*100 : 0) + '%';
+  menuEl.classList.toggle('visivel', y > h * 0.6);
+  topoEl.classList.toggle('visivel', y > h * 0.4);
+});
+
+// ─── BOTÃO TOPO: volta à posição de onde a âncora foi clicada, não ao destino dela ───
+let scrollOrigemAncora = null;
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if (link.id === 'topo-btn') return;
+  const destino = link.getAttribute('href');
+  if (destino.length > 1 && document.querySelector(destino)) {
+    link.addEventListener('click', () => { scrollOrigemAncora = window.scrollY; });
+  }
+});
+topoEl.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (scrollOrigemAncora !== null) {
+    window.scrollTo({ top: scrollOrigemAncora, behavior: 'smooth' });
+    scrollOrigemAncora = null;
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+// ─── LISTA DE COMPRAS ───
+let lista = [];
+
+const listaBarraEl   = document.getElementById('lista-barra');
+const listaBarraBola = document.getElementById('lista-barra-bola');
+const listaBarraBtn  = document.getElementById('lista-barra-btn');
+const drawerEl       = document.getElementById('drawer');
+const drawerOverlay  = document.getElementById('drawer-overlay');
+const drawerListaEl  = document.getElementById('drawer-lista');
+const drawerPedirEl  = document.getElementById('drawer-pedir');
+const drawerFecharEl = document.getElementById('drawer-fechar');
+
+function abrirDrawer() {
+  drawerEl.classList.add('visivel');
+  drawerOverlay.classList.add('visivel');
+  document.body.style.overflow = 'hidden';
+}
+function fecharDrawer() {
+  drawerEl.classList.remove('visivel');
+  drawerOverlay.classList.remove('visivel');
+  document.body.style.overflow = '';
 }
 
-  // Abrir ficha por hash no URL
-  window.addEventListener('DOMContentLoaded', function() {
-    var hash = window.location.hash;
-    if (hash) {
-      var id = hash.replace('#', '');
-      var el = document.getElementById(id);
-      if (el) {
-        var conteudo = el.querySelector('.ficha-conteudo');
-        var seta = el.querySelector('.ficha-seta');
-        if (conteudo) { conteudo.style.maxHeight = 'none'; conteudo.style.display = 'block'; }
-        if (seta) seta.style.display = 'none';
-        el.classList.add('aberta');
-        setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 150);
-      }
+drawerFecharEl.addEventListener('click', fecharDrawer);
+drawerOverlay.addEventListener('click', fecharDrawer);
+listaBarraBtn.addEventListener('click', abrirDrawer);
+
+const seloDataUrls = {
+  'selo-alinhamento-celeste.png': 'imagens/selo-alinhamento-celeste.png',
+  'selo-essencia-primeva.png': 'imagens/selo-essencia-primeva.png',
+  'selo-eco-secreto.png': 'imagens/selo-eco-secreto.png',
+  'selo-sopro-tardio.png': 'imagens/selo-sopro-tardio.png',
+  'selo-coracao-alquimico.png': 'imagens/selo-coracao-alquimico.png'
+};
+const SACOS_PAGOS = ['Essência', 'Transmutação', 'Ouro - Saco 5 Bombons'];
+
+function calcGratis() {
+  const map = {};
+  lista.forEach(item => {
+    if (SACOS_PAGOS.some(s => (item.nome || '').includes(s))) {
+      const envio = item.envio || 'A confirmar';
+      map[envio] = (map[envio] || 0) + (item.qtd || 1);
     }
   });
+  return Object.entries(map).map(([envio, qtd]) => ({
+    nome: 'Saco Kraft - Pequeno', preco: 'Grátis', qtd, envio, autoGratis: true
+  }));
+}
 
+function renderLista() {
+  const gratis = calcGratis();
+  const listaFull = [...lista, ...gratis];
+  const count = listaFull.reduce((soma, item) => soma + (item.qtd || 1), 0);
+  const linhas = lista.length;
+  listaBarraBola.textContent = count;
+  listaBarraEl.classList.toggle('visivel', count > 0);
+
+  // Contador no botão Encomendar do topo
+  const contadorTopo = document.getElementById('topbar-contador');
+  if (contadorTopo) {
+    contadorTopo.textContent = count;
+    contadorTopo.classList.toggle('visivel', count > 0);
+  }
+
+  if (linhas === 0 && gratis.length === 0) {
+    drawerListaEl.innerHTML = '<p class="drawer-vazio">A lista está vazia.<br>Adiciona um produto para começar.</p>';
+  } else {
+    const linhasBase = lista.map((item, i) => `
+      <div class="drawer-item" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <span class="drawer-item-nome">${item.nome}${item.sabor ? ' - ' + item.sabor : ''}</span>
+          <button class="drawer-item-remover" data-i="${i}">×</button>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <div style="display:flex;align-items:center;gap:6px;margin-left:auto;">
+            <button class="drawer-qtd-menos" data-i="${i}" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--vinho);background:none;color:var(--vinho);font-size:.8rem;cursor:pointer;line-height:1;">-</button>
+            <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);min-width:14px;text-align:center;">${item.qtd || 1}</span>
+            <button class="drawer-qtd-mais" data-i="${i}" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--vinho);background:none;color:var(--vinho);font-size:.8rem;cursor:pointer;line-height:1;">+</button>
+          </div>
+        </div>
+      </div>
+    `);
+    const linhasGratis = gratis.map(item => `
+      <div class="drawer-item" style="flex-direction:column;align-items:flex-start;gap:4px;opacity:.8;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <span class="drawer-item-nome">${item.nome}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.42rem;color:var(--ouro);letter-spacing:.08em;">INCLUÍDO</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);margin-left:auto;">${item.qtd}×</span>
+        </div>
+      </div>
+    `);
+    drawerListaEl.innerHTML = [...linhasBase, ...linhasGratis].join('');
+
+    // Total
+    const totalEl = document.getElementById('drawer-total-linha');
+    const totalValorEl = document.getElementById('drawer-total-valor');
+    if (totalEl && totalValorEl) {
+      const total = lista.reduce((sum, item) => {
+        const match = (item.preco || '').match(/(\d+)/);
+        return sum + (match ? parseInt(match[1]) * (item.qtd || 1) : 0);
+      }, 0);
+      if (total > 0) {
+        totalValorEl.textContent = total + '€';
+        totalEl.style.display = 'flex';
+      } else {
+        totalEl.style.display = 'none';
+      }
+    }
+    drawerListaEl.querySelectorAll('.drawer-item-remover').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lista.splice(parseInt(btn.dataset.i), 1);
+        renderLista();
+      });
+    });
+    drawerListaEl.querySelectorAll('.drawer-qtd-mais').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        lista[i].qtd = (lista[i].qtd || 1) + 1;
+        renderLista();
+      });
+    });
+    drawerListaEl.querySelectorAll('.drawer-qtd-menos').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        const novaQtd = (lista[i].qtd || 1) - 1;
+        if (novaQtd < 1) {
+          lista.splice(i, 1);
+        } else {
+          lista[i].qtd = novaQtd;
+        }
+        renderLista();
+      });
+    });
+  }
+
+  // Link WhatsApp com a lista e envio por produto
+  const mensagemInicial = 'Ol%C3%A1!%20Sou%20a%20Ana%2C%20da%20Alquimia%20Doce.%20Como%20posso%20ajudar%3F';
+  const texto = listaFull.length > 0
+    ? 'Olá!%20Queria%20encomendar:%0A' + listaFull.map(i =>
+        '-%20' + (i.qtd || 1) + 'x%20' + i.nome + (i.sabor ? '%20(' + i.sabor + ')' : '') + '%20(' + i.preco + ')%20%E2%86%92%20' + (i.envio || 'A%20confirmar')
+      ).join('%0A')
+    : '';
+  const linkWhatsapp = listaFull.length > 0
+    ? 'https://wa.me/351939320103?text=' + texto
+    : 'https://wa.me/351939320103?text=' + mensagemInicial;
+  drawerPedirEl.href = lista.length > 0 ? linkWhatsapp : '#';
+
+  // Actualizar TODOS os botões "Pedir à Alquimista" do site com a lista actual
+  document.querySelectorAll('.btn-pedir-dinamico').forEach(a => {
+    a.href = linkWhatsapp;
+  });
+}
+
+// ─── SELECTOR DE ENVIO ───
+let btnPendente = null;
+
+// Função fiável: encontra o .envio-selector mais próximo a seguir ao grupo de botões do produto
+function encontrarSelector(btn) {
+  // Prioridade 1: data-target explícito (fiável, sem ambiguidade)
+  if (btn.dataset.target) {
+    const alvo = document.getElementById(btn.dataset.target);
+    if (alvo) return alvo;
+  }
+  // Prioridade 2: subir até ao container do produto e procurar o envio-selector seguinte
+  let el = btn;
+  while (el && el.parentElement) {
+    const proximoIrmao = el.nextElementSibling;
+    if (proximoIrmao && proximoIrmao.classList && proximoIrmao.classList.contains('envio-selector')) {
+      return proximoIrmao;
+    }
+    const paiProximo = el.parentElement.nextElementSibling;
+    if (paiProximo && paiProximo.classList && paiProximo.classList.contains('envio-selector')) {
+      return paiProximo;
+    }
+    el = el.parentElement;
+    if (el && el.classList && el.classList.contains('estado-corpo')) {
+      return el.querySelector('.envio-selector');
+    }
+  }
+  return null;
+}
+
+document.querySelectorAll('.btn-abre-envio').forEach(btn => {
+  const selector = encontrarSelector(btn);
+  if (!selector) return;
+
+  btn.addEventListener('click', () => {
+    const jaAberto = selector.classList.contains('aberto');
+    // Fechar todos os outros selectores
+    document.querySelectorAll('.envio-selector.aberto').forEach(s => {
+      if (s !== selector) s.classList.remove('aberto');
+    });
+    // Toggle do selector deste botão
+    selector.classList.toggle('aberto', !jaAberto);
+    btnPendente = !jaAberto ? btn : null;
+    if (!jaAberto) { setTimeout(() => selector.scrollIntoView({behavior: 'smooth', block: 'nearest'}), 80); }
+  });
+});
+
+document.querySelectorAll('.envio-opcao:not(.sabor-envio-opcao)').forEach(opcao => {
+  opcao.addEventListener('click', () => {
+    if (!btnPendente) return;
+    const envio = opcao.dataset.envio;
+    const btnAlvo = btnPendente;
+    const qtdEl = btnAlvo.dataset.qtdsrc ? document.getElementById(btnAlvo.dataset.qtdsrc) : null;
+    const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
+    lista.push({
+      nome: btnAlvo.dataset.nome,
+      preco: btnAlvo.dataset.preco,
+      envio: envio,
+      qtd: qtdEscolhida
+    });
+    renderLista();
+    opcao.closest('.envio-selector').classList.remove('aberto');
+    const orig = btnAlvo.textContent;
+    btnAlvo.textContent = 'Adicionado!';
+    btnAlvo.style.background = 'var(--vinho)';
+    btnAlvo.style.color = 'var(--baunilha)';
+    btnPendente = null;
+    // reset quantidade inline para 1 depois de adicionar
+    if (qtdEl) qtdEl.textContent = '1';
+    setTimeout(() => {
+      btnAlvo.textContent = orig;
+      btnAlvo.style.background = '';
+      btnAlvo.style.color = '';
+    }, 1200);
+  });
+});
+
+// Botões de lista directos (sem selector - se existirem)
+document.querySelectorAll('.btn-lista:not(.btn-abre-envio):not(#btn-abre-sabor-individual):not(#sabor-confirmar)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const qtdEl = btn.dataset.qtdsrc ? document.getElementById(btn.dataset.qtdsrc) : null;
+    const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
+    lista.push({ nome: btn.dataset.nome, preco: btn.dataset.preco, envio: btn.dataset.envio || 'A confirmar', qtd: qtdEscolhida });
+    renderLista();
+    const orig = btn.textContent;
+    btn.textContent = 'Adicionado!';
+    btn.style.background = 'var(--vinho)';
+    btn.style.color = 'var(--baunilha)';
+    if (qtdEl) qtdEl.textContent = '1';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 1200);
+  });
+});
+
+// ─── CONTROLO DE QUANTIDADE INLINE GENÉRICO ───
+document.querySelectorAll('.qtd-inline-mais').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.dataset.qtdtarget);
+    if (el) el.textContent = parseInt(el.textContent) + 1;
+  });
+});
+document.querySelectorAll('.qtd-inline-menos').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.dataset.qtdtarget);
+    if (el) el.textContent = Math.max(1, parseInt(el.textContent) - 1);
+  });
+});
+
+// ─── RODA DOS CINCO SELOS ───
+const bombons = [
+  { nome: 'Alinhamento Celeste', sabor: 'Maçã & Canela',           lore: 'O sabor de voltar a casa.', icone: 'selo-alinhamento-celeste.png' },
+  { nome: 'Essência Primeva',    sabor: 'Massa de amêndoa<br>& flor de sal', lore: 'A origem. E era suficiente.', icone: 'selo-essencia-primeva.png' },
+  { nome: 'Eco Secreto',         sabor: 'Manga & Cardamomo Verde',   lore: 'Guardar... ou partilhar no silêncio.', icone: 'selo-eco-secreto.png' },
+  { nome: 'Sopro Tardio',        sabor: 'Pêra & gengibre',           lore: 'A brisa que chega depois.', icone: 'selo-sopro-tardio.png' },
+  { nome: 'Coração Alquímico',   sabor: 'Tâmara & cacau',            lore: 'No centro da doçura, a alquimia começa.', icone: 'selo-coracao-alquimico.png' }
+];
+
+const orlojEl  = document.getElementById('orloj');
+const leituraEl = document.getElementById('orloj-leitura');
+
+if (orlojEl) {
+  // posicionar selos sobre o SVG no anel zodiacal (r≈118/300 * tamanho)
+  function posicionarSelos() {
+    document.querySelectorAll('.selo-orbe').forEach(o => o.remove());
+    const size = orlojEl.offsetWidth;
+    const cx = size / 2;
+    const raio = size * 0.39; // corresponde ao anel zodiacal
+    const diametro = size * 0.30; // maior, mas sem se tocarem
+    bombons.forEach((b, i) => {
+      const ang = (i / bombons.length) * 2 * Math.PI - Math.PI / 2;
+      const x = cx + Math.cos(ang) * raio;
+      const y = cx + Math.sin(ang) * raio;
+      const orbe = document.createElement('div');
+      orbe.className = 'selo-orbe';
+      orbe.style.position = 'absolute';
+      orbe.style.left = x + 'px';
+      orbe.style.top  = y + 'px';
+      orbe.style.width  = diametro + 'px';
+      orbe.style.height = diametro + 'px';
+      orbe.innerHTML  = `<img src="${seloDataUrls[b.icone] || 'imagens/' + b.icone}" alt="${b.nome}" style="width:90%;height:90%;object-fit:contain;pointer-events:none;mix-blend-mode:multiply;">`;
+      orbe.addEventListener('click', () => {
+        document.querySelectorAll('.selo-orbe').forEach(o => o.classList.remove('activo'));
+        orbe.classList.add('activo');
+        leituraEl.innerHTML = `
+          <p class="leitura-nome">${b.nome}</p>
+          <p class="leitura-sabor">${b.sabor}</p>
+          <p class="leitura-lore">${b.lore}</p>
+        `;
+      });
+      orlojEl.appendChild(orbe);
+    });
+  }
+  posicionarSelos();
+  window.addEventListener('resize', posicionarSelos);
+}
+
+// Inicializar todos os botões "Pedir à Alquimista" no carregamento
+renderLista();
+
+// ─── BOTÃO ENCOMENDAR DO TOPO: comportamento condicional ───
+const topbarEncomendarEl = document.getElementById('topbar-encomendar');
+if (topbarEncomendarEl) {
+  topbarEncomendarEl.addEventListener('click', (e) => {
+    if (lista.length > 0) {
+      e.preventDefault();
+      // mesma lógica do botão "Pedir à Alquimista": vai direto para o WhatsApp com a lista actual
+      window.location.href = topbarEncomendarEl.href.includes('wa.me')
+        ? topbarEncomendarEl.href
+        : drawerPedirEl.href;
+    }
+    // se a lista estiver vazia, mantém o comportamento normal (#essencia)
+  });
+}
+
+// ─── BOMBOM INDIVIDUAL: painel único com múltiplos sabores + quantidade + envio ───
+const qtdsPorSabor = {}; // ex: { 'Alinhamento Celeste': 2 }
+document.querySelectorAll('.sabor-qtd-numero').forEach(el => {
+  qtdsPorSabor[el.dataset.sabor] = parseInt(el.textContent) || 0;
+});
+
+if (btnAbreSabor) {
+  btnAbreSabor.addEventListener('click', () => {
+    document.querySelectorAll('.envio-selector.aberto').forEach(s => {
+      if (s !== saborSelectorEl) s.classList.remove('aberto');
+    });
+    saborSelectorEl.classList.toggle('aberto');
+  });
+}
+
+// Quantidade por linha de sabor
+document.querySelectorAll('.sabor-qtd-mais').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sabor = btn.dataset.sabor;
+    qtdsPorSabor[sabor] = (qtdsPorSabor[sabor] || 0) + 1;
+    document.querySelector(`.sabor-qtd-numero[data-sabor="${sabor}"]`).textContent = qtdsPorSabor[sabor];
+  });
+});
+document.querySelectorAll('.sabor-qtd-menos').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sabor = btn.dataset.sabor;
+    qtdsPorSabor[sabor] = Math.max(0, (qtdsPorSabor[sabor] || 0) - 1);
+    document.querySelector(`.sabor-qtd-numero[data-sabor="${sabor}"]`).textContent = qtdsPorSabor[sabor];
+  });
+});
+
+// Hover nas linhas de sabor -> roda mostra o sinete e a descrição
+document.querySelectorAll('.sabor-linha').forEach(linha => {
+  linha.addEventListener('mouseenter', () => {
+    const sabor = linha.dataset.sabor;
+    const b = bombons.find(x => x.nome === sabor);
+    if (!b || !leituraEl) return;
+    document.querySelectorAll('.selo-orbe').forEach(o => o.classList.remove('activo'));
+    const orbeCorrespondente = Array.from(document.querySelectorAll('.selo-orbe')).find(o => o.textContent.trim() === b.nome);
+    if (orbeCorrespondente) orbeCorrespondente.classList.add('activo');
+    leituraEl.innerHTML = `
+      <p class="leitura-nome">${b.nome}</p>
+      <p class="leitura-sabor">${b.sabor}</p>
+      <p class="leitura-lore">${b.lore}</p>
+    `;
+  });
+});
+
+// Envio escolhido dentro do painel do bombom individual
+let envioBombomIndividual = null;
+document.querySelectorAll('.sabor-envio-opcao').forEach(opcao => {
+  opcao.addEventListener('click', () => {
+    document.querySelectorAll('.sabor-envio-opcao').forEach(o => o.style.borderColor = '');
+    opcao.style.borderColor = 'var(--vinho)';
+    opcao.style.background = 'var(--baunilha)';
+    envioBombomIndividual = opcao.dataset.envio;
+  });
+});
+
+const saborConfirmarBtn = document.getElementById('sabor-confirmar');
+if (saborConfirmarBtn) {
+  saborConfirmarBtn.addEventListener('click', () => {
+    const escolhidos = Object.entries(qtdsPorSabor).filter(([_, qtd]) => qtd > 0);
+    if (escolhidos.length === 0) return;
+    escolhidos.forEach(([sabor, qtd]) => {
+      lista.push({
+        nome: 'Ouro - Bombom Individual (cúpula)',
+        sabor: sabor,
+        preco: '10€',
+        qtd: qtd,
+        envio: envioBombomIndividual || 'A confirmar'
+      });
+    });
+    renderLista();
+    saborSelectorEl.classList.remove('aberto');
+    // reset
+    Object.keys(qtdsPorSabor).forEach(s => qtdsPorSabor[s] = 0);
+    document.querySelectorAll('.sabor-qtd-numero').forEach(el => el.textContent = '0');
+    document.querySelectorAll('.sabor-envio-opcao').forEach(o => { o.style.borderColor = ''; o.style.background = ''; });
+    envioBombomIndividual = null;
+
+    const orig = btnAbreSabor.textContent;
+    btnAbreSabor.textContent = 'Adicionado!';
+    btnAbreSabor.style.background = 'var(--vinho)';
+    btnAbreSabor.style.color = 'var(--baunilha)';
+    setTimeout(() => {
+      btnAbreSabor.textContent = orig;
+      btnAbreSabor.style.background = '';
+      btnAbreSabor.style.color = '';
+    }, 1200);
+  });
+}
 </script>
 </body>
 </html>
