@@ -568,9 +568,304 @@ footer {
   font-size: .72rem;
   color: rgba(242,231,206,.2);
 }
+
+/* ─── ESTADOS CORP ─── */
+.estados-corp-intro { text-align:center; padding:48px 24px 32px; max-width:560px; margin:0 auto; }
+.estados-corp-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:var(--tinta-suave); margin-bottom:12px; }
+.corp-minimo { font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.2em; color:var(--ouro); text-transform:uppercase; margin-top:16px; }
+.estado-corp { display:flex; flex-direction:column; border-bottom:1px solid rgba(184,137,59,.12); }
+.estado-corp-foto { width:100%; height:220px; object-fit:cover; filter:sepia(20%) contrast(1.05); }
+.estado-corp-corpo { padding:28px 24px 36px; }
+.estado-corp-eyebrow { font-family:'Cinzel',serif; font-size:.48rem; letter-spacing:.3em; color:var(--ouro); text-transform:uppercase; margin-bottom:8px; }
+.estado-corp-nome { font-family:'Cinzel',serif; font-size:1.3rem; color:var(--vinho); font-weight:400; letter-spacing:.06em; margin-bottom:6px; }
+.estado-corp-preco { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--tinta); margin-bottom:8px; }
+.estado-corp-preco span { font-size:.9rem; color:var(--tinta-suave); }
+.estado-corp-tags { font-family:'Cinzel',serif; font-size:.46rem; letter-spacing:.2em; color:var(--ouro); text-transform:uppercase; margin-bottom:14px; }
+.estado-corp-desc { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--tinta-suave); line-height:1.7; margin-bottom:20px; }
+.estado-corp-secundario { background:rgba(184,137,59,.03); }
+.btn-corp-encomendar { display:inline-block; font-family:'Cinzel',serif; font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:var(--vinho); border:1px solid rgba(110,26,43,.35); padding:12px 24px; text-decoration:none; transition:all .2s; }
+.btn-corp-encomendar:hover { background:var(--vinho); color:var(--baunilha); }
+/* ─── EMBALAGEM CORP ─── */
+.embalagem-corp-sec { padding:48px 24px; border-top:1px solid rgba(184,137,59,.15); }
+.embalagem-corp-lista { margin:28px 0 32px; display:flex; flex-direction:column; gap:0; }
+.embalagem-corp-item { padding:18px 0; border-bottom:1px solid rgba(184,137,59,.12); }
+.embalagem-corp-item:first-child { border-top:1px solid rgba(184,137,59,.12); }
+.embalagem-corp-nome { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.1em; color:var(--vinho); margin-bottom:4px; }
+.embalagem-corp-preco { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--ouro); margin-bottom:4px; font-style:italic; }
+.embalagem-corp-desc { font-family:'Cormorant Garamond',serif; font-size:.92rem; color:var(--tinta-suave); line-height:1.6; }
+.embalagem-corp-destaque { background:rgba(184,137,59,.04); padding-left:12px; border-left:2px solid rgba(184,137,59,.3); }
+
+/* ─── SHOP CORP ─── */
+.corp-shop-block { margin-top: 20px; }
+
+.lista-barra {
+  position: fixed;
+  bottom: 0; left:0; right:0;
+  background: var(--vinho-escuro);
+  border-top: 1px solid var(--ouro);
+  padding: 10px 18px;
+  display: flex; align-items:center; justify-content:flex-end;
+  gap: 12px;
+  z-index: 95;
+  transform: translateY(100%);
+  transition: transform .35s ease;
+}
+.lista-barra.visivel { transform: translateY(0); }
+.lista-barra-btn { flex: 1; }
+.lista-barra-encomendar { flex: 1; }
+.lista-barra-info {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .15em;
+  color: var(--ouro-claro);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lista-barra-bola {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--ouro-claro);
+  color: var(--vinho-escuro);
+  font-family: 'Cinzel', serif;
+  font-size: .7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lista-barra-btn {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  color: var(--ouro-claro);
+  background: transparent;
+  border: 1px solid var(--ouro);
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lista-barra-encomendar {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .14em;
+  color: var(--vinho);
+  background: var(--ouro-claro);
+  border: 1px solid var(--ouro);
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+.drawer-overlay {
+  position: fixed; inset:0;
+  background: rgba(44,31,15,0.5);
+  z-index: 110;
+  opacity:0; pointer-events:none;
+  transition: opacity .3s;
+}
+.drawer-overlay.visivel { opacity:1; pointer-events:all; }
+.drawer {
+  position: fixed;
+  top:0; right:0; bottom:0;
+  width: min(380px, 92vw);
+  background: var(--baunilha);
+  z-index: 120;
+  transform: translateX(100%);
+  transition: transform .35s ease;
+  display: flex; flex-direction:column;
+  border-left: 1px solid rgba(184,137,59,0.3);
+}
+.drawer.visivel { transform: translateX(0); }
+.drawer-topo {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(184,137,59,0.2);
+  display: flex; align-items:center; justify-content:space-between;
+}
+.drawer-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  color: var(--vinho);
+  text-transform: uppercase;
+}
+.drawer-fechar {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  cursor: pointer;
+  background: none; border:none;
+  line-height:1;
+}
+.drawer-lista {
+  flex:1; overflow-y:auto;
+  padding: 16px 20px;
+}
+.drawer-item {
+  display: flex; justify-content:space-between; align-items:center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(184,137,59,0.15);
+  gap: 12px;
+}
+.drawer-item-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--tinta);
+  flex:1;
+}
+.drawer-item-remover {
+  font-size: .7rem;
+  color: var(--ouro);
+  cursor: pointer;
+  background: none; border:none;
+  font-family: 'Cinzel', serif;
+  letter-spacing: .05em;
+}
+.drawer-vazio {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  opacity: .5;
+  text-align: center;
+  padding: 40px 0;
+}
+.drawer-rodape {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(184,137,59,0.2);
+}
+.drawer-pedir {
+  display: block; width:100%;
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .22em;
+  color: var(--baunilha);
+  background: var(--vinho);
+  border: none;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.drawer-pedir:hover { background: var(--vinho-escuro); }
+.drawer-nota {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: .8rem;
+  color: var(--tinta-suave);
+  text-align: center;
+  margin-top: 10px;
+  opacity: .6;
+}
+.btn-lista {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  color: var(--vinho);
+  border: 1px solid var(--vinho);
+  padding: 13px 10px;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  text-transform: uppercase;
+  transition: background .2s, color .2s;
+  width:100%;
+}
+.btn-lista:hover { background: var(--vinho); color: var(--baunilha); }
+.btn-pedir {
+  font-family: 'Cinzel', serif;
+  font-size: .58rem;
+  letter-spacing: .16em;
+  color: var(--baunilha);
+  background: var(--vinho);
+  border: 1px solid var(--vinho-escuro);
+  padding: 13px 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  transition: background .2s;
+  width:100%;
+}
+.btn-pedir:hover { background: var(--vinho-escuro); }
+.qtd-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.qtd-inline-menos, .qtd-inline-mais {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--vinho);
+  background: none;
+  color: var(--vinho);
+  font-size: .9rem;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.qtd-inline-numero {
+  font-family: 'Cinzel', serif;
+  font-size: .95rem;
+  color: var(--vinho);
+  min-width: 18px;
+  text-align: center;
+}
+.btns-produto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 22px;
+}
+.btns-produto { grid-template-columns:1fr; }
+.estado-lote {
+  font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.2em;
+  color:var(--ouro); text-align:center; margin-bottom:16px; text-transform:uppercase;
+}
+.entrega-corp-nota {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(184,137,59,.15);
+}
+.entrega-corp-texto {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--tinta-suave);
+  line-height: 1.75;
+}
 </style>
 </head>
-<body>
+<body><div class="lista-barra" id="lista-barra">
+<button class="lista-barra-btn" id="lista-barra-btn">Ver lista</button>
+<a class="lista-barra-encomendar btn-pedir-dinamico" href="https://wa.me/351939320103" id="lista-barra-encomendar">Encomendar</a>
+<span class="lista-barra-bola" id="lista-barra-bola">0</span>
+</div><div class="drawer-overlay" id="drawer-overlay"></div><div class="drawer" id="drawer">
+<div class="drawer-topo">
+<span class="drawer-titulo">A minha lista</span>
+<button class="drawer-fechar" id="drawer-fechar">×</button>
+</div>
+<div class="drawer-lista" id="drawer-lista">
+<p class="drawer-vazio">A lista está vazia.<br/>Adiciona um estado para começar.</p>
+</div>
+<div class="drawer-rodape">
+<div id="drawer-total-linha" style="display:none;justify-content:space-between;align-items:baseline;padding:10px 0 12px;border-top:1px solid rgba(184,137,59,0.2);margin-bottom:4px;">
+<span style="font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.12em;color:var(--tinta-suave);text-transform:uppercase;">Total</span>
+<span id="drawer-total-valor" style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--tinta);font-weight:500;"></span>
+</div>
+<a class="drawer-pedir" href="#" id="drawer-pedir">Encomendar</a>
+<p class="drawer-nota">A Alquimista recebe a tua lista e responde em breve.</p>
+</div>
+</div>
 <!-- TOPBAR -->
 <header class="topbar"><a aria-label="Alquimia Doce" class="topbar-logo" href="index.html"><img alt="Alquimia Doce" src="imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a><a class="topbar-voltar" href="index.html">← Voltar ao site</a></header>
 <!-- HERO -->
@@ -640,50 +935,204 @@ footer {
 </section>
 <!-- OS TRÊS ESTADOS COM ENQUADRAMENTO CORPORATIVO -->
 <section class="estados-corp-sec">
-<div class="estados-corp-inner">
-<p class="estados-corp-eyebrow">As três estados</p>
-<p class="estados-corp-intro">Cada linha tem o seu carácter.<br/>A escolha depende do contexto e de quem recebe.</p>
+<div class="estados-corp-intro">
+<p class="corp-eyebrow">Os três estados</p>
+<p class="estados-corp-sub">Cada estado tem o seu carácter. A escolha depende do contexto e de quem recebe.</p>
+<p class="corp-minimo">Encomenda mínima: 200 €, em qualquer combinação de produtos.</p>
+</div>
 <!-- ESSÊNCIA -->
-<article class="estado-corp-card">
-<img alt="Alquimia Doce Essência - fruta desidratada artesanal para oferta empresarial" class="estado-corp-foto" src="imagens/essencia-tabuleiro.jpg"/>
+<div class="estado-corp">
+<img alt="Essência - fruta desidratada artesanal para oferta empresarial" class="estado-corp-foto" src="imagens/essencia-tabuleiro.jpg"/>
 <div class="estado-corp-corpo">
-<div class="estado-corp-topo">
-<h2 class="estado-corp-nome">Essência</h2>
-<span class="estado-corp-preco">10 € · por unidade</span>
+<p class="estado-corp-eyebrow">I · Nigredo · A Origem</p>
+<h3 class="estado-corp-nome">Essência</h3>
+<p class="estado-corp-preco">10 € <span>· por unidade</span></p>
+<p class="estado-corp-tags">Grupos grandes · Brindes · Welcome kits</p>
+<p class="estado-corp-desc">Saco de fruta desidratada artesanal em lote limitado. Maçã Fuji, Laranja, Manga, Abacaxi, Banana, Kiwi. Sem chocolate, sem adição de açúcar.</p>
+<div class="corp-shop-block">
+<p class="estado-lote">Lote Artesanal Limitado</p>
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-essencia">-</button>
+<span class="qtd-inline-numero" id="qtd-essencia">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-essencia">+</button>
 </div>
-<p class="estado-corp-contexto">Grupos grandes · brindes · welcome kits</p>
-<p class="estado-corp-desc">Fruta desidratada artesanalmente - figo, alperce, ameixa, cereja. Sem chocolate, sem adição de açúcar. A linha mais acessível da Alquimia Doce, com a mesma atenção ao detalhe. Ideal para grupos maiores ou para quem procura algo saudável e distinto.</p>
-<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Essência" data-preco="10€" data-qtdsrc="qtd-essencia">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
 </div>
-</article>
+</div></div>
+</div>
 <!-- TRANSMUTAÇÃO -->
-<article class="estado-corp-card">
-<img alt="Alquimia Doce Transmutação - chocolate negro 70% artesanal para presentes empresariais" class="estado-corp-foto" src="imagens/transmutacao-tabuleiro.jpg"/>
+<div class="estado-corp">
+<img alt="Transmutação - chocolate negro 70% artesanal para presentes empresariais" class="estado-corp-foto" src="imagens/transmutacao-tabuleiro.jpg"/>
 <div class="estado-corp-corpo">
-<div class="estado-corp-topo">
-<h2 class="estado-corp-nome">Transmutação</h2>
-<span class="estado-corp-preco">20 € · por unidade</span>
+<p class="estado-corp-eyebrow">II · Albedo · A Transformação</p>
+<h3 class="estado-corp-nome">Transmutação</h3>
+<p class="estado-corp-preco">20 € <span>· por unidade</span></p>
+<p class="estado-corp-tags">Clientes · Parceiros · Reconhecimento de equipa</p>
+<p class="estado-corp-desc">Misto de fruta desidratada artesanal com fruta envolta em chocolate negro 70% e massa de amêndoa. Lote artesanal limitado.</p>
+<div class="corp-shop-block">
+<p class="estado-lote">Lote Artesanal Limitado</p>
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-transmutacao">-</button>
+<span class="qtd-inline-numero" id="qtd-transmutacao">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-transmutacao">+</button>
 </div>
-<p class="estado-corp-contexto">Clientes · parceiros · reconhecimento de equipa</p>
-<p class="estado-corp-desc">Fruta desidratada com cobertura de chocolate negro 70% cacau. Algumas peças escondem, sob o chocolate, uma pérola de massa de amêndoa caseira - inspirada na tradição algarvia. A linha intermédia: surpreende sem intimidar.</p>
-<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Transmutação" data-preco="20€" data-qtdsrc="qtd-transmutacao">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
 </div>
-</article>
-<!-- OURO -->
-<article class="estado-corp-card">
-<img alt="Alquimia Doce Ouro - bombons artesanais de chocolate negro para oferta corporativa premium Lisboa" class="estado-corp-foto" src="imagens/ouro-textura.jpg"/>
+</div></div>
+</div>
+<!-- OURO SACO -->
+<div class="estado-corp">
+<img alt="Ouro - bombons artesanais de chocolate negro para oferta corporativa premium Lisboa" class="estado-corp-foto" src="imagens/ouro-textura.jpg"/>
 <div class="estado-corp-corpo">
-<div class="estado-corp-topo">
-<h2 class="estado-corp-nome">Ouro</h2>
-<span class="estado-corp-preco">30 € · por unidade</span>
+<p class="estado-corp-eyebrow">III · Rubedo · Aurum · A Grande Obra</p>
+<h3 class="estado-corp-nome">Ouro</h3>
+<p class="estado-corp-preco">30 € <span>· saco de 5 bombons</span></p>
+<p class="estado-corp-tags">VIP · Direcção · Marcos importantes</p>
+<p class="estado-corp-desc">Bombons artesanais de chocolate negro 70%, recheio de fruta desidratada e massa de amêndoa. Com especiarias, flor de sal e véu de ouro comestível. Cada bombom com o seu sinete. Lote artesanal limitado.</p>
+<div class="corp-shop-block">
+<p class="estado-lote">Lote Artesanal Limitado</p>
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-ouro-saco">-</button>
+<span class="qtd-inline-numero" id="qtd-ouro-saco">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-ouro-saco">+</button>
 </div>
-<p class="estado-corp-contexto">VIP · direcção · marcos importantes</p>
-<p class="estado-corp-desc">Bombons artesanais de chocolate negro 70% com recheio de fruta desidratada e massa de amêndoa. Especiarias, flor de sal e um véu de ouro comestível. Cinco bombons, cinco nomes, cinco selos de cera. A linha de topo - para quando a oferta tem de ser inesquecível.</p>
-<p class="estado-corp-nota">A partir de 20 unidades · Envio Portugal e UK</p>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" data-qtdsrc="qtd-ouro-saco">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
 </div>
-</article>
+</div></div>
 </div>
+<!-- BOMBOM INDIVIDUAL -->
+<div class="estado-corp estado-corp-secundario">
+<img alt="Bombom individual Ouro - embalagem cúpula" class="estado-corp-foto" src="imagens/ouro-detalhes.jpg"/>
+<div class="estado-corp-corpo">
+<p class="estado-corp-eyebrow">III · Rubedo · Aurum</p>
+<h3 class="estado-corp-nome">Ouro · Bombom Individual</h3>
+<p class="estado-corp-preco">10 € <span>· por unidade · embalagem cúpula</span></p>
+<p class="estado-corp-tags">Brindes de evento · Lembrança individual</p>
+<p class="estado-corp-desc">Um bombom à escolha entre cinco sabores: Alinhamento Celeste, Essência Primeva, Eco Secreto, Sopro Tardio, Coração Alquímico.</p>
+<div class="corp-shop-block">
+<div class="qtd-inline">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-ouro-ind">-</button>
+<span class="qtd-inline-numero" id="qtd-ouro-ind">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-ouro-ind">+</button>
+</div>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Ouro - Bombom Individual" data-preco="10€" data-qtdsrc="qtd-ouro-ind">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div></div>
+</div>
+<!-- EMBALAGEM -->
 </section>
+<div class="embalagem-corp-sec">
+<p class="corp-eyebrow" style="text-align:center;padding-top:48px;">Embalagem</p>
+<!-- SACOS KRAFT -->
+<div class="estado" style="margin-bottom:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><span style="display:flex;align-items:center;justify-content:center;height:100%;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--ouro);">Saco Kraft P</span></div>
+<div class="foto-slot"><span style="display:flex;align-items:center;justify-content:center;height:100%;font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.1em;color:var(--ouro);">Saco Kraft M</span></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Papel</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Saco Kraft</h3>
+<div class="fruta-lista">
+<div class="fruta-item">
+<span class="fruta-nome">Pequeno</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">Grátis</span>
+</div>
+<div class="fruta-item">
+<span class="fruta-nome">Médio</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">3€</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px;align-items:center;">
+<div>
+<p style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;color:var(--vinho);margin-bottom:5px;">Pequeno</p>
+<p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--vinho);opacity:.9;line-height:1.3;">Incluído automaticamente com cada estado.</p>
+</div>
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-kraft-m" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
+</div>
+</div>
+</div>
+</div>
+<!-- SACOS LINHO -->
+<div class="estado" style="margin-top:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Sacos de linho com lacre Alquimia Doce" src="imagens/sacos-linho-geral.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Detalhe do lacre no saco de linho" src="imagens/sacos-linho-detalhe.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Linho artesanal</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Saco de Linho com Lacre</h3>
+<div class="fruta-lista">
+<div class="fruta-item">
+<span class="fruta-nome">Pequeno</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">3€</span>
+</div>
+<div class="fruta-item">
+<span class="fruta-nome">Médio</span>
+<span style="font-family:'Cinzel',serif;font-size:.72rem;color:var(--ouro);">6€</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:16px;">
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-linho-p" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
+</div>
+<div>
+<div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">-</button>
+<span class="qtd-inline-numero" id="qtd-linho-g" style="font-size:.8rem;">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">+</button>
+</div>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
+</div>
+</div>
+</div>
+</div>
+<!-- EMBRULHO -->
+<div class="estado" style="margin-top:2px;">
+<div class="estado-fotos">
+<div class="foto-slot"><img alt="Embrulho de prenda Alquimia Doce com lacres e corda" src="imagens/embrulho-prenda.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+<div class="foto-slot"><img alt="Detalhe do nó e dos lacres do embrulho" src="imagens/embrulho-detalhe.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
+</div>
+<div class="estado-corpo">
+<p class="extra-eyebrow">Exclusivo Online</p>
+<h3 class="estado-nome" style="font-size:1.1rem;">Embrulho de Prenda</h3>
+<p class="estado-preco">12€</p>
+<p class="estado-desc">Papel creme, corda e dois lacres de cera. Cartão com mensagem da empresa incluído. Feito à mão, só depois de encomendado.</p>
+<div class="qtd-inline" style="margin-top:16px;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-embrulho">-</button>
+<span class="qtd-inline-numero" id="qtd-embrulho">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-embrulho">+</button>
+</div>
+<div class="btns-produto">
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Embrulho de Prenda" data-preco="12€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="entrega-corp-nota">
+<p class="corp-eyebrow" style="text-align:center;margin-bottom:12px;">Entrega</p>
+<p class="entrega-corp-texto">A entrega da encomenda corporativa é feita pessoalmente. Verificamos as condições de chegada e armazenamento. Para entregas fora da área de Lisboa, o processo é definido com a empresa no momento da encomenda.</p>
+</div>
 <a class="link-universo" href="index.html">
   Cada linha tem o seu universo próprio. Conhece a Alquimia Doce.
   <span>Visitar o site →</span>
@@ -795,5 +1244,470 @@ footer {
 </div>
 <p class="footer-copy">© Alquimia Doce · Ana Sardinha · Criadora</p>
 </footer>
-</body>
+<script>
+// ─── BOMBOM INDIVIDUAL: elementos (painel único) ───
+const btnAbreSabor       = document.getElementById('btn-abre-sabor-individual');
+const saborSelectorEl    = document.getElementById('sabor-selector');
+
+// ─── SCROLL: menu, fio, topo ───
+const menuEl   = document.getElementById('topbar-menu');
+const fioEl    = document.getElementById('fio');
+const topoEl   = document.getElementById('topo-btn');
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const h = window.innerHeight;
+  const total = document.body.scrollHeight - h;
+  fioEl.style.width = (total > 0 ? (y/total)*100 : 0) + '%';
+  menuEl.classList.toggle('visivel', y > h * 0.6);
+  topoEl.classList.toggle('visivel', y > h * 0.4);
+});
+
+// ─── BOTÃO TOPO: volta à posição de onde a âncora foi clicada, não ao destino dela ───
+let scrollOrigemAncora = null;
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if (link.id === 'topo-btn') return;
+  const destino = link.getAttribute('href');
+  if (destino.length > 1 && document.querySelector(destino)) {
+    link.addEventListener('click', () => { scrollOrigemAncora = window.scrollY; });
+  }
+});
+topoEl.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (scrollOrigemAncora !== null) {
+    window.scrollTo({ top: scrollOrigemAncora, behavior: 'smooth' });
+    scrollOrigemAncora = null;
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+// ─── LISTA DE COMPRAS ───
+let lista = [];
+
+const listaBarraEl   = document.getElementById('lista-barra');
+const listaBarraBola = document.getElementById('lista-barra-bola');
+const listaBarraBtn  = document.getElementById('lista-barra-btn');
+const drawerEl       = document.getElementById('drawer');
+const drawerOverlay  = document.getElementById('drawer-overlay');
+const drawerListaEl  = document.getElementById('drawer-lista');
+const drawerPedirEl  = document.getElementById('drawer-pedir');
+const drawerFecharEl = document.getElementById('drawer-fechar');
+
+function abrirDrawer() {
+  drawerEl.classList.add('visivel');
+  drawerOverlay.classList.add('visivel');
+  document.body.style.overflow = 'hidden';
+}
+function fecharDrawer() {
+  drawerEl.classList.remove('visivel');
+  drawerOverlay.classList.remove('visivel');
+  document.body.style.overflow = '';
+}
+
+drawerFecharEl.addEventListener('click', fecharDrawer);
+drawerOverlay.addEventListener('click', fecharDrawer);
+listaBarraBtn.addEventListener('click', abrirDrawer);
+
+const seloDataUrls = {
+  'selo-alinhamento-celeste.png': 'imagens/selo-alinhamento-celeste.png',
+  'selo-essencia-primeva.png': 'imagens/selo-essencia-primeva.png',
+  'selo-eco-secreto.png': 'imagens/selo-eco-secreto.png',
+  'selo-sopro-tardio.png': 'imagens/selo-sopro-tardio.png',
+  'selo-coracao-alquimico.png': 'imagens/selo-coracao-alquimico.png'
+};
+const SACOS_PAGOS = ['Essência', 'Transmutação', 'Ouro - Saco 5 Bombons'];
+
+function calcGratis() {
+  const map = {};
+  lista.forEach(item => {
+    if (SACOS_PAGOS.some(s => (item.nome || '').includes(s))) {
+      const envio = item.envio || 'A confirmar';
+      map[envio] = (map[envio] || 0) + (item.qtd || 1);
+    }
+  });
+  return Object.entries(map).map(([envio, qtd]) => ({
+    nome: 'Saco Kraft - Pequeno', preco: 'Grátis', qtd, envio, autoGratis: true
+  }));
+}
+
+function renderLista() {
+  const gratis = calcGratis();
+  const listaFull = [...lista, ...gratis];
+  const count = listaFull.reduce((soma, item) => soma + (item.qtd || 1), 0);
+  const linhas = lista.length;
+  listaBarraBola.textContent = count;
+  listaBarraEl.classList.toggle('visivel', count > 0);
+
+  // Contador no botão Encomendar do topo
+  const contadorTopo = document.getElementById('topbar-contador');
+  if (contadorTopo) {
+    contadorTopo.textContent = count;
+    contadorTopo.classList.toggle('visivel', count > 0);
+  }
+
+  if (linhas === 0 && gratis.length === 0) {
+    drawerListaEl.innerHTML = '<p class="drawer-vazio">A lista está vazia.<br>Adiciona um produto para começar.</p>';
+  } else {
+    const linhasBase = lista.map((item, i) => `
+      <div class="drawer-item" style="flex-direction:column;align-items:flex-start;gap:4px;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <span class="drawer-item-nome">${item.nome}${item.sabor ? ' - ' + item.sabor : ''}</span>
+          <button class="drawer-item-remover" data-i="${i}">×</button>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <div style="display:flex;align-items:center;gap:6px;margin-left:auto;">
+            <button class="drawer-qtd-menos" data-i="${i}" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--vinho);background:none;color:var(--vinho);font-size:.8rem;cursor:pointer;line-height:1;">-</button>
+            <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);min-width:14px;text-align:center;">${item.qtd || 1}</span>
+            <button class="drawer-qtd-mais" data-i="${i}" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--vinho);background:none;color:var(--vinho);font-size:.8rem;cursor:pointer;line-height:1;">+</button>
+          </div>
+        </div>
+      </div>
+    `);
+    const linhasGratis = gratis.map(item => `
+      <div class="drawer-item" style="flex-direction:column;align-items:flex-start;gap:4px;opacity:.8;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <span class="drawer-item-nome">${item.nome}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.42rem;color:var(--ouro);letter-spacing:.08em;">INCLUÍDO</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;">
+          <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);margin-left:auto;">${item.qtd}×</span>
+        </div>
+      </div>
+    `);
+    drawerListaEl.innerHTML = [...linhasBase, ...linhasGratis].join('');
+
+    // Total
+    const totalEl = document.getElementById('drawer-total-linha');
+    const totalValorEl = document.getElementById('drawer-total-valor');
+    if (totalEl && totalValorEl) {
+      const total = lista.reduce((sum, item) => {
+        const match = (item.preco || '').match(/(\d+)/);
+        return sum + (match ? parseInt(match[1]) * (item.qtd || 1) : 0);
+      }, 0);
+      if (total > 0) {
+        totalValorEl.textContent = total + '€';
+        totalEl.style.display = 'flex';
+      } else {
+        totalEl.style.display = 'none';
+      }
+    }
+    drawerListaEl.querySelectorAll('.drawer-item-remover').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lista.splice(parseInt(btn.dataset.i), 1);
+        renderLista();
+      });
+    });
+    drawerListaEl.querySelectorAll('.drawer-qtd-mais').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        lista[i].qtd = (lista[i].qtd || 1) + 1;
+        renderLista();
+      });
+    });
+    drawerListaEl.querySelectorAll('.drawer-qtd-menos').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const i = parseInt(btn.dataset.i);
+        const novaQtd = (lista[i].qtd || 1) - 1;
+        if (novaQtd < 1) {
+          lista.splice(i, 1);
+        } else {
+          lista[i].qtd = novaQtd;
+        }
+        renderLista();
+      });
+    });
+  }
+
+  // Link WhatsApp com a lista e envio por produto
+  const mensagemInicial = 'Ol%C3%A1!%20Sou%20a%20Ana%2C%20da%20Alquimia%20Doce.%20Como%20posso%20ajudar%3F';
+  const texto = listaFull.length > 0
+    ? 'Olá!%20Queria%20encomendar:%0A' + listaFull.map(i =>
+        '-%20' + (i.qtd || 1) + 'x%20' + i.nome + (i.sabor ? '%20(' + i.sabor + ')' : '') + '%20(' + i.preco + ')%20%E2%86%92%20' + (i.envio || 'A%20confirmar')
+      ).join('%0A')
+    : '';
+  const linkWhatsapp = listaFull.length > 0
+    ? 'https://wa.me/351939320103?text=' + texto
+    : 'https://wa.me/351939320103?text=' + mensagemInicial;
+  drawerPedirEl.href = lista.length > 0 ? linkWhatsapp : '#';
+
+  // Actualizar TODOS os botões "Pedir à Alquimista" do site com a lista actual
+  document.querySelectorAll('.btn-pedir-dinamico').forEach(a => {
+    a.href = linkWhatsapp;
+  });
+}
+
+// ─── SELECTOR DE ENVIO ───
+let btnPendente = null;
+
+// Função fiável: encontra o .envio-selector mais próximo a seguir ao grupo de botões do produto
+function encontrarSelector(btn) {
+  // Prioridade 1: data-target explícito (fiável, sem ambiguidade)
+  if (btn.dataset.target) {
+    const alvo = document.getElementById(btn.dataset.target);
+    if (alvo) return alvo;
+  }
+  // Prioridade 2: subir até ao container do produto e procurar o envio-selector seguinte
+  let el = btn;
+  while (el && el.parentElement) {
+    const proximoIrmao = el.nextElementSibling;
+    if (proximoIrmao && proximoIrmao.classList && proximoIrmao.classList.contains('envio-selector')) {
+      return proximoIrmao;
+    }
+    const paiProximo = el.parentElement.nextElementSibling;
+    if (paiProximo && paiProximo.classList && paiProximo.classList.contains('envio-selector')) {
+      return paiProximo;
+    }
+    el = el.parentElement;
+    if (el && el.classList && el.classList.contains('estado-corpo')) {
+      return el.querySelector('.envio-selector');
+    }
+  }
+  return null;
+}
+
+document.querySelectorAll('.btn-abre-envio').forEach(btn => {
+  const selector = encontrarSelector(btn);
+  if (!selector) return;
+
+  btn.addEventListener('click', () => {
+    const jaAberto = selector.classList.contains('aberto');
+    // Fechar todos os outros selectores
+    document.querySelectorAll('.envio-selector.aberto').forEach(s => {
+      if (s !== selector) s.classList.remove('aberto');
+    });
+    // Toggle do selector deste botão
+    selector.classList.toggle('aberto', !jaAberto);
+    btnPendente = !jaAberto ? btn : null;
+    if (!jaAberto) { setTimeout(() => selector.scrollIntoView({behavior: 'smooth', block: 'nearest'}), 80); }
+  });
+});
+
+document.querySelectorAll('.envio-opcao:not(.sabor-envio-opcao)').forEach(opcao => {
+  opcao.addEventListener('click', () => {
+    if (!btnPendente) return;
+    const envio = opcao.dataset.envio;
+    const btnAlvo = btnPendente;
+    const qtdEl = btnAlvo.dataset.qtdsrc ? document.getElementById(btnAlvo.dataset.qtdsrc) : null;
+    const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
+    lista.push({
+      nome: btnAlvo.dataset.nome,
+      preco: btnAlvo.dataset.preco,
+      envio: envio,
+      qtd: qtdEscolhida
+    });
+    renderLista();
+    opcao.closest('.envio-selector').classList.remove('aberto');
+    const orig = btnAlvo.textContent;
+    btnAlvo.textContent = 'Adicionado!';
+    btnAlvo.style.background = 'var(--vinho)';
+    btnAlvo.style.color = 'var(--baunilha)';
+    btnPendente = null;
+    // reset quantidade inline para 1 depois de adicionar
+    if (qtdEl) qtdEl.textContent = '1';
+    setTimeout(() => {
+      btnAlvo.textContent = orig;
+      btnAlvo.style.background = '';
+      btnAlvo.style.color = '';
+    }, 1200);
+  });
+});
+
+// Botões de lista directos (sem selector - se existirem)
+document.querySelectorAll('.btn-lista:not(.btn-abre-envio):not(#btn-abre-sabor-individual):not(#sabor-confirmar)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const qtdEl = btn.dataset.qtdsrc ? document.getElementById(btn.dataset.qtdsrc) : null;
+    const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
+    lista.push({ nome: btn.dataset.nome, preco: btn.dataset.preco, envio: btn.dataset.envio || 'A confirmar', qtd: qtdEscolhida });
+    renderLista();
+    const orig = btn.textContent;
+    btn.textContent = 'Adicionado!';
+    btn.style.background = 'var(--vinho)';
+    btn.style.color = 'var(--baunilha)';
+    if (qtdEl) qtdEl.textContent = '1';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 1200);
+  });
+});
+
+// ─── CONTROLO DE QUANTIDADE INLINE GENÉRICO ───
+document.querySelectorAll('.qtd-inline-mais').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.dataset.qtdtarget);
+    if (el) el.textContent = parseInt(el.textContent) + 1;
+  });
+});
+document.querySelectorAll('.qtd-inline-menos').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.dataset.qtdtarget);
+    if (el) el.textContent = Math.max(1, parseInt(el.textContent) - 1);
+  });
+});
+
+// ─── RODA DOS CINCO SELOS ───
+const bombons = [
+  { nome: 'Alinhamento Celeste', sabor: 'Maçã & Canela',           lore: 'O sabor de voltar a casa.', icone: 'selo-alinhamento-celeste.png' },
+  { nome: 'Essência Primeva',    sabor: 'Massa de amêndoa<br>& flor de sal', lore: 'A origem. E era suficiente.', icone: 'selo-essencia-primeva.png' },
+  { nome: 'Eco Secreto',         sabor: 'Manga & Cardamomo Verde',   lore: 'Guardar... ou partilhar no silêncio.', icone: 'selo-eco-secreto.png' },
+  { nome: 'Sopro Tardio',        sabor: 'Pêra & gengibre',           lore: 'A brisa que chega depois.', icone: 'selo-sopro-tardio.png' },
+  { nome: 'Coração Alquímico',   sabor: 'Tâmara & cacau',            lore: 'No centro da doçura, a alquimia começa.', icone: 'selo-coracao-alquimico.png' }
+];
+
+const orlojEl  = document.getElementById('orloj');
+const leituraEl = document.getElementById('orloj-leitura');
+
+if (orlojEl) {
+  // posicionar selos sobre o SVG no anel zodiacal (r≈118/300 * tamanho)
+  function posicionarSelos() {
+    document.querySelectorAll('.selo-orbe').forEach(o => o.remove());
+    const size = orlojEl.offsetWidth;
+    const cx = size / 2;
+    const raio = size * 0.39; // corresponde ao anel zodiacal
+    const diametro = size * 0.30; // maior, mas sem se tocarem
+    bombons.forEach((b, i) => {
+      const ang = (i / bombons.length) * 2 * Math.PI - Math.PI / 2;
+      const x = cx + Math.cos(ang) * raio;
+      const y = cx + Math.sin(ang) * raio;
+      const orbe = document.createElement('div');
+      orbe.className = 'selo-orbe';
+      orbe.style.position = 'absolute';
+      orbe.style.left = x + 'px';
+      orbe.style.top  = y + 'px';
+      orbe.style.width  = diametro + 'px';
+      orbe.style.height = diametro + 'px';
+      orbe.innerHTML  = `<img src="${seloDataUrls[b.icone] || 'imagens/' + b.icone}" alt="${b.nome}" style="width:90%;height:90%;object-fit:contain;pointer-events:none;mix-blend-mode:multiply;">`;
+      orbe.addEventListener('click', () => {
+        document.querySelectorAll('.selo-orbe').forEach(o => o.classList.remove('activo'));
+        orbe.classList.add('activo');
+        leituraEl.innerHTML = `
+          <p class="leitura-nome">${b.nome}</p>
+          <p class="leitura-sabor">${b.sabor}</p>
+          <p class="leitura-lore">${b.lore}</p>
+        `;
+      });
+      orlojEl.appendChild(orbe);
+    });
+  }
+  posicionarSelos();
+  window.addEventListener('resize', posicionarSelos);
+}
+
+// Inicializar todos os botões "Pedir à Alquimista" no carregamento
+renderLista();
+
+// ─── BOTÃO ENCOMENDAR DO TOPO: comportamento condicional ───
+const topbarEncomendarEl = document.getElementById('topbar-encomendar');
+if (topbarEncomendarEl) {
+  topbarEncomendarEl.addEventListener('click', (e) => {
+    if (lista.length > 0) {
+      e.preventDefault();
+      // mesma lógica do botão "Pedir à Alquimista": vai direto para o WhatsApp com a lista actual
+      window.location.href = topbarEncomendarEl.href.includes('wa.me')
+        ? topbarEncomendarEl.href
+        : drawerPedirEl.href;
+    }
+    // se a lista estiver vazia, mantém o comportamento normal (#essencia)
+  });
+}
+
+// ─── BOMBOM INDIVIDUAL: painel único com múltiplos sabores + quantidade + envio ───
+const qtdsPorSabor = {}; // ex: { 'Alinhamento Celeste': 2 }
+document.querySelectorAll('.sabor-qtd-numero').forEach(el => {
+  qtdsPorSabor[el.dataset.sabor] = parseInt(el.textContent) || 0;
+});
+
+if (btnAbreSabor) {
+  btnAbreSabor.addEventListener('click', () => {
+    document.querySelectorAll('.envio-selector.aberto').forEach(s => {
+      if (s !== saborSelectorEl) s.classList.remove('aberto');
+    });
+    saborSelectorEl.classList.toggle('aberto');
+  });
+}
+
+// Quantidade por linha de sabor
+document.querySelectorAll('.sabor-qtd-mais').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sabor = btn.dataset.sabor;
+    qtdsPorSabor[sabor] = (qtdsPorSabor[sabor] || 0) + 1;
+    document.querySelector(`.sabor-qtd-numero[data-sabor="${sabor}"]`).textContent = qtdsPorSabor[sabor];
+  });
+});
+document.querySelectorAll('.sabor-qtd-menos').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sabor = btn.dataset.sabor;
+    qtdsPorSabor[sabor] = Math.max(0, (qtdsPorSabor[sabor] || 0) - 1);
+    document.querySelector(`.sabor-qtd-numero[data-sabor="${sabor}"]`).textContent = qtdsPorSabor[sabor];
+  });
+});
+
+// Hover nas linhas de sabor -> roda mostra o sinete e a descrição
+document.querySelectorAll('.sabor-linha').forEach(linha => {
+  linha.addEventListener('mouseenter', () => {
+    const sabor = linha.dataset.sabor;
+    const b = bombons.find(x => x.nome === sabor);
+    if (!b || !leituraEl) return;
+    document.querySelectorAll('.selo-orbe').forEach(o => o.classList.remove('activo'));
+    const orbeCorrespondente = Array.from(document.querySelectorAll('.selo-orbe')).find(o => o.textContent.trim() === b.nome);
+    if (orbeCorrespondente) orbeCorrespondente.classList.add('activo');
+    leituraEl.innerHTML = `
+      <p class="leitura-nome">${b.nome}</p>
+      <p class="leitura-sabor">${b.sabor}</p>
+      <p class="leitura-lore">${b.lore}</p>
+    `;
+  });
+});
+
+// Envio escolhido dentro do painel do bombom individual
+let envioBombomIndividual = null;
+document.querySelectorAll('.sabor-envio-opcao').forEach(opcao => {
+  opcao.addEventListener('click', () => {
+    document.querySelectorAll('.sabor-envio-opcao').forEach(o => o.style.borderColor = '');
+    opcao.style.borderColor = 'var(--vinho)';
+    opcao.style.background = 'var(--baunilha)';
+    envioBombomIndividual = opcao.dataset.envio;
+  });
+});
+
+const saborConfirmarBtn = document.getElementById('sabor-confirmar');
+if (saborConfirmarBtn) {
+  saborConfirmarBtn.addEventListener('click', () => {
+    const escolhidos = Object.entries(qtdsPorSabor).filter(([_, qtd]) => qtd > 0);
+    if (escolhidos.length === 0) return;
+    escolhidos.forEach(([sabor, qtd]) => {
+      lista.push({
+        nome: 'Ouro - Bombom Individual (cúpula)',
+        sabor: sabor,
+        preco: '10€',
+        qtd: qtd,
+        envio: envioBombomIndividual || 'A confirmar'
+      });
+    });
+    renderLista();
+    saborSelectorEl.classList.remove('aberto');
+    // reset
+    Object.keys(qtdsPorSabor).forEach(s => qtdsPorSabor[s] = 0);
+    document.querySelectorAll('.sabor-qtd-numero').forEach(el => el.textContent = '0');
+    document.querySelectorAll('.sabor-envio-opcao').forEach(o => { o.style.borderColor = ''; o.style.background = ''; });
+    envioBombomIndividual = null;
+
+    const orig = btnAbreSabor.textContent;
+    btnAbreSabor.textContent = 'Adicionado!';
+    btnAbreSabor.style.background = 'var(--vinho)';
+    btnAbreSabor.style.color = 'var(--baunilha)';
+    setTimeout(() => {
+      btnAbreSabor.textContent = orig;
+      btnAbreSabor.style.background = '';
+      btnAbreSabor.style.color = '';
+    }, 1200);
+  });
+}
+</script></body>
 </html>
