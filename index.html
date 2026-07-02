@@ -1128,12 +1128,17 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
   .circulo-magico svg { animation:none; }
 }
 
-.corp-destaque {
+.corp-destaque-wrap {
   background: linear-gradient(135deg, rgba(139,35,35,0.06) 0%, rgba(184,137,59,0.08) 100%);
   border-top: 1px solid rgba(184,137,59,0.2);
   border-bottom: 1px solid rgba(184,137,59,0.2);
-  padding-top: 48px;
-  padding-bottom: 48px;
+  display: block;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }</style>
 </head>
 <body>
@@ -1245,10 +1250,10 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="indice-preco">30€</span>
 </a>
 </nav>
-<div class="corporate-bloco corp-destaque">
+<div class="corp-destaque-wrap"><div class="corporate-bloco">
 <span class="corporate-label">Encomendas para empresas</span>
 <p class="corporate-sinal"><a href="corporativo.html">Quando a oferta tem de dizer algo sobre quem a dá.</a></p>
-</div>
+</div></div>
 <!-- ESSÊNCIA -->
 <div class="estado" id="essencia">
 <div class="estado-fotos">
@@ -1673,6 +1678,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </section>
 <!-- EMBRULHO DE PRENDA -->
 <section style="padding:0 24px 80px;max-width:680px;margin:0 auto;">
+<h2 class="sec-titulo" style="margin-bottom:32px;">Embrulho de Prenda</h2>
 <div class="estado">
 <div class="estado-fotos">
 <div class="foto-slot"><img alt="Embrulho de prenda Alquimia Doce com lacres e corda" src="imagens/embrulho-prenda.jpg" style="width:100%;height:100%;object-fit:cover;"/></div>
@@ -1681,6 +1687,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <div class="estado-corpo">
 <p class="extra-eyebrow">Exclusivo Online</p>
 <h3 class="estado-nome" style="font-size:1.1rem;">Embrulho de Prenda</h3>
+<p class="estado-preco">12€</p>
 <p class="estado-desc">Papel creme, corda e dois lacres de cera. Quem recebe sabe, antes de abrir, que o que está dentro foi escolhido com cuidado. Um cartão para as palavras que o resto não consegue dizer. Cada embrulho feito à mão, só depois de encomendado.</p>
 <div class="qtd-inline" style="margin-top:16px;">
 <button class="qtd-inline-menos" data-qtdtarget="qtd-embrulho">-</button>
@@ -1688,7 +1695,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <button class="qtd-inline-mais" data-qtdtarget="qtd-embrulho">+</button>
 </div>
 <div class="btns-produto">
-<button class="btn-lista" data-envio="Com a encomenda" data-nome="Embrulho de Prenda" data-preco="8€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
+<button class="btn-lista" data-envio="Com a encomenda" data-nome="Embrulho de Prenda" data-preco="12€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
 <a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 </div>
