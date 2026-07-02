@@ -860,9 +860,87 @@ footer {
   color: var(--tinta-suave);
   line-height: 1.75;
 }
+/* ─── FIO DE PROGRESSO ─── */
+.progresso-trilho {
+  position: fixed; top:0; left:0; right:0; height:2px; z-index:200;
+  background: rgba(184,137,59,0.1);
+  pointer-events: none;
+}
+.progresso-fio {
+  height:100%; width:0%;
+  background: linear-gradient(to right, var(--ouro), var(--ouro-claro));
+  box-shadow: 0 0 8px rgba(184,137,59,0.5);
+  transition: width .08s linear;
+}
+
+/* ─── BOTÃO VOLTAR AO TOPO ─── */
+.topo-btn {
+  position: fixed;
+  bottom: 80px; right: 18px;
+  width: 40px; height: 40px;
+  background: var(--baunilha-escuro);
+  border: 1px solid var(--ouro);
+  display: flex; align-items:center; justify-content:center;
+  cursor: pointer;
+  opacity: 0; pointer-events:none;
+  transition: opacity .3s ease;
+  z-index: 90;
+  text-decoration: none;
+}
+.topo-btn.visivel { opacity:1; pointer-events:all; }
+.topo-btn svg {
+  width: 18px; height: 22px;
+  stroke: var(--vinho);
+  fill: none;
+  stroke-width: 1.5;
+}
+/* ─── ESTADO CARDS (Sacos/Embrulho) ─── */
+.estado { border:1px solid rgba(184,137,59,0.22); margin-bottom:2px; background:var(--baunilha-escuro); }
+.estado-fotos { display:grid; grid-template-columns:1fr 1fr; gap:2px; height:180px; cursor:pointer; }
+.foto-slot {
+  background:linear-gradient(135deg,rgba(184,137,59,0.12),rgba(110,26,43,0.08));
+  border:1px dashed rgba(184,137,59,0.25);
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; transition:opacity .2s;
+  min-height:0; min-width:0;
+}
+.foto-slot:hover { opacity:.85; }
+.foto-slot span {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.72rem; color:var(--ouro); letter-spacing:.1em; text-align:center; padding:8px;
+}
+.estado-corpo { padding:28px 24px 32px; }
+.estado-nome {
+  font-family:'Cinzel',serif; font-size:1.35rem; color:var(--vinho);
+  letter-spacing:.07em; font-weight:400; margin-bottom:18px;
+  word-break:break-word; overflow-wrap:break-word;
+}
+.estado-desc {
+  font-family:'Cormorant Garamond',serif; font-size:1rem;
+  color:var(--tinta-suave); line-height:1.7; margin-bottom:22px;
+}
+.fruta-lista { margin-bottom:24px; }
+.fruta-item {
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:10px 0; border-bottom:1px solid rgba(184,137,59,0.15);
+}
+.fruta-item:first-child { border-top:1px solid rgba(184,137,59,0.15); }
+.fruta-nome { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--tinta); }
+.fruta-origem {
+  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.14em;
+  color:#8B6520; opacity:1; text-transform:uppercase;
+}
+.estado-preco {
+  font-family:'Cinzel',serif; font-size:1.6rem; color:var(--tinta);
+  letter-spacing:.04em; text-align:center; margin-bottom:6px;
+}
+.extra-eyebrow {
+  font-family:'Cinzel',serif; font-size:.5rem; letter-spacing:.4em;
+  color:var(--ouro); text-transform:uppercase; margin-bottom:8px;
+}
 </style>
 </head>
-<body><div class="lista-barra" id="lista-barra">
+<body><div class="progresso-trilho"><div class="progresso-fio" id="fio"></div></div><div class="lista-barra" id="lista-barra">
 <button class="lista-barra-btn" id="lista-barra-btn">Ver lista</button>
 <a class="lista-barra-encomendar btn-pedir-dinamico" href="https://wa.me/351939320103" id="lista-barra-encomendar">Encomendar</a>
 <span class="lista-barra-bola" id="lista-barra-bola">0</span>
@@ -885,6 +963,13 @@ footer {
 </div>
 <!-- TOPBAR -->
 <header class="topbar"><a aria-label="Alquimia Doce" class="topbar-logo" href="index.html"><img alt="Alquimia Doce" src="imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a><a class="topbar-voltar" href="index.html">← Voltar ao site</a></header>
+<a aria-label="Voltar ao topo" class="topo-btn" href="#" id="topo-btn">
+<svg viewbox="0 0 18 22" xmlns="http://www.w3.org/2000/svg">
+<line x1="9" x2="9" y1="20" y2="3"></line>
+<polyline points="3,9 9,3 15,9"></polyline>
+<line x1="3" x2="15" y1="14" y2="14"></line>
+</svg>
+</a>
 <!-- HERO -->
 <div class="hero-corp-wrap"><section class="hero-corp">
 <p class="hero-eyebrow">Encomendas para empresa</p>
@@ -1073,7 +1158,7 @@ footer {
 <div>
 <p style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;color:var(--vinho);margin-bottom:5px;">Pequeno</p>
 <p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--vinho);opacity:.9;line-height:1.3;">Incluído com cada estado. Não precisa de pedir.</p>
-<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1081,13 +1166,8 @@ footer {
 <span class="qtd-inline-numero" id="qtd-kraft-m" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
 </div>
-</div>
-<div class="envio-selector">
-<p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
-<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 <div style="margin-top:8px;">
 <a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
@@ -1119,7 +1199,7 @@ footer {
 <span class="qtd-inline-numero" id="qtd-linho-p" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1127,13 +1207,8 @@ footer {
 <span class="qtd-inline-numero" id="qtd-linho-g" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
+<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
 </div>
-</div>
-<div class="envio-selector">
-<p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
-<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 <div style="margin-top:8px;">
 <a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
@@ -1293,9 +1368,9 @@ window.addEventListener('scroll', () => {
   const y = window.scrollY;
   const h = window.innerHeight;
   const total = document.body.scrollHeight - h;
-  fioEl.style.width = (total > 0 ? (y/total)*100 : 0) + '%';
-  menuEl.classList.toggle('visivel', y > h * 0.6);
-  topoEl.classList.toggle('visivel', y > h * 0.4);
+  if (fioEl) fioEl.style.width = (total > 0 ? (y/total)*100 : 0) + '%';
+  if (menuEl) menuEl.classList.toggle('visivel', y > h * 0.6);
+  if (topoEl) topoEl.classList.toggle('visivel', y > h * 0.4);
 });
 
 // ─── BOTÃO TOPO: volta à posição de onde a âncora foi clicada, não ao destino dela ───
@@ -1307,15 +1382,17 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', () => { scrollOrigemAncora = window.scrollY; });
   }
 });
-topoEl.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (scrollOrigemAncora !== null) {
-    window.scrollTo({ top: scrollOrigemAncora, behavior: 'smooth' });
-    scrollOrigemAncora = null;
-  } else {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-});
+if (topoEl) {
+  topoEl.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (scrollOrigemAncora !== null) {
+      window.scrollTo({ top: scrollOrigemAncora, behavior: 'smooth' });
+      scrollOrigemAncora = null;
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
 
 // ─── LISTA DE COMPRAS ───
 let lista = [];
