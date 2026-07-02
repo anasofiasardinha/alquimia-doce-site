@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coração Alquímico · Bombom Artesanal com Ouro Comestível · Alquimia Doce</title>
+<meta content="No centro da doçura, a alquimia começa. Bombom artesanal com massa de amêndoa de inspiração algarvia, tâmara, cacau, chocolate negro e ouro comestível, feito à mão em Lisboa." name="description"/>
+<meta content="article" property="og:type"/>
+<meta content="https://alquimiadoce.pt/mythos/003-coracao-alquimico.html" property="og:url"/>
+<meta content="Coração Alquímico · Bombom Artesanal com Ouro Comestível · Alquimia Doce" property="og:title"/>
+<meta content="No centro da doçura, a alquimia começa. Bombom com o selo da casa, chocolate negro e um véu de ouro comestível." property="og:description"/>
+<meta content="https://alquimiadoce.pt/imagens/coracao-alquimico-temp.jpg" property="og:image"/>
+<meta content="pt_PT" property="og:locale"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&amp;family=IM+Fell+English:ital@0;1&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --baunilha:       #F2E7CE;
+  --baunilha-escuro:#E8D9B5;
+  --vinho:          #6E1A2B;
+  --vinho-escuro:   #4A0F1C;
+  --ouro:           #B8893B;
+  --ouro-claro:     #D4A85A;
+  --tinta:          #2C1F0F;
+  --tinta-suave:    #5A4030;
+  --papel:          #EDE0C4;
+  --papel-sombra:   #C8B48A;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--baunilha);
+  color: var(--tinta);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky; top:0; left:0; right:0; z-index:100;
+  background: var(--baunilha);
+  border-bottom: 1px solid rgba(184,137,59,.2);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-voltar {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.2em;
+  color:var(--vinho); text-decoration:none; text-transform:uppercase;
+  opacity:.75; transition:opacity .2s;
+}
+.nav-voltar:hover { opacity:1; }
+.nav-voltar::before { content:''; }
+.nav-logo {
+  font-family:'Cinzel',serif; font-size:.75rem; letter-spacing:.25em;
+  color:var(--vinho); text-decoration:none; text-transform:uppercase;
+}
+
+/* ─── PÁGINA ─── */
+.mythos-pagina {
+  max-width:620px; margin:0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ─── FICHA ─── */
+.ficha-wrap { position:relative; padding-bottom:20px; }
+.ficha-wrap::after {
+  content:''; position:absolute; bottom:8px; left:6px; right:-6px;
+  height:20px; background:#D9C9A0; z-index:0;
+}
+.ficha-wrap::before {
+  content:''; position:absolute; bottom:4px; left:3px; right:-3px;
+  height:20px; background:#C8B48A; z-index:-1;
+}
+.ficha {
+  position:relative; z-index:2;
+  background:var(--papel); border:1px solid var(--papel-sombra);
+  padding:36px 30px 40px;
+  background-image: repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(184,137,59,0.07) 27px,rgba(184,137,59,0.07) 28px);
+  box-shadow:3px 3px 0 var(--papel-sombra),6px 6px 0 #C0A870;
+}
+.ficha-topo {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:18px; padding-bottom:12px; border-bottom:1px solid var(--papel-sombra);
+}
+.ficha-ref { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
+.ficha-data { font-family:'Special Elite',monospace; font-size:.62rem; color:var(--tinta-suave); opacity:.65; }
+.ficha-titulo {
+  font-family:'Cinzel',serif; font-size:1.3rem; color:var(--vinho);
+  letter-spacing:.14em; font-weight:500; margin-bottom:4px; text-transform:uppercase;
+}
+.ficha-origem {
+  font-family:'Special Elite',monospace; font-size:.68rem; color:var(--ouro);
+  font-style:italic; margin-bottom:22px;
+}
+.ficha-corpo {
+  font-family:'Special Elite',monospace; font-size:.84rem; color:var(--tinta); line-height:1.95;
+}
+.ficha-corpo p { margin-bottom:16px; }
+.ficha-corpo p:last-child { margin-bottom:0; }
+.ficha-corpo ul {
+  list-style:none; margin:14px 0 18px; padding:0;
+}
+.ficha-corpo ul li {
+  padding:8px 0 8px 14px;
+  border-bottom:1px solid rgba(184,137,59,.18);
+  position:relative;
+}
+.ficha-corpo ul li::before {
+  content:'—'; position:absolute; left:0;
+  color:var(--ouro); opacity:.7;
+}
+.ficha-corpo ul li:last-child { border-bottom:none; }
+.ficha-trilogia {
+  margin-top:20px; padding-top:16px;
+  border-top:1px solid var(--papel-sombra);
+}
+.ficha-trilogia p {
+  font-family:'Special Elite',monospace; font-size:.84rem;
+  color:var(--tinta); line-height:1.6;
+  margin-bottom:6px !important;
+}
+.ficha-rodape {
+  margin-top:26px; padding-top:12px; border-top:1px solid var(--papel-sombra);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.ficha-assinatura { font-family:'Special Elite',monospace; font-size:.6rem; color:var(--tinta-suave); opacity:.55; }
+.ficha-lacre {
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* ─── NAVEGAÇÃO ENTRE ENTRADAS ─── */
+.mythos-nav {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:52px; padding-top:28px;
+  border-top:1px solid rgba(184,137,59,.25);
+}
+.mythos-nav a {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.18em;
+  color:var(--ouro); text-decoration:none; text-transform:uppercase;
+  opacity:.8; transition:opacity .2s;
+}
+.mythos-nav a:hover { opacity:1; }
+.mythos-nav-indice {
+  font-family:'Special Elite',monospace; font-size:.62rem;
+  color:var(--tinta-suave); opacity:.5; letter-spacing:.08em;
+}
+
+/* ─── FOTO NA FICHA ─── */
+.ficha-foto {
+  width:100%; height:180px; object-fit:cover; object-position:center center;
+  margin-bottom:18px; display:block;
+  filter:sepia(35%) contrast(1.08) brightness(0.95);
+}
+</style>
+</head>
+<body>
+<nav>
+<a class="nav-voltar" href="../index.html">← Voltar ao site</a>
+<a aria-label="Alquimia Doce" class="nav-logo" href="../index.html"><img alt="Alquimia Doce" src="../imagens/logo-monograma.svg" style="height:34px;width:auto;display:block;"/></a>
+</nav>
+<main class="mythos-pagina">
+<div class="ficha-wrap">
+<div class="ficha">
+<div class="ficha-topo">
+<span class="ficha-ref">AD · MYTHOS · 003</span>
+<span class="ficha-data">Anno 2025</span>
+</div>
+<h1 class="ficha-titulo">Coração Alquímico</h1>
+<p class="ficha-origem">Tâmara e cacau - no centro da doçura, a alquimia começa</p>
+<img alt="Coração Alquímico" class="ficha-foto" src="../imagens/coracao-alquimico-temp.jpg"/>
+<div class="ficha-corpo">
+<p>É um cubo grande, firme e escuro. Tem dois lados que contam a mesma história de maneiras diferentes. Num, o interior fica à mostra, e vê-se do que é feito. No outro, um sinete gravado revela quem o fez, como se o bombom se assinasse a si próprio.</p>
+<p>Por dentro está a massa de amêndoa de inspiração algarvia, a base que existe em todos os sabores. Aqui ganha tâmara e cacau, e muda de alma sem mudar de origem. Envolve-se com uma camada de chocolate negro, e um véu de ouro.</p>
+<p>Cada sabor do Ouro tem o seu selo, para se reconhecer sem uma palavra. Este tem o selo da casa: o mesmo símbolo que assina a marca. De todos os sabores, é o que mais pessoas escolhem. Talvez por isso seja o que leva o nome e o símbolo da casa.</p>
+<p>O ouro não adoça. Não acrescenta sabor nenhum - acrescenta o resto. O mistério, o remate, a promessa antiga de transformar algo em ouro. Aqui cumpre-se: come-se.</p>
+<p>Por fora, firme e escuro. Por dentro, macio e inesperado. Vira-se o bombom uma vez e sabe-se o que se come. Vira-se outra vez e sabe-se quem o fez.</p>
+</div>
+<div class="ficha-rodape">
+<span class="ficha-assinatura">Alquimia Doce · Lisboa · Portugal</span>
+<div class="ficha-lacre">
+<img alt="" src="../imagens/logo-monograma.svg" style="height:28px;width:auto;display:block;"/>
+</div>
+</div>
+</div>
+</div>
+<div class="mythos-nav">
+<a href="002-a-linguagem-do-gesto.html">← Anterior</a>
+<span class="mythos-nav-indice">003 / 003</span>
+<span></span>
+</div>
+</main>
+</body>
+</html>
