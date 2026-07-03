@@ -938,6 +938,88 @@ footer {
   font-family:'Cinzel',serif; font-size:.5rem; letter-spacing:.4em;
   color:var(--ouro); text-transform:uppercase; margin-bottom:8px;
 }
+/* ─── SELECTOR (painel expansível) ─── */
+.envio-selector {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--baunilha-escuro);
+  border: 1px solid rgba(184,137,59,0.3);
+}
+.envio-selector.aberto { display: flex; }
+.envio-selector-titulo {
+  font-family: 'Cinzel', serif;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  color: var(--ouro);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* ─── LINHAS DE SABOR COM QUANTIDADE ─── */
+.sabor-linha-selo {
+  width:46px; height:46px;
+  border-radius:50%;
+  object-fit:contain;
+  flex-shrink:0;
+  background:var(--baunilha);
+  border:1px solid rgba(184,137,59,0.35);
+  padding:5px;
+  box-sizing:border-box;
+  mix-blend-mode:multiply;
+}
+.sabor-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(184,137,59,0.15);
+  cursor: default;
+}
+.sabor-linha:last-of-type { border-bottom: none; }
+.sabor-linha-texto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.sabor-linha-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95rem;
+  color: var(--tinta);
+}
+.sabor-linha-desc {
+  font-family: 'Cinzel', serif;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  color: var(--ouro);
+  text-transform: uppercase;
+}
+.sabor-linha-qtd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.sabor-qtd-menos, .sabor-qtd-mais {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--vinho);
+  background: none;
+  color: var(--vinho);
+  font-size: .85rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.sabor-qtd-numero {
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  color: var(--vinho);
+  min-width: 16px;
+  text-align: center;
+}
 </style>
 </head>
 <body><div class="progresso-trilho"><div class="progresso-fio" id="fio"></div></div><div class="lista-barra" id="lista-barra">
@@ -1120,14 +1202,70 @@ footer {
 <p class="estado-corp-tags">Brindes de evento · Lembrança individual</p>
 <p class="estado-corp-desc">Um bombom à escolha entre cinco sabores: Alinhamento Celeste, Essência Primeva, Eco Secreto, Sopro Tardio, Coração Alquímico.</p>
 <div class="corp-shop-block">
-<div class="qtd-inline">
-<button class="qtd-inline-menos" data-qtdtarget="qtd-ouro-ind">-</button>
-<span class="qtd-inline-numero" id="qtd-ouro-ind">1</span>
-<button class="qtd-inline-mais" data-qtdtarget="qtd-ouro-ind">+</button>
+<button class="btn-lista" id="btn-abre-sabor-individual" style="width:100%;">+ Escolher Sabor</button>
+<div class="envio-selector" id="sabor-selector">
+<p class="envio-selector-titulo">Escolha o sabor e a quantidade</p>
+<div class="sabor-linha" data-sabor="Alinhamento Celeste">
+<img alt="Alinhamento Celeste" class="sabor-linha-selo" src="imagens/selo-alinhamento-celeste.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Alinhamento Celeste</span>
+<span class="sabor-linha-desc">Maçã &amp; Canela</span>
 </div>
-<div class="btns-produto">
-<button class="btn-lista" data-envio="Encomenda Corporativa" data-nome="Ouro - Bombom Individual" data-preco="10€" data-qtdsrc="qtd-ouro-ind">+ Adicionar à lista</button>
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Alinhamento Celeste">-</button>
+<span class="sabor-qtd-numero" data-sabor="Alinhamento Celeste">0</span>
+<button class="sabor-qtd-mais" data-sabor="Alinhamento Celeste">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Essência Primeva">
+<img alt="Essência Primeva" class="sabor-linha-selo" src="imagens/selo-essencia-primeva.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Essência Primeva</span>
+<span class="sabor-linha-desc">Massa de Amêndoa<br/>&amp; Flor de Sal</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Essência Primeva">-</button>
+<span class="sabor-qtd-numero" data-sabor="Essência Primeva">0</span>
+<button class="sabor-qtd-mais" data-sabor="Essência Primeva">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Eco Secreto">
+<img alt="Eco Secreto" class="sabor-linha-selo" src="imagens/selo-eco-secreto.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Eco Secreto</span>
+<span class="sabor-linha-desc">Manga &amp; Cardamomo Verde</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Eco Secreto">-</button>
+<span class="sabor-qtd-numero" data-sabor="Eco Secreto">0</span>
+<button class="sabor-qtd-mais" data-sabor="Eco Secreto">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Sopro Tardio">
+<img alt="Sopro Tardio" class="sabor-linha-selo" src="imagens/selo-sopro-tardio.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Sopro Tardio</span>
+<span class="sabor-linha-desc">Pêra &amp; Gengibre</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Sopro Tardio">-</button>
+<span class="sabor-qtd-numero" data-sabor="Sopro Tardio">0</span>
+<button class="sabor-qtd-mais" data-sabor="Sopro Tardio">+</button>
+</div>
+</div>
+<div class="sabor-linha" data-sabor="Coração Alquímico">
+<img alt="Coração Alquímico" class="sabor-linha-selo" src="imagens/selo-coracao-alquimico.png"/>
+<div class="sabor-linha-texto">
+<span class="sabor-linha-nome">Coração Alquímico</span>
+<span class="sabor-linha-desc">Tâmara &amp; Cacau</span>
+</div>
+<div class="sabor-linha-qtd">
+<button class="sabor-qtd-menos" data-sabor="Coração Alquímico">-</button>
+<span class="sabor-qtd-numero" data-sabor="Coração Alquímico">0</span>
+<button class="sabor-qtd-mais" data-sabor="Coração Alquímico">+</button>
+</div>
+</div>
+<button class="btn-lista" id="sabor-confirmar" style="width:100%;margin-top:10px;">Adicionar à lista</button>
 </div>
 </div></div>
 </div>
@@ -1777,16 +1915,7 @@ document.querySelectorAll('.sabor-linha').forEach(linha => {
   });
 });
 
-// Envio escolhido dentro do painel do bombom individual
-let envioBombomIndividual = null;
-document.querySelectorAll('.sabor-envio-opcao').forEach(opcao => {
-  opcao.addEventListener('click', () => {
-    document.querySelectorAll('.sabor-envio-opcao').forEach(o => o.style.borderColor = '');
-    opcao.style.borderColor = 'var(--vinho)';
-    opcao.style.background = 'var(--baunilha)';
-    envioBombomIndividual = opcao.dataset.envio;
-  });
-});
+// (sem escolha de envio no painel de sabor - encomenda corporativa é sempre entrega personalizada)
 
 const saborConfirmarBtn = document.getElementById('sabor-confirmar');
 if (saborConfirmarBtn) {
@@ -1799,7 +1928,7 @@ if (saborConfirmarBtn) {
         sabor: sabor,
         preco: '10€',
         qtd: qtd,
-        envio: envioBombomIndividual || 'A confirmar'
+        envio: 'Encomenda Corporativa'
       });
     });
     renderLista();
