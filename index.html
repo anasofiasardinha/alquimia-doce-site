@@ -1482,18 +1482,20 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </div>
 </div>
 <p style="font-family:'Cinzel',serif;font-size:.95rem;letter-spacing:.1em;color:var(--vinho);text-align:center;margin-bottom:18px;">2 Preparações</p>
-<div class="ouro-variantes" style="margin-bottom:8px;grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto;">
-<div class="ouro-variante">
+<div class="ouro-variantes" style="grid-template-columns:1fr;gap:0;margin-bottom:24px;">
+<div class="ouro-variante" style="border:none;background:none;padding:0;text-align:center;">
 <p class="ouro-var-nome">Saco · 5 Bombons</p>
 <p class="ouro-var-preco">30€</p>
 <p class="ouro-var-desc">Lote artesanal limitado</p>
-<div class="qtd-inline" style="margin-top:10px;margin-bottom:6px;gap:8px;">
-<button class="qtd-inline-menos" data-qtdtarget="qtd-saco5" style="width:22px;height:22px;font-size:.75rem;">-</button>
-<span class="qtd-inline-numero" id="qtd-saco5" style="font-size:.8rem;">1</span>
-<button class="qtd-inline-mais" data-qtdtarget="qtd-saco5" style="width:22px;height:22px;font-size:.75rem;">+</button>
+<div class="qtd-inline" style="margin:14px auto;">
+<button class="qtd-inline-menos" data-qtdtarget="qtd-saco5">-</button>
+<span class="qtd-inline-numero" id="qtd-saco5">1</span>
+<button class="qtd-inline-mais" data-qtdtarget="qtd-saco5">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" data-qtdsrc="qtd-saco5" data-target="saco5-envio-selector" id="btn-abre-saco5" style="margin-top:auto;width:100%;font-size:.5rem;padding:9px 6px;">+ Adicionar</button>
-<a class="btn-pedir btn-pedir-dinamico" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" href="https://wa.me/351939320103" style="margin-top:6px;width:100%;font-size:.5rem;padding:9px 6px;">Encomendar</a>
+<div class="btns-produto">
+<button class="btn-lista btn-abre-envio" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" data-qtdsrc="qtd-saco5" data-target="saco5-envio-selector" id="btn-abre-saco5">+ Adicionar</button>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" href="https://wa.me/351939320103">Encomendar</a>
+</div>
 </div>
 </div>
 <!-- Selector de envio dedicado ao Saco de 5 -->
@@ -1502,12 +1504,12 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>A partir de 4€ · consoante volume</span></button>
 <button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
-<div class="ouro-variantes" style="margin-bottom:8px;grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto;">
-<div class="ouro-variante">
+<div class="ouro-variantes" style="grid-template-columns:1fr;gap:0;margin-bottom:8px;">
+<div class="ouro-variante" style="border:none;background:none;padding:0;text-align:center;">
 <p class="ouro-var-nome">Bombom Individual</p>
 <p class="ouro-var-preco">10€</p>
 <p class="ouro-var-desc">Embalagem cúpula</p>
-<button class="btn-lista" id="btn-abre-sabor-individual" style="margin-top:auto;width:100%;font-size:.5rem;padding:9px 6px;">+ Escolher Sabor</button>
+<button class="btn-lista" id="btn-abre-sabor-individual" style="margin-top:14px;">+ Escolher Sabor</button>
 </div>
 </div>
 <!-- Painel único: sabor + quantidade + envio -->
