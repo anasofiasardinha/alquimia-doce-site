@@ -1151,7 +1151,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <div class="topbar-menu" id="topbar-menu">
 <a href="#onde-provar">Onde provar</a>
 </div>
-<a class="topbar-cta" href="#essencia" id="topbar-encomendar">Encomendar<span class="topbar-cta-contador" id="topbar-contador">0</span></a>
+<a class="topbar-cta btn-pedir-dinamico" href="https://wa.me/351939320103" id="topbar-encomendar">Encomendar<span class="topbar-cta-contador" id="topbar-contador">0</span></a>
 </nav>
 <!-- BOTÃO TOPO -->
 <a aria-label="Voltar ao topo" class="topo-btn" href="#" id="topo-btn">
@@ -1289,7 +1289,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </div>
 <div class="btns-produto">
 <button class="btn-lista btn-abre-envio" data-nome="Essência" data-preco="10€" data-qtdsrc="qtd-essencia">+ Adicionar à lista</button>
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Essência" data-preco="10€" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 <div class="envio-selector">
 <p class="envio-selector-titulo">Como quer receber?</p>
@@ -1325,7 +1325,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </div>
 <div class="btns-produto">
 <button class="btn-lista btn-abre-envio" data-nome="Transmutação" data-preco="20€" data-qtdsrc="qtd-transmutacao">+ Adicionar à lista</button>
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Transmutação" data-preco="20€" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 <div class="envio-selector">
 <p class="envio-selector-titulo">Como quer receber?</p>
@@ -1493,6 +1493,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <button class="qtd-inline-mais" data-qtdtarget="qtd-saco5" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
 <button class="btn-lista btn-abre-envio" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" data-qtdsrc="qtd-saco5" data-target="saco5-envio-selector" id="btn-abre-saco5" style="margin-top:auto;width:100%;font-size:.5rem;padding:9px 6px;">+ Adicionar</button>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Ouro - Saco 5 Bombons" data-preco="30€" href="https://wa.me/351939320103" style="margin-top:6px;width:100%;font-size:.5rem;padding:9px 6px;">Encomendar</a>
 </div>
 </div>
 <!-- Selector de envio dedicado ao Saco de 5 -->
@@ -1609,7 +1610,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <div>
 <p style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;color:var(--vinho);margin-bottom:5px;">Pequeno</p>
 <p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--vinho);opacity:.9;line-height:1.3;">Incluído com cada estado. Não precisa de pedir.</p>
-<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
+<button class="btn-lista" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1617,16 +1618,11 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-kraft-m" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
+<button class="btn-lista" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
 </div>
-</div>
-<div class="envio-selector">
-<p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
-<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 <div style="margin-top:8px;">
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Saco Kraft - Médio" data-preco="3€" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 </div>
 </div>
@@ -1655,7 +1651,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-linho-p" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
+<button class="btn-lista" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1663,16 +1659,11 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-linho-g" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista btn-abre-envio" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
+<button class="btn-lista" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
 </div>
-</div>
-<div class="envio-selector">
-<p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="CTT Standard">CTT Standard <span>Disponível a partir de 15 de Julho</span></button>
-<button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 <div style="margin-top:8px;">
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 </div>
 </div>
@@ -1696,8 +1687,8 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <button class="qtd-inline-mais" data-qtdtarget="qtd-embrulho">+</button>
 </div>
 <div class="btns-produto">
-<button class="btn-lista" data-envio="Com a encomenda" data-nome="Embrulho de Prenda" data-preco="12€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
-<a class="btn-pedir btn-pedir-dinamico" href="https://wa.me/351939320103">Encomendar</a>
+<button class="btn-lista" data-nome="Embrulho de Prenda" data-preco="12€" data-qtdsrc="qtd-embrulho">+ Adicionar à lista</button>
+<a class="btn-pedir btn-pedir-dinamico" data-nome="Embrulho de Prenda" data-preco="12€" href="https://wa.me/351939320103">Encomendar</a>
 </div>
 </div>
 </div>
@@ -1898,6 +1889,41 @@ topoEl.addEventListener('click', (e) => {
 // ─── LISTA DE COMPRAS ───
 let lista = [];
 
+// nomes de embalagem/embrulho: na lista aparecem sem etiqueta de envio (o envio combina-se no WhatsApp)
+function eEmbalagem(nome) {
+  return /Saco Kraft|Saco de Linho|Embrulho/.test(nome || '');
+}
+// acrescentar com fusão: se já existe item igual (nome+sabor+envio), soma a quantidade em vez de duplicar
+function adicionarItem(novo) {
+  const existente = lista.find(i =>
+    i.nome === novo.nome &&
+    (i.sabor || '') === (novo.sabor || '') &&
+    (i.envio || '') === (novo.envio || '')
+  );
+  if (existente) {
+    existente.qtd = (existente.qtd || 1) + (novo.qtd || 1);
+  } else {
+    lista.push(novo);
+  }
+}
+// construir o link do WhatsApp a partir da lista actual (mensagem na voz de quem compra)
+function construirLink() {
+  const gratis = calcGratis();
+  const listaFull = [...lista, ...gratis];
+  let msg;
+  if (listaFull.length > 0) {
+    const linhas = listaFull.map(i => {
+      let l = '- ' + (i.qtd || 1) + 'x ' + i.nome + (i.sabor ? ' (' + i.sabor + ')' : '') + ' (' + i.preco + ')';
+      if (!eEmbalagem(i.nome) && i.envio) l += ' \u2192 ' + i.envio;
+      return l;
+    }).join('\n');
+    msg = 'Ol\u00e1! Queria encomendar:\n' + linhas;
+  } else {
+    msg = 'Ol\u00e1! Queria fazer uma encomenda.';
+  }
+  return 'https://wa.me/351939320103?text=' + encodeURIComponent(msg);
+}
+
 const listaBarraEl   = document.getElementById('lista-barra');
 const listaBarraBola = document.getElementById('lista-barra-bola');
 const listaBarraBtn  = document.getElementById('lista-barra-btn');
@@ -1932,16 +1958,14 @@ const seloDataUrls = {
 const SACOS_PAGOS = ['Essência', 'Transmutação', 'Ouro - Saco 5 Bombons'];
 
 function calcGratis() {
-  const map = {};
-  lista.forEach(item => {
+  const totalPagos = lista.reduce((soma, item) => {
     if (SACOS_PAGOS.some(s => (item.nome || '').includes(s))) {
-      const envio = item.envio || 'A confirmar';
-      map[envio] = (map[envio] || 0) + (item.qtd || 1);
+      return soma + (item.qtd || 1);
     }
-  });
-  return Object.entries(map).map(([envio, qtd]) => ({
-    nome: 'Saco Kraft - Pequeno', preco: 'Grátis', qtd, envio, autoGratis: true
-  }));
+    return soma;
+  }, 0);
+  if (totalPagos === 0) return [];
+  return [{ nome: 'Saco Kraft - Pequeno', preco: 'Grátis', qtd: totalPagos, autoGratis: true }];
 }
 
 function renderLista() {
@@ -1970,7 +1994,7 @@ function renderLista() {
         </div>
         <div style="display:flex;gap:12px;align-items:center;">
           <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
-          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${eEmbalagem(item.nome) ? '' : (item.envio || '')}</span>
           <div style="display:flex;align-items:center;gap:6px;margin-left:auto;">
             <button class="drawer-qtd-menos" data-i="${i}" style="width:22px;height:22px;border-radius:50%;border:1px solid var(--vinho);background:none;color:var(--vinho);font-size:.8rem;cursor:pointer;line-height:1;">-</button>
             <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);min-width:14px;text-align:center;">${item.qtd || 1}</span>
@@ -1987,7 +2011,7 @@ function renderLista() {
         </div>
         <div style="display:flex;gap:12px;align-items:center;">
           <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${item.preco}</span>
-          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${item.envio || ''}</span>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.7;">${eEmbalagem(item.nome) ? '' : (item.envio || '')}</span>
           <span style="font-family:'Cinzel',serif;font-size:.7rem;color:var(--tinta);margin-left:auto;">${item.qtd}×</span>
         </div>
       </div>
@@ -2036,19 +2060,9 @@ function renderLista() {
     });
   }
 
-  // Link WhatsApp com a lista e envio por produto
-  const mensagemInicial = 'Ol%C3%A1!%20Sou%20a%20Ana%2C%20da%20Alquimia%20Doce.%20Como%20posso%20ajudar%3F';
-  const texto = listaFull.length > 0
-    ? 'Olá!%20Queria%20encomendar:%0A' + listaFull.map(i =>
-        '-%20' + (i.qtd || 1) + 'x%20' + i.nome + (i.sabor ? '%20(' + i.sabor + ')' : '') + '%20(' + i.preco + ')%20%E2%86%92%20' + (i.envio || 'A%20confirmar')
-      ).join('%0A')
-    : '';
-  const linkWhatsapp = listaFull.length > 0
-    ? 'https://wa.me/351939320103?text=' + texto
-    : 'https://wa.me/351939320103?text=' + mensagemInicial;
-  drawerPedirEl.href = lista.length > 0 ? linkWhatsapp : '#';
-
-  // Actualizar TODOS os botões "Pedir à Alquimista" do site com a lista actual
+  // Link WhatsApp actualizado (voz de quem compra; caso vazio = mensagem de abertura)
+  const linkWhatsapp = construirLink();
+  drawerPedirEl.href = linkWhatsapp;
   document.querySelectorAll('.btn-pedir-dinamico').forEach(a => {
     a.href = linkWhatsapp;
   });
@@ -2107,7 +2121,7 @@ document.querySelectorAll('.envio-opcao:not(.sabor-envio-opcao)').forEach(opcao 
     const btnAlvo = btnPendente;
     const qtdEl = btnAlvo.dataset.qtdsrc ? document.getElementById(btnAlvo.dataset.qtdsrc) : null;
     const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
-    lista.push({
+    adicionarItem({
       nome: btnAlvo.dataset.nome,
       preco: btnAlvo.dataset.preco,
       envio: envio,
@@ -2135,7 +2149,7 @@ document.querySelectorAll('.btn-lista:not(.btn-abre-envio):not(#btn-abre-sabor-i
   btn.addEventListener('click', () => {
     const qtdEl = btn.dataset.qtdsrc ? document.getElementById(btn.dataset.qtdsrc) : null;
     const qtdEscolhida = qtdEl ? parseInt(qtdEl.textContent) : 1;
-    lista.push({ nome: btn.dataset.nome, preco: btn.dataset.preco, envio: btn.dataset.envio || 'A confirmar', qtd: qtdEscolhida });
+    adicionarItem({ nome: btn.dataset.nome, preco: btn.dataset.preco, envio: btn.dataset.envio || null, qtd: qtdEscolhida });
     renderLista();
     const orig = btn.textContent;
     btn.textContent = 'Adicionado!';
@@ -2215,20 +2229,23 @@ if (orlojEl) {
 // Inicializar todos os botões "Pedir à Alquimista" no carregamento
 renderLista();
 
-// ─── BOTÃO ENCOMENDAR DO TOPO: comportamento condicional ───
-const topbarEncomendarEl = document.getElementById('topbar-encomendar');
-if (topbarEncomendarEl) {
-  topbarEncomendarEl.addEventListener('click', (e) => {
-    if (lista.length > 0) {
-      e.preventDefault();
-      // mesma lógica do botão "Pedir à Alquimista": vai direto para o WhatsApp com a lista actual
-      window.location.href = topbarEncomendarEl.href.includes('wa.me')
-        ? topbarEncomendarEl.href
-        : drawerPedirEl.href;
+// ─── BOTÕES "ENCOMENDAR": acrescentar produto (se aplicável, sem duplicar) e abrir o WhatsApp ───
+document.querySelectorAll('.btn-pedir-dinamico, #drawer-pedir').forEach(botao => {
+  botao.addEventListener('click', (e) => {
+    e.preventDefault();
+    const nome = botao.dataset.nome;
+    // Botão ligado a um produto: se ainda não estiver na lista, acrescenta 1 (nunca duplica)
+    if (nome) {
+      const jaNaLista = lista.some(i => i.nome === nome);
+      if (!jaNaLista) {
+        adicionarItem({ nome: nome, preco: botao.dataset.preco || '', qtd: 1, envio: null });
+        renderLista();
+      }
     }
-    // se a lista estiver vazia, mantém o comportamento normal (#essencia)
+    // Abrir o WhatsApp com a lista actual (vazia = mensagem de abertura na voz do cliente)
+    window.location.href = construirLink();
   });
-}
+});
 
 // ─── BOMBOM INDIVIDUAL: painel único com múltiplos sabores + quantidade + envio ───
 const qtdsPorSabor = {}; // ex: { 'Alinhamento Celeste': 2 }
@@ -2295,7 +2312,7 @@ if (saborConfirmarBtn) {
     const escolhidos = Object.entries(qtdsPorSabor).filter(([_, qtd]) => qtd > 0);
     if (escolhidos.length === 0) return;
     escolhidos.forEach(([sabor, qtd]) => {
-      lista.push({
+      adicionarItem({
         nome: 'Ouro - Bombom Individual (cúpula)',
         sabor: sabor,
         preco: '10€',
