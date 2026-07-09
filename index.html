@@ -1610,7 +1610,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <div>
 <p style="font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.06em;color:var(--vinho);margin-bottom:5px;">Pequeno</p>
 <p style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:var(--vinho);opacity:.9;line-height:1.3;">Incluído com cada estado. Não precisa de pedir.</p>
-<button class="btn-lista" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Pequeno · Grátis</button>
+<button class="btn-lista" data-nome="Saco Kraft - Pequeno" data-preco="Grátis" data-qtdsrc="qtd-kraft-p" style="width:100%;display:none;">+ Adicionar · Pequeno · Grátis</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1618,7 +1618,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-kraft-m" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-kraft-m" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Médio · 3€</button>
+<button class="btn-lista" data-nome="Saco Kraft - Médio" data-preco="3€" data-qtdsrc="qtd-kraft-m" style="width:100%;">+ Adicionar · Médio · 3€</button>
 </div>
 </div>
 <div style="margin-top:8px;">
@@ -1651,7 +1651,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-linho-p" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-p" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Pequeno · 3€</button>
+<button class="btn-lista" data-nome="Saco de Linho com Lacre - Pequeno" data-preco="3€" data-qtdsrc="qtd-linho-p" style="width:100%;">+ Adicionar · Pequeno · 3€</button>
 </div>
 <div>
 <div class="qtd-inline" style="gap:8px;margin-bottom:6px;">
@@ -1659,7 +1659,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <span class="qtd-inline-numero" id="qtd-linho-g" style="font-size:.8rem;">1</span>
 <button class="qtd-inline-mais" data-qtdtarget="qtd-linho-g" style="width:22px;height:22px;font-size:.75rem;">+</button>
 </div>
-<button class="btn-lista" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Médio · 6€</button>
+<button class="btn-lista" data-nome="Saco de Linho com Lacre - Médio" data-preco="6€" data-qtdsrc="qtd-linho-g" style="width:100%;">+ Adicionar · Médio · 6€</button>
 </div>
 </div>
 <div style="margin-top:8px;">
@@ -2358,13 +2358,18 @@ if (saborConfirmarBtn) {
   saborConfirmarBtn.addEventListener('click', () => {
     const escolhidos = Object.entries(qtdsPorSabor).filter(([_, qtd]) => qtd > 0);
     if (escolhidos.length === 0) return;
+    if (!envioBombomIndividual) {
+      // sem envio escolhido: realça as opções em vez de adicionar com um envio por definir
+      document.querySelectorAll('.sabor-envio-opcao').forEach(o => { o.style.borderColor = 'var(--vinho)'; });
+      return;
+    }
     escolhidos.forEach(([sabor, qtd]) => {
       adicionarItem({
         nome: 'Ouro - Bombom Individual (cúpula)',
         sabor: sabor,
         preco: '10€',
         qtd: qtd,
-        envio: envioBombomIndividual || 'A confirmar'
+        envio: envioBombomIndividual
       });
     });
     renderLista();
