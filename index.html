@@ -1329,7 +1329,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </div>
 <div class="envio-selector">
 <p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>A partir de 4€ · consoante volume</span></button>
 <button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 </div>
@@ -1499,7 +1499,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 <!-- Selector de envio dedicado ao Saco de 5 -->
 <div class="envio-selector" id="saco5-envio-selector">
 <p class="envio-selector-titulo">Como quer receber?</p>
-<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>A partir de 4€ · consoante volume</span></button>
 <button class="envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 </div>
 <div class="ouro-variantes" style="margin-bottom:8px;grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto;">
@@ -1574,7 +1574,7 @@ footer { background:var(--vinho-escuro); padding:44px 24px; text-align:center; }
 </div>
 </div>
 <p class="envio-selector-titulo" style="margin-top:14px;">Como quer receber?</p>
-<button class="envio-opcao sabor-envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>Disponível a partir de 15 de Julho</span></button>
+<button class="envio-opcao sabor-envio-opcao" data-envio="Embalagem Isotérmica">Embalagem Isotérmica <span>A partir de 4€ · consoante volume</span></button>
 <button class="envio-opcao sabor-envio-opcao" data-envio="Levantamento - Companhia dos Lobos">Levantamento <span>Sem portes · Amadora</span></button>
 <button class="btn-lista" id="sabor-confirmar" style="width:100%;margin-top:10px;">Adicionar à lista</button>
 </div>
@@ -1917,7 +1917,11 @@ function construirLink() {
       if (!eEmbalagem(i.nome) && i.envio) l += ' \u2192 ' + i.envio;
       return l;
     }).join('\n');
-    msg = 'Ol\u00e1! Queria encomendar:\n' + linhas;
+    const isotermica = calcIsotermica();
+    const extras = [];
+    if (isotermica) extras.push('- Embalagem Isot\u00e9rmica' + (isotermica.caixas > 1 ? ' \u00d7' + isotermica.caixas : '') + ' (' + isotermica.preco + '\u20ac)');
+    if (temEnvioPorCorreio()) extras.push('- Envio CTT (consoante peso e destino) \u2192 A confirmar');
+    msg = 'Ol\u00e1! Queria encomendar:\n' + linhas + (extras.length ? '\n' + extras.join('\n') : '');
   } else {
     msg = 'Ol\u00e1! Queria fazer uma encomenda.';
   }
@@ -1968,6 +1972,26 @@ function calcGratis() {
   return [{ nome: 'Saco Kraft - Pequeno', preco: 'Grátis', qtd: totalPagos, autoGratis: true }];
 }
 
+// Embalagem isotérmica: conta bombons que vão por correio isotérmico (Transmutação e Ouro contam 5, bombom individual conta 1).
+// 1 caixa cobre até 20 bombons; a cada 20 acrescenta-se outra caixa (4€ cada). Levantamento nunca entra nesta conta.
+function calcIsotermica() {
+  const bombons = lista.reduce((soma, item) => {
+    if (item.envio !== 'Embalagem Isotérmica') return soma;
+    const qtd = item.qtd || 1;
+    if (/Ouro - Saco 5 Bombons/.test(item.nome)) return soma + 5 * qtd;
+    if (/Transmutação/.test(item.nome)) return soma + 5 * qtd;
+    if (/Ouro - Bombom Individual/.test(item.nome)) return soma + 1 * qtd;
+    return soma;
+  }, 0);
+  if (bombons === 0) return null;
+  const caixas = Math.ceil(bombons / 20);
+  return { caixas, bombons, preco: caixas * 4 };
+}
+// Há pelo menos um item a seguir por correio (CTT Standard ou Isotérmica)? O CTT em si depende do peso e do destino, por isso fica "a confirmar".
+function temEnvioPorCorreio() {
+  return lista.some(item => item.envio === 'CTT Standard' || item.envio === 'Embalagem Isotérmica');
+}
+
 function renderLista() {
   const gratis = calcGratis();
   const listaFull = [...lista, ...gratis];
@@ -2016,18 +2040,41 @@ function renderLista() {
         </div>
       </div>
     `);
-    drawerListaEl.innerHTML = [...linhasBase, ...linhasGratis].join('');
+    const isotermica = calcIsotermica();
+    const linhaIsotermica = isotermica ? [`
+      <div class="drawer-item" style="align-items:center;background:rgba(184,137,59,0.06);border-radius:4px;padding:8px 8px;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <span class="drawer-item-nome">Embalagem Isotérmica${isotermica.caixas > 1 ? ' ×' + isotermica.caixas : ''}</span>
+            <span style="font-family:'Cinzel',serif;font-size:.42rem;letter-spacing:.1em;color:var(--tinta-suave);opacity:.7;text-transform:uppercase;">Conservação em trânsito</span>
+          </div>
+          <span style="font-family:'Cinzel',serif;font-size:.58rem;color:var(--ouro);">${isotermica.preco}€</span>
+        </div>
+      </div>
+    `] : [];
+    const linhaCTT = temEnvioPorCorreio() ? [`
+      <div class="drawer-item" style="align-items:center;padding:8px 8px;">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center;">
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <span class="drawer-item-nome">Envio CTT</span>
+            <span style="font-family:'Cinzel',serif;font-size:.42rem;letter-spacing:.1em;color:var(--tinta-suave);opacity:.7;text-transform:uppercase;">Consoante peso e destino</span>
+          </div>
+          <span style="font-family:'Cinzel',serif;font-size:.52rem;color:var(--tinta-suave);opacity:.8;">A confirmar</span>
+        </div>
+      </div>
+    `] : [];
+    drawerListaEl.innerHTML = [...linhasBase, ...linhasGratis, ...linhaIsotermica, ...linhaCTT].join('');
 
-    // Total
+    // Total (inclui a embalagem isotérmica; o CTT fica "a confirmar" e não entra na soma)
     const totalEl = document.getElementById('drawer-total-linha');
     const totalValorEl = document.getElementById('drawer-total-valor');
     if (totalEl && totalValorEl) {
       const total = lista.reduce((sum, item) => {
         const match = (item.preco || '').match(/(\d+)/);
         return sum + (match ? parseInt(match[1]) * (item.qtd || 1) : 0);
-      }, 0);
+      }, 0) + (isotermica ? isotermica.preco : 0);
       if (total > 0) {
-        totalValorEl.textContent = total + '€';
+        totalValorEl.textContent = total + '€' + (temEnvioPorCorreio() ? ' + envio' : '');
         totalEl.style.display = 'flex';
       } else {
         totalEl.style.display = 'none';
