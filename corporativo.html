@@ -2118,21 +2118,21 @@ if (saborConfirmarBtn) {
       });
     });
     renderLista();
-    saborSelectorEl.classList.remove('aberto');
+    // a secção mantém-se aberta, para se poder continuar a escolher mais sabores
     // reset
     Object.keys(qtdsPorSabor).forEach(s => qtdsPorSabor[s] = 0);
     document.querySelectorAll('.sabor-qtd-numero').forEach(el => el.textContent = '0');
     document.querySelectorAll('.sabor-envio-opcao').forEach(o => { o.style.borderColor = ''; o.style.background = ''; });
     envioBombomIndividual = null;
 
-    const orig = btnAbreSabor.textContent;
-    btnAbreSabor.textContent = 'Adicionado!';
-    btnAbreSabor.style.background = 'var(--vinho)';
-    btnAbreSabor.style.color = 'var(--baunilha)';
+    const orig = saborConfirmarBtn.textContent;
+    saborConfirmarBtn.textContent = 'Adicionado!';
+    saborConfirmarBtn.style.background = 'var(--vinho)';
+    saborConfirmarBtn.style.color = 'var(--baunilha)';
     setTimeout(() => {
-      btnAbreSabor.textContent = orig;
-      btnAbreSabor.style.background = '';
-      btnAbreSabor.style.color = '';
+      saborConfirmarBtn.textContent = orig;
+      saborConfirmarBtn.style.background = '';
+      saborConfirmarBtn.style.color = '';
     }, 1200);
   });
 }
